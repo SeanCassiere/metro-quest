@@ -1,4 +1,5 @@
 import { logger } from "./utils/logger";
+
 export default function mainFunc() {
   logger("Application initialized");
   const demoElem = document.getElementById("js-select");
@@ -8,4 +9,11 @@ export default function mainFunc() {
   }
 }
 
-mainFunc();
+// Load jQuery-3.6.0 from public/static folder
+// @deprecated $(document).ready()
+// @use $(() => {}) or jQuery(() => {})
+// @ref https://github.com/yiisoft/yii2/issues/14620
+jQuery(() => {
+  console.log("app started from jquery");
+  mainFunc();
+});
