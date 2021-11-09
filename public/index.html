@@ -7,56 +7,91 @@
     <link href="/css/bootstrap.css" rel="stylesheet" />
     <title>Development</title>
   </head>
-  <body style="background-color: #F7F6F2;">
-    <nav class="navbar navbar-dark fixed-top bg-metro-blue">
-      <div class="container-fluid">
-        <button
-          class="btn btn-small p-1 me-2"
-          type="button"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#offcanvasNavbar"
-          aria-controls="offcanvasNavbar"
-        >
-          <span class="navbar-toggler-icon p-0"></span>
-        </button>
-        <a class="navbar-brand" href="#">MetroQuest</a>
-        <ul class="navbar-nav ms-auto d-flex flex-row">
-          <li class="nav-item">
-            <a class="nav-link pe-2" aria-current="page" href="#">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Sign Up</a>
-          </li>
-        </ul>
-        <div
-          class="offcanvas offcanvas-start"
-          tabindex="-1"
-          id="offcanvasNavbar"
-          aria-labelledby="offcanvasNavbarLabel"
-        >
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
-          </div>
-          <div class="offcanvas-body">
-            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-              </li>
-            </ul>
+  <body class="h-100" style="background-color: #f7f6f2">
+    <header>
+      <nav class="navbar navbar-dark fixed-top bg-metro-blue">
+        <div class="container">
+          <button
+            class="btn btn-small p-1 me-2"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar"
+          >
+            <span class="navbar-toggler-icon p-0"></span>
+          </button>
+          <a class="navbar-brand" href="#">
+            <img class="mt-2" src="/static/images/nav-logo-small.png" width="100px" alt="MetroQuest Navbar Logo" />
+            <!-- MetroQuest -->
+          </a>
+          <ul class="navbar-nav ms-auto d-flex flex-row">
+            <li class="nav-item">
+              <a class="nav-link pe-2" aria-current="page" href="#">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Sign Up</a>
+            </li>
+          </ul>
+          <div
+            class="offcanvas offcanvas-start"
+            tabindex="-1"
+            id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel"
+          >
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title w-100" id="offcanvasNavbarLabel">
+                <div class="d-flex justify-content-center w-100">
+                  <img
+                    class="mt-2 flex-shrink"
+                    src="/static/images/nav-logo-offcanvas-full.png"
+                    width="150px"
+                    alt="MetroQuest Navbar Logo"
+                  />
+                </div>
+              </h5>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Link</a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </header>
     <!---->
-    <div id="content-body" class="mt-5">
-      <div class="py-2 px-2">
-        <p>Hello world</p>
-        <p id="js-select"></p>
+    <div
+      class="d-flex flex-column h-100 justify-content-space-between mt-8"
+      style="background-color: #f7f6f2; min-height: 94vh"
+    >
+      <div class="flex-grow-1 container">
+        <p>Main page content</p>
+        <div class="d-grid">
+          <div class="row">
+            <div class="col">
+              <p>The content below is rendered onto the DOM using JS.</p>
+            </div>
+          </div>
+          <div id="demo-content-row" class="row"></div>
+        </div>
       </div>
+      <footer class="pb-3 bg-metro-blue">
+        <div style="height: 60px; background-color: #4b6587"></div>
+        <ul class="nav justify-content-center pb-1 mb-1">
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-white-50">Home</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-white-50">Categories</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-white-50">About</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-white-50">Contact</a></li>
+        </ul>
+        <p class="text-center text-white-50">&copy; 2021 Company, Inc</p>
+      </footer>
     </div>
+
     <script src="/static/jquery-3.6.0.min.js"></script>
     <script src="/static/bootstrap.bundle.min.js"></script>
     <script src="/scripts/index.js" type="module"></script>
