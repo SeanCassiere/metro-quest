@@ -3,12 +3,62 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link href="/css/bootstrap.css" rel="stylesheet" />
     <title>Development</title>
   </head>
-  <body>
-    <p>Hello world</p>
-    <p id="js-select"></p>
+  <body style="background-color: #F7F6F2;">
+    <nav class="navbar navbar-dark fixed-top bg-metro-blue">
+      <div class="container-fluid">
+        <button
+          class="btn btn-small p-1 me-2"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasNavbar"
+          aria-controls="offcanvasNavbar"
+        >
+          <span class="navbar-toggler-icon p-0"></span>
+        </button>
+        <a class="navbar-brand" href="#">MetroQuest</a>
+        <ul class="navbar-nav ms-auto d-flex flex-row">
+          <li class="nav-item">
+            <a class="nav-link pe-2" aria-current="page" href="#">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Sign Up</a>
+          </li>
+        </ul>
+        <div
+          class="offcanvas offcanvas-start"
+          tabindex="-1"
+          id="offcanvasNavbar"
+          aria-labelledby="offcanvasNavbarLabel"
+        >
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!---->
+    <div id="content-body" class="mt-5">
+      <div class="py-2 px-2">
+        <p>Hello world</p>
+        <p id="js-select"></p>
+      </div>
+    </div>
     <script src="/static/jquery-3.6.0.min.js"></script>
-    <script src="/js/index.js" type="module"></script>
+    <script src="/static/bootstrap.bundle.min.js"></script>
+    <script src="/scripts/index.js" type="module"></script>
   </body>
 </html>

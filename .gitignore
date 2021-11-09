@@ -1,6 +1,7 @@
 # Project specific files
 .DS_Store
-public/js/*
+public/scripts/*
+public/css/bootstrap.css
 
 # Logs
 logs

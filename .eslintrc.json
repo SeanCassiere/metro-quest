@@ -5,6 +5,8 @@
 
   "plugins": ["prettier", "@typescript-eslint"],
 
+"ignorePatterns": ["**/css/*.scss", "**/css/*.css"],
+
   "rules": {
     "prettier/prettier": "error"
   }
