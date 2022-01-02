@@ -65,7 +65,11 @@ class UserService {
     localStorage.setItem(USER_SERVICE_STORE, JSON.stringify(parsedUsers));
   }
 
-  getAllUsers() {
+  private saveUsers(userStore: IUserStore) {
+    localStorage.setItem(USER_SERVICE_STORE, JSON.stringify(userStore));
+  }
+
+  getAllUsersAsArray() {
     const userStore = JSON.parse(localStorage.getItem(USER_SERVICE_STORE) || "{}") as IUserStore;
     const userIds = Array.from(Object.keys(userStore)) as string[];
 
@@ -78,8 +82,13 @@ class UserService {
     return parsedUsers;
   }
 
+  getAllUsers() {
+    const userStore = JSON.parse(localStorage.getItem(USER_SERVICE_STORE) || "{}") as IUserStore;
+    return userStore;
+  }
+
   getUserById(id: string) {
-    const users = this.getAllUsers();
+    const users = this.getAllUsersAsArray();
 
     const user = users.find((u) => u.id === id);
 
@@ -125,11 +134,24 @@ class UserService {
   }
 
   getLoggedInUser() {
-    const users = this.getAllUsers();
+    const users = this.getAllUsersAsArray();
     const userId = getCookie(`${APP_PREFIX}-userId`);
 
     const user = users.find((u) => u.id === userId);
     return user ?? null;
+  }
+
+  changeCurrentUserPassword(password: string) {
+    let allUsers = this.getAllUsers();
+    const user = this.getLoggedInUser();
+
+    if (!user) return true;
+
+    user.password = btoa(password);
+    allUsers = { ...allUsers, [user.id]: user };
+
+    this.saveUsers(allUsers);
+    return true;
   }
 }
 
