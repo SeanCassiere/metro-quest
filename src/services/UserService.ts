@@ -162,10 +162,49 @@ class UserService {
 
   updatedUserDetails(userId: string, details: IUpdateUser) {
     let user = this.getUserById(userId);
-    if (!user) return true;
+    if (!user) return;
 
     user = { ...user, ...details };
 
+    let allUsers = this.getAllUsers();
+    allUsers = { ...allUsers, [user.id]: user };
+
+    this.saveUsers(allUsers);
+  }
+
+  addFavoriteLocation(userId: string, locationId: string) {
+    let user = this.getUserById(userId);
+
+    if (!user) return;
+
+    user = { ...user, favoriteLocations: [...user.favoriteLocations, locationId] };
+    let allUsers = this.getAllUsers();
+    allUsers = { ...allUsers, [user.id]: user };
+
+    this.saveUsers(allUsers);
+  }
+
+  removeFavoriteLocation(userId: string, locationId: string) {
+    let user = this.getUserById(userId);
+
+    if (!user) return true;
+
+    const newFavorites = user.favoriteLocations.filter((id) => id !== locationId);
+
+    const saveUser: User = { ...user, favoriteLocations: newFavorites };
+
+    let allUsers = this.getAllUsers();
+    allUsers = { ...allUsers, [user.id]: user };
+
+    this.saveUsers(allUsers);
+  }
+
+  addUserOrder(userId: string, orderId: string) {
+    let user = this.getUserById(userId);
+
+    if (!user) return;
+
+    user = { ...user, orders: [...user.orders, orderId] };
     let allUsers = this.getAllUsers();
     allUsers = { ...allUsers, [user.id]: user };
 
