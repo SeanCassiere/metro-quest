@@ -19,11 +19,17 @@ interface IUserStore {
   [userId: string]: User;
 }
 
-interface RegisterUser {
+interface IRegisterUser {
   firstName: string;
   lastName: string;
   email: string;
   password: string;
+}
+
+interface IUpdateUser {
+  firstName: string;
+  lastName: string;
+  email: string;
 }
 
 class UserService {
@@ -95,7 +101,7 @@ class UserService {
     return user ?? null;
   }
 
-  async registerNewUser(props: RegisterUser): Promise<string> {
+  async registerNewUser(props: IRegisterUser): Promise<string> {
     const newUserId = await fetch(UUID_URI)
       .then((res) => res.json())
       .then((data) => data[0] as string)
@@ -152,6 +158,18 @@ class UserService {
 
     this.saveUsers(allUsers);
     return true;
+  }
+
+  updatedUserDetails(userId: string, details: IUpdateUser) {
+    let user = this.getUserById(userId);
+    if (!user) return true;
+
+    user = { ...user, ...details };
+
+    let allUsers = this.getAllUsers();
+    allUsers = { ...allUsers, [user.id]: user };
+
+    this.saveUsers(allUsers);
   }
 }
 
