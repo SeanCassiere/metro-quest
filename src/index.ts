@@ -1,3 +1,6 @@
+import UserService from "./services/UserService";
+import userServiceTests from "./demo/userServiceTests";
+
 import { logger } from "./utils/logger";
 
 interface Location {
@@ -41,9 +44,13 @@ function locationsWriting() {
   }
 }
 
-export default function mainFunc() {
+export default async function mainFunc() {
   logger("Application initialized");
+  await UserService.getOnlineUsers();
+
   locationsWriting();
+
+  userServiceTests(); // testing the user service functions
 }
 
 // Load jQuery-3.6.0 from public/static folder
