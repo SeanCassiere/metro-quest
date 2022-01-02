@@ -17,9 +17,7 @@ function populateLocationsData(): Location[] {
   return locations;
 }
 
-export default function mainFunc() {
-  logger("Application initialized");
-
+function locationsWriting() {
   const locationsRow = document.getElementById("demo-content-row");
   if (locationsRow) {
     const locations = populateLocationsData();
@@ -41,6 +39,11 @@ export default function mainFunc() {
     });
     locationsRow.innerHTML = locationsHtml.join("");
   }
+}
+
+export default function mainFunc() {
+  logger("Application initialized");
+  locationsWriting();
 }
 
 // Load jQuery-3.6.0 from public/static folder
