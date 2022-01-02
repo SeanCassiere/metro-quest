@@ -1,4 +1,4 @@
-const ONLINE_ALL_USERS = "/static/data/users.json";
+const ALL_USERS_URI = "/static/data/users.json";
 export const LOCAL_USERS_STORE = "local-users";
 export const UUID_URI = "https://www.uuidtools.com/api/generate/v4";
 
@@ -14,6 +14,10 @@ class User {
   ) {}
 }
 
+interface IUserStore {
+  [userId: string]: User;
+}
+
 interface RegisterUser {
   firstName: string;
   lastName: string;
@@ -24,13 +28,13 @@ interface RegisterUser {
 class UserService {
   constructor() {}
 
-  getOnlineUsers(): Promise<User[]> {
+  getOnlineUsers(): Promise<IUserStore> {
     return new Promise((resolve, reject) => {
-      fetch(ONLINE_ALL_USERS)
+      fetch(ALL_USERS_URI)
         .then((res) => res.json())
         .then((data) => {
           localStorage.setItem(LOCAL_USERS_STORE, JSON.stringify(data));
-          resolve(data as User[]);
+          resolve(data as IUserStore);
         })
         .catch((e) => {
           console.error(`UserService error (getOnlineUsers)`, e);
@@ -49,20 +53,22 @@ class UserService {
       props.firstName,
       props.lastName,
       props.email.toLowerCase(),
-      props.password,
+      btoa(props.password),
       [],
       []
     );
 
-    const users = JSON.parse(localStorage.getItem(LOCAL_USERS_STORE) || "[]") as User[];
-    users.push(user);
+    let users = JSON.parse(localStorage.getItem(LOCAL_USERS_STORE) || "{}") as IUserStore;
+    users = { ...users, [user.id]: user };
     localStorage.setItem(LOCAL_USERS_STORE, JSON.stringify(users));
   }
 
   loginUser(props: { email: string; password: string }) {
-    const users = JSON.parse(localStorage.getItem(LOCAL_USERS_STORE) || "[]") as User[];
+    const userStore = JSON.parse(localStorage.getItem(LOCAL_USERS_STORE) || "{}") as IUserStore;
+    const users = Array.from(Object.values(userStore));
+
     const user = users.find((u) => u.email === props.email.toLowerCase());
-    if (user && user.password === props.password) {
+    if (user && atob(user.password) === props.password) {
       return user;
     }
     return null;

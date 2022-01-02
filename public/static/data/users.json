@@ -1,11 +1,11 @@
-[
-  {
+{
+  "c3064eb0-25a4-46ef-81f4-e0657b898844": {
     "id": "c3064eb0-25a4-46ef-81f4-e0657b898844",
     "firstName": "test",
     "lastName": "last",
     "email": "example@example.com",
-    "password": "password",
+    "password": "MTIz",
     "favoriteLocations": [],
     "orders": []
   }
-]
+}
