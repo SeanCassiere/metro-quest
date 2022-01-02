@@ -1,6 +1,7 @@
+import { clearCookie, setCookie } from "../utils/cookies";
+import { APP_PREFIX, USER_SERVICE_STORE, UUID_URI } from "../constants";
+
 const ALL_USERS_URI = "/static/data/users.json";
-export const LOCAL_USERS_STORE = "local-users";
-export const UUID_URI = "https://www.uuidtools.com/api/generate/v4";
 
 class User {
   constructor(
@@ -33,7 +34,7 @@ class UserService {
       fetch(ALL_USERS_URI)
         .then((res) => res.json())
         .then((data) => {
-          localStorage.setItem(LOCAL_USERS_STORE, JSON.stringify(data));
+          localStorage.setItem(USER_SERVICE_STORE, JSON.stringify(data));
           resolve(data as IUserStore);
         })
         .catch((e) => {
@@ -43,7 +44,20 @@ class UserService {
     });
   }
 
-  async registerNewUser(props: RegisterUser) {
+  getAllUsers() {
+    const userStore = JSON.parse(localStorage.getItem(USER_SERVICE_STORE) || "{}") as IUserStore;
+    const userIds = Array.from(Object.keys(userStore)) as string[];
+
+    const parsedUsers: User[] = [];
+
+    for (let userId of userIds) {
+      parsedUsers.push(userStore[userId]);
+    }
+
+    return parsedUsers;
+  }
+
+  async registerNewUser(props: RegisterUser): Promise<string> {
     const newUserId = await fetch(UUID_URI)
       .then((res) => res.json())
       .then((data) => data[0] as string)
@@ -58,20 +72,27 @@ class UserService {
       []
     );
 
-    let users = JSON.parse(localStorage.getItem(LOCAL_USERS_STORE) || "{}") as IUserStore;
+    let users = JSON.parse(localStorage.getItem(USER_SERVICE_STORE) || "{}") as IUserStore;
     users = { ...users, [user.id]: user };
-    localStorage.setItem(LOCAL_USERS_STORE, JSON.stringify(users));
+    localStorage.setItem(USER_SERVICE_STORE, JSON.stringify(users));
+
+    return user.id;
   }
 
-  loginUser(props: { email: string; password: string }) {
-    const userStore = JSON.parse(localStorage.getItem(LOCAL_USERS_STORE) || "{}") as IUserStore;
+  loginUser(props: { email: string; password: string }): User | null {
+    const userStore = JSON.parse(localStorage.getItem(USER_SERVICE_STORE) || "{}") as IUserStore;
     const users = Array.from(Object.values(userStore));
 
     const user = users.find((u) => u.email === props.email.toLowerCase());
     if (user && atob(user.password) === props.password) {
+      setCookie(`${APP_PREFIX}-userId`, user.id, 1);
       return user;
     }
     return null;
+  }
+
+  logoutUser() {
+    clearCookie(`${APP_PREFIX}-userId`);
   }
 }
 
