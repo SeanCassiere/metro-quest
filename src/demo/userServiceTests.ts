@@ -1,4 +1,4 @@
-import UserService, { LOCAL_USERS_STORE } from "../services/UserService";
+import UserService from "../services/UserService";
 
 export default async function userServiceTests() {
   await UserService.registerNewUser({
@@ -8,9 +8,9 @@ export default async function userServiceTests() {
     password: "123",
   });
 
-  const locallyStoredUsers = localStorage.getItem(LOCAL_USERS_STORE);
+  const locallyStoredUsers = UserService.getAllUsers();
   if (locallyStoredUsers) {
-    console.log("Locally stored users\n", JSON.parse(locallyStoredUsers));
+    console.log("Locally stored users\n", locallyStoredUsers);
   }
 
   const loginUser = UserService.loginUser({ email: "test@test.com", password: "123" });
