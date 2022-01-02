@@ -1,4 +1,4 @@
-import { clearCookie, setCookie } from "../utils/cookies";
+import { clearCookie, setCookie, getCookie } from "../utils/cookies";
 import { APP_PREFIX, USER_SERVICE_STORE, UUID_URI } from "../constants";
 
 const ALL_USERS_URI = "/static/data/users.json";
@@ -34,7 +34,13 @@ class UserService {
       fetch(ALL_USERS_URI)
         .then((res) => res.json())
         .then((data) => {
-          localStorage.setItem(USER_SERVICE_STORE, JSON.stringify(data));
+          const existingUsers = JSON.parse(localStorage.getItem(USER_SERVICE_STORE) || "null");
+
+          if (existingUsers) {
+            localStorage.setItem(USER_SERVICE_STORE, JSON.stringify({ ...existingUsers, ...data }));
+          } else {
+            localStorage.setItem(USER_SERVICE_STORE, JSON.stringify({ ...data }));
+          }
           resolve(data as IUserStore);
         })
         .catch((e) => {
@@ -42,6 +48,21 @@ class UserService {
           reject([]);
         });
     });
+  }
+
+  private saveUsersArray(users: User[]) {
+    let parsedUsers: IUserStore = {};
+
+    const userIds = Array.from(Object.keys(users));
+
+    for (let id of userIds) {
+      const filtered = users.find((u) => u.id === id);
+      if (filtered) {
+        parsedUsers = { ...parsedUsers, [id]: filtered };
+      }
+    }
+
+    localStorage.setItem(USER_SERVICE_STORE, JSON.stringify(parsedUsers));
   }
 
   getAllUsers() {
@@ -55,6 +76,14 @@ class UserService {
     }
 
     return parsedUsers;
+  }
+
+  getUserById(id: string) {
+    const users = this.getAllUsers();
+
+    const user = users.find((u) => u.id === id);
+
+    return user ?? null;
   }
 
   async registerNewUser(props: RegisterUser): Promise<string> {
@@ -93,6 +122,14 @@ class UserService {
 
   logoutUser() {
     clearCookie(`${APP_PREFIX}-userId`);
+  }
+
+  getLoggedInUser() {
+    const users = this.getAllUsers();
+    const userId = getCookie(`${APP_PREFIX}-userId`);
+
+    const user = users.find((u) => u.id === userId);
+    return user ?? null;
   }
 }
 
