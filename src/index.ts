@@ -45,12 +45,12 @@ function locationsWriting() {
 }
 
 export default async function mainFunc() {
-  logger("Application initialized");
   await UserService.getOnlineUsers();
-
-  locationsWriting();
+  logger("Application initialized");
 
   userServiceTests(); // testing the user service functions
+
+  locationsWriting();
 }
 
 // Load jQuery-3.6.0 from public/static folder
