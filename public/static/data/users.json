@@ -6,6 +6,16 @@
     "email": "example@example.com",
     "password": "MTIz",
     "favoriteLocations": [],
-    "orders": []
+    "orders": [],
+    "userPoints": 42,
+    "userPointsHistory": [
+      {
+        "dateISO": "2022-01-03T04:20:40.951Z",
+        "prevPoints": 0,
+        "valueChange": 42,
+        "type": "add",
+        "description": "Points added"
+      }
+    ]
   }
 }

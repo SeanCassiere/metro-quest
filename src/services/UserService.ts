@@ -3,6 +3,14 @@ import { APP_PREFIX, USER_SERVICE_STORE, UUID_URI } from "../constants";
 
 const ALL_USERS_URI = "/static/data/users.json";
 
+interface IPointHistory {
+  dateISO: string;
+  prevPoints: number;
+  valueChange: number;
+  type: "add" | "subtract";
+  description: string;
+}
+
 class User {
   constructor(
     public id: string,
@@ -11,7 +19,9 @@ class User {
     public email: string,
     public password: string,
     public favoriteLocations: string[],
-    public orders: string[]
+    public orders: string[],
+    public userPoints: number,
+    public userPointsHistory: IPointHistory[]
   ) {}
 }
 
@@ -113,6 +123,8 @@ class UserService {
       props.email.toLowerCase(),
       btoa(props.password),
       [],
+      [],
+      0,
       []
     );
 
@@ -205,6 +217,52 @@ class UserService {
     if (!user) return;
 
     user = { ...user, orders: [...user.orders, orderId] };
+    let allUsers = this.getAllUsers();
+    allUsers = { ...allUsers, [user.id]: user };
+
+    this.saveUsers(allUsers);
+  }
+
+  addPointsToUser(userId: string, points: number) {
+    let user = this.getUserById(userId);
+    if (!user) return;
+
+    const currentDate = new Date(Date.now());
+    const pointChangeHistory = user.userPointsHistory;
+    const newPointHistory: IPointHistory[] = [
+      ...pointChangeHistory,
+      {
+        valueChange: points,
+        prevPoints: user.userPoints,
+        type: "add",
+        description: "Incrementing user points",
+        dateISO: currentDate.toISOString(),
+      },
+    ];
+    user = { ...user, userPoints: user.userPoints + points, userPointsHistory: newPointHistory };
+    let allUsers = this.getAllUsers();
+    allUsers = { ...allUsers, [user.id]: user };
+
+    this.saveUsers(allUsers);
+  }
+
+  removePointsFromUser(userId: string, points: number) {
+    let user = this.getUserById(userId);
+    if (!user) return;
+
+    const currentDate = new Date(Date.now());
+    const pointChangeHistory = user.userPointsHistory;
+    const newPointHistory: IPointHistory[] = [
+      ...pointChangeHistory,
+      {
+        dateISO: currentDate.toISOString(),
+        prevPoints: user.userPoints,
+        valueChange: points,
+        type: "subtract",
+        description: "Reducing user points",
+      },
+    ];
+    user = { ...user, userPoints: user.userPoints - points, userPointsHistory: newPointHistory };
     let allUsers = this.getAllUsers();
     allUsers = { ...allUsers, [user.id]: user };
 
