@@ -11,7 +11,7 @@ interface IPointHistory {
   description: string;
 }
 
-class User {
+export class User {
   constructor(
     public id: string,
     public firstName: string,
