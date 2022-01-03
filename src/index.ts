@@ -1,6 +1,7 @@
 import UserService from "./services/UserService";
 import userServiceTests from "./demo/userServiceTests";
 
+import { dynamicNavbar } from "./services/changeNavbar";
 import { logger } from "./utils/logger";
 
 interface Location {
@@ -50,6 +51,7 @@ export default async function mainFunc() {
 
   userServiceTests(); // testing the user service functions
 
+  dynamicNavbar(UserService.getLoggedInUser());
   locationsWriting();
 }
 
