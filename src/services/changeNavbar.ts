@@ -16,10 +16,10 @@ export function dynamicNavbar(user: User | null) {
     } else {
       primaryItems.html(`
       <li class="nav-item">
-        <a class="nav-link pe-2" aria-current="page" href="#">Login</a>
+        <a class="nav-link pe-2" aria-current="page" href="/login.html">Login</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Sign Up</a>
+        <a class="nav-link" href="/register.html">Sign Up</a>
       </li>
       `);
     }
