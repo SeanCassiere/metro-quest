@@ -11,6 +11,11 @@
   margin: 0 auto;
 }
 
+.account-favorite-locations-grid {
+  display: grid;
+  grid-gap: 1rem;
+}
+
 .account-floating-card .card-form-subtitle {
   font-size: 0.92rem;
 }
@@ -19,8 +24,13 @@
   .account-floating-card {
     margin: 1.5rem 3.5rem;
   }
-  .account-floating-flexible-width{
+  .account-floating-flexible-width {
     max-width: calc(100vw - 20rem);
     margin: 0 auto;
+  }
+  .account-favorite-locations-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(30%, 33.3%));
+    grid-gap: 1rem;
   }
 }
