@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link href="/css/bootstrap.css" rel="stylesheet" />
+    <link href="/css/sean-style.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <title>Account | Metro Quest</title>
+  </head>
+  <body class="h-100" style="background-color: #f7f6f2">
+    <header>
+      <nav class="navbar navbar-dark fixed-top bg-metro-blue">
+        <div class="container">
+          <button
+            class="btn btn-small p-1 me-2"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar"
+          >
+            <span class="navbar-toggler-icon p-0"></span>
+          </button>
+          <a class="navbar-brand" href="#">
+            <img class="mt-2" src="/static/images/nav-logo-small.png" width="100px" alt="MetroQuest Navbar Logo" />
+            <!-- MetroQuest -->
+          </a>
+          <ul class="navbar-nav ms-auto d-flex flex-row" id="primary-nav-items">
+            <li class="nav-item">
+              <a class="nav-link pe-2" aria-current="page" href="#">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Sign Up</a>
+            </li>
+          </ul>
+          <div
+            class="offcanvas offcanvas-start"
+            tabindex="-1"
+            id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel"
+          >
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title w-100" id="offcanvasNavbarLabel">
+                <div class="d-flex justify-content-center w-100">
+                  <img
+                    class="mt-2 flex-shrink"
+                    src="/static/images/nav-logo-offcanvas-full.png"
+                    width="150px"
+                    alt="MetroQuest Navbar Logo"
+                  />
+                </div>
+              </h5>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" id="secondary-nav-items">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Link</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!---->
+    <div
+      class="d-flex flex-column h-100 justify-content-space-between mt-8"
+      style="background-color: #f7f6f2; min-height: 94vh"
+    >
+      <div class="flex-grow-1 container d-flex flex-row justify-content-center align-items-center">
+        <div class="flex-grow-1 account-floating-card">
+          <div class="d-flex flex-column justify-content-center align-items-center gap-2">
+            <img src="/static/images/user-group-icon.png" style="margin: 0.5rem" width="75px" />
+            <h1>My Account</h1>
+          </div>
+          <hr class="account-floating-flexible-width" />
+          <div class="mt-3 mb-2">
+            <p>Name: John Doe</p>
+            <p>Email: john.doe@example.com</p>
+            <p>Total account points: <span class="text-metro-orange">42</span></p>
+          </div>
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link active"
+                id="profile-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#profile"
+                type="button"
+                role="tab"
+                aria-controls="profile"
+                aria-selected="true"
+              >
+                Profile
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link"
+                id="favorites-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#favorites"
+                type="button"
+                role="tab"
+                aria-controls="profile"
+                aria-selected="false"
+              >
+                Favorites
+              </button>
+            </li>
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+              <form
+                class="
+                  mt-3
+                  d-flex
+                  flex-column
+                  justify-content-center
+                  align-items-center
+                  gap-2
+                  account-floating-flexible-width
+                "
+              >
+                <subtitle class="mb-3 card-form-subtitle">Update your Metro Quest details below</subtitle>
+                <div class="mb-2 w-100">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="registerFirstNameInput"
+                    name="firstName"
+                    placeholder="First Name"
+                    value="John"
+                  />
+                </div>
+                <div class="mb-2 w-100">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="registerLastNameInput"
+                    name="lastName"
+                    placeholder="Last Name"
+                    value="Doe"
+                  />
+                </div>
+                <div class="mb-2 w-100">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="registerEmailInput"
+                    placeholder="Email"
+                    value="john.doe@example.com"
+                  />
+                </div>
+                <div class="mb-2 w-100">
+                  <input type="password" class="form-control" id="registerPasswordInput" placeholder="Password" />
+                </div>
+                <div class="mb-2 w-100">
+                  <button class="btn btn-metro-orange text-white" type="submit" size="lg" style="width: 100%">
+                    Update
+                  </button>
+                </div>
+                <div class="mb-2 w-100">
+                  <button class="btn btn-outline-metro-orange" type="reset" size="lg" style="width: 100%">Reset</button>
+                </div>
+              </form>
+            </div>
+            <div class="tab-pane fade" id="favorites" role="tabpanel" aria-labelledby="favorites-tab">
+              <div class="mt-3 d-flex flex-column justify-content-center align-items-center gap-2">
+                <subtitle class="mb-3 card-form-subtitle">Locations you've marked as favorite on Metro Quest</subtitle>
+                <div class="mb-2 w-100">
+                  <button class="btn btn-sm btn-outline-metro-orange" type="button">
+                    <i class="fas fa-envelope" aria-hidden="true"></i><span class="px-1">Email</span>
+                  </button>
+                  <button class="btn btn-sm btn-danger" type="button">
+                    <i class="fas fa-trash" aria-hidden="true"></i><span class="px-1">Clear</span>
+                  </button>
+                </div>
+                <div class="account-favorite-locations-grid">
+                  <div class="card" style="width: 100%">
+                    <img src="https://picsum.photos/300/300" class="card-img-top" alt="..." />
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <a href="#" class="btn btn-sm btn-metro-orange text-white"
+                        ><i class="fas fa-eye" aria-hidden="true"></i>View</a
+                      >
+                      <button href="#" class="btn btn-sm btn-danger">
+                        <i class="fas fa-trash" aria-hidden="true"></i>Clear
+                      </button>
+                    </div>
+                  </div>
+                  <div class="card" style="width: 100%">
+                    <img src="https://picsum.photos/300/300" class="card-img-top" alt="..." />
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <a href="#" class="btn btn-sm btn-metro-orange text-white"
+                        ><i class="fas fa-eye" aria-hidden="true"></i>View</a
+                      >
+                      <button href="#" class="btn btn-sm btn-danger">
+                        <i class="fas fa-trash" aria-hidden="true"></i>Clear
+                      </button>
+                    </div>
+                  </div>
+                  <div class="card" style="width: 100%">
+                    <img src="https://picsum.photos/300/300" class="card-img-top" alt="..." />
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <a href="#" class="btn btn-sm btn-metro-orange text-white"
+                        ><i class="fas fa-eye" aria-hidden="true"></i>View</a
+                      >
+                      <button href="#" class="btn btn-sm btn-danger">
+                        <i class="fas fa-trash" aria-hidden="true"></i>Clear
+                      </button>
+                    </div>
+                  </div>
+                  <div class="card" style="width: 100%">
+                    <img src="https://picsum.photos/300/300" class="card-img-top" alt="..." />
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <a href="#" class="btn btn-sm btn-metro-orange text-white"
+                        ><i class="fas fa-eye" aria-hidden="true"></i>View</a
+                      >
+                      <button href="#" class="btn btn-sm btn-danger">
+                        <i class="fas fa-trash" aria-hidden="true"></i>Clear
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="pb-3 bg-metro-blue">
+        <div style="height: 60px; background-color: #4b6587"></div>
+        <ul class="nav justify-content-center pb-1 mb-1">
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-white-50">Home</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-white-50">Categories</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-white-50">About</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-white-50">Contact</a></li>
+        </ul>
+        <p class="text-center text-white-50">&copy; 2021 Company, Inc</p>
+      </footer>
+    </div>
+
+    <script src="/static/jquery-3.6.0.min.js"></script>
+    <script src="/static/bootstrap.bundle.min.js"></script>
+    <script src="/scripts/index.js" type="module"></script>
+  </body>
+</html>

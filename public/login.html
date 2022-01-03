@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <link href="/css/bootstrap.css" rel="stylesheet" />
+    <link href="/css/sean-style.css" rel="stylesheet" />
     <link
       rel="stylesheet"
       href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
       integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
       crossorigin="anonymous"
     />
-    <title>Development</title>
+    <title>Login | Metro Quest</title>
   </head>
   <body class="h-100" style="background-color: #f7f6f2">
     <header>
@@ -75,15 +76,48 @@
       class="d-flex flex-column h-100 justify-content-space-between mt-8"
       style="background-color: #f7f6f2; min-height: 94vh"
     >
-      <div class="flex-grow-1 container">
-        <p>Main page content</p>
-        <div class="d-grid">
-          <div class="row">
-            <div class="col">
-              <p>The content below is rendered onto the DOM using JS.</p>
-            </div>
+      <div class="flex-grow-1 container d-flex flex-row justify-content-center align-items-center">
+        <div class="flex-grow-1 account-floating-card">
+          <div class="d-flex flex-column justify-content-center align-items-center gap-2">
+            <img src="/static/images/user-group-icon.png" style="margin: 0.5rem" width="75px" />
+            <h1>Sign In</h1>
           </div>
-          <div id="demo-content-row" class="row"></div>
+          <hr class="account-floating-flexible-width" />
+          <form
+            class="
+              mt-3
+              d-flex
+              flex-column
+              justify-content-center
+              align-items-center
+              gap-2
+              account-floating-flexible-width
+            "
+          >
+            <subtitle class="mb-3 card-form-subtitle">Enter your details to login</subtitle>
+            <div class="mb-2 w-100">
+              <input type="email" class="form-control" id="registerEmailInput" name="email" placeholder="Email" />
+            </div>
+            <div class="mb-2 w-100">
+              <input
+                type="password"
+                class="form-control"
+                id="registerPasswordInput"
+                name="password"
+                placeholder="Password"
+              />
+            </div>
+            <div class="mb-2 w-100">
+              <button class="btn btn-metro-orange text-white" type="submit" size="lg" style="width: 100%">Login</button>
+            </div>
+            <div class="w-100 mt-2" style="text-align: right">
+              <a href="#" class="text-metro-orange text-decoration-none">Forgot your password?</a>
+            </div>
+          </form>
+          <div class="mt-4 mb-3 d-flex flex-column justify-content-center align-items-center">
+            <p>Don't have an account?</p>
+            <a href="/register.html" class="text-metro-orange text-decoration-none">Sign up now!</a>
+          </div>
         </div>
       </div>
       <footer class="pb-3 bg-metro-blue">

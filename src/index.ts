@@ -1,3 +1,7 @@
+import UserService from "./services/UserService";
+import userServiceTests from "./demo/userServiceTests";
+
+import { dynamicNavbar } from "./services/changeNavbar";
 import { logger } from "./utils/logger";
 
 interface Location {
@@ -17,9 +21,7 @@ function populateLocationsData(): Location[] {
   return locations;
 }
 
-export default function mainFunc() {
-  logger("Application initialized");
-
+function locationsWriting() {
   const locationsRow = document.getElementById("demo-content-row");
   if (locationsRow) {
     const locations = populateLocationsData();
@@ -30,6 +32,7 @@ export default function mainFunc() {
             <p class="card-text">${location.name}</p>
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
+              <p></p>
                 <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                 <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
               </div>
@@ -40,6 +43,16 @@ export default function mainFunc() {
     });
     locationsRow.innerHTML = locationsHtml.join("");
   }
+}
+
+export default async function mainFunc() {
+  await UserService.getOnlineUsers();
+  logger("Application initialized");
+
+  userServiceTests(); // testing the user service functions
+
+  dynamicNavbar(UserService.getLoggedInUser());
+  locationsWriting();
 }
 
 // Load jQuery-3.6.0 from public/static folder
