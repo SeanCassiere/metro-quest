@@ -113,24 +113,33 @@ class UserService {
     return user ?? null;
   }
 
-  async registerNewUser(props: IRegisterUser): Promise<string> {
+  async registerNewUser(props: IRegisterUser): Promise<"duplicate_email" | string> {
+    const allUsersArray = this.getAllUsersAsArray();
+    const existingUser = allUsersArray.find((u) => u.email === props.email.toLowerCase());
+
+    if (existingUser) {
+      return "duplicate_email";
+    }
+
+    // getting UUID to use as the user's id
     const newUserId = await fetch(UUID_URI)
       .then((res) => res.json())
       .then((data) => data[0] as string)
       .catch(() => `${Math.floor(Math.random() * 100)}`);
+
     const user = new User(
       newUserId,
       props.firstName,
       props.lastName,
       props.email.toLowerCase(),
       btoa(props.password),
-      [],
-      [],
-      0,
-      []
+      [], // favoriteLocations
+      [], // orders
+      0, // userPoints
+      [] // userPointsHistory
     );
 
-    let users = JSON.parse(localStorage.getItem(USER_SERVICE_STORE) || "{}") as IUserStore;
+    let users = this.getAllUsers();
     users = { ...users, [user.id]: user };
     localStorage.setItem(USER_SERVICE_STORE, JSON.stringify(users));
 
