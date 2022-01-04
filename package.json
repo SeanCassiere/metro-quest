@@ -14,7 +14,7 @@
     "css:build": "node-sass src/css/bootstrap.scss -o public/css/",
     "ts:build": "tsc",
     "delete:scripts": "rimraf ./public/scripts",
-    "delete:css": "rimraf ./public/css",
+    "delete:css": "rimraf ./public/css/bootstrap.css",
     "prebuild": "yarn delete:scripts && yarn delete:css",
     "build": "yarn ts:build && yarn css:build",
     "dev:ts": "yarn ts:watch & yarn serve",
