@@ -84,6 +84,7 @@
           </div>
           <hr class="account-floating-flexible-width" />
           <form
+            name="registerForm"
             class="
               mt-3
               d-flex
@@ -95,6 +96,9 @@
             "
           >
             <subtitle class="mb-3 card-form-subtitle">Enter your details to register with Metro Quest</subtitle>
+            <div class="alert alert-warning w-100" role="alert" id="registerFormErrorBlock" style="display: none">
+              This email is already in use.
+            </div>
             <div class="mb-2 w-100">
               <input
                 type="text"
@@ -102,6 +106,8 @@
                 id="registerFirstNameInput"
                 name="firstName"
                 placeholder="First Name"
+                required
+                autofocus
               />
             </div>
             <div class="mb-2 w-100">
@@ -111,13 +117,28 @@
                 id="registerLastNameInput"
                 name="lastName"
                 placeholder="Last Name"
+                required
               />
             </div>
             <div class="mb-2 w-100">
-              <input type="email" class="form-control" id="registerEmailInput" placeholder="Email" />
+              <input
+                type="email"
+                class="form-control"
+                name="email"
+                id="registerEmailInput"
+                placeholder="Email"
+                required
+              />
             </div>
             <div class="mb-2 w-100">
-              <input type="password" class="form-control" id="registerPasswordInput" placeholder="Password" />
+              <input
+                type="password"
+                class="form-control"
+                name="password"
+                id="registerPasswordInput"
+                placeholder="Password"
+                required
+              />
             </div>
             <div class="mb-2 w-100">
               <button class="btn btn-metro-orange text-white" type="submit" size="lg" style="width: 100%">
@@ -149,5 +170,6 @@
     <script src="/static/jquery-3.6.0.min.js"></script>
     <script src="/static/bootstrap.bundle.min.js"></script>
     <script src="/scripts/index.js" type="module"></script>
+    <script src="/scripts/registerPage.js" type="module"></script>
   </body>
 </html>

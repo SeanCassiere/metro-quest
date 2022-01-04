@@ -29,7 +29,7 @@ interface IUserStore {
   [userId: string]: User;
 }
 
-interface IRegisterUser {
+export interface IRegisterUser {
   firstName: string;
   lastName: string;
   email: string;
