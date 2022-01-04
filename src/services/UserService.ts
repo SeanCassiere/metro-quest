@@ -45,23 +45,25 @@ interface IUpdateUser {
 class UserService {
   constructor() {}
 
-  getOnlineUsers(): Promise<IUserStore> {
+  getOnlineUsers(): Promise<void> {
     return new Promise((resolve, reject) => {
+      const existingUsers = JSON.parse(localStorage.getItem(USER_SERVICE_STORE) || "null");
+
+      if (existingUsers) {
+        resolve();
+        return;
+      }
+
       fetch(ALL_USERS_URI)
         .then((res) => res.json())
         .then((data) => {
-          const existingUsers = JSON.parse(localStorage.getItem(USER_SERVICE_STORE) || "null");
+          localStorage.setItem(USER_SERVICE_STORE, JSON.stringify({ ...data }));
 
-          if (existingUsers) {
-            localStorage.setItem(USER_SERVICE_STORE, JSON.stringify({ ...existingUsers, ...data }));
-          } else {
-            localStorage.setItem(USER_SERVICE_STORE, JSON.stringify({ ...data }));
-          }
-          resolve(data as IUserStore);
+          resolve();
         })
         .catch((e) => {
           console.error(`UserService error (getOnlineUsers)`, e);
-          reject([]);
+          reject();
         });
     });
   }
