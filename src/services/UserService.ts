@@ -141,7 +141,7 @@ class UserService {
       btoa(props.password),
       [], // favoriteLocations
       [], // orders
-      0, // userPoints
+      15, // userPoints
       [] // userPointsHistory
     );
 
