@@ -20,6 +20,12 @@ function writeInitialUpdateFormValues(loggedInUser: User) {
   });
 }
 
+function writeInitialAccountMetadataValues(loggedInUser: User) {
+  $("#account-user-full-name").text(`${loggedInUser.firstName} ${loggedInUser.lastName}`);
+  $("#account-user-email").text(`${loggedInUser.email}`);
+  $("#account-user-points").text(`${loggedInUser.userPoints}`);
+}
+
 jQuery(() => {
   const loggedInUser = UserService.getLoggedInUser();
 
@@ -41,9 +47,7 @@ jQuery(() => {
 
   // write the user metadata to the page
   $(`#account-user-details`).ready(() => {
-    $("#account-user-full-name").text(`${loggedInUser.firstName} ${loggedInUser.lastName}`);
-    $("#account-user-email").text(`${loggedInUser.email}`);
-    $("#account-user-points").text(`${loggedInUser.userPoints}`);
+    writeInitialAccountMetadataValues(loggedInUser);
   });
 
   // loading the user data into the form
@@ -83,6 +87,7 @@ jQuery(() => {
     }
 
     const userRefreshed = UserService.getLoggedInUser();
+    writeInitialAccountMetadataValues(userRefreshed!);
     writeInitialUpdateFormValues(userRefreshed!);
     dynamicNavbar(userRefreshed);
   });
