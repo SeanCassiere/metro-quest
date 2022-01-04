@@ -41,10 +41,11 @@ export interface ILoginUser {
   password: string;
 }
 
-interface IUpdateUser {
+export interface IUpdateUser {
   firstName: string;
   lastName: string;
   email: string;
+  password: string;
 }
 
 class UserService {
@@ -188,16 +189,27 @@ class UserService {
     return true;
   }
 
-  updatedUserDetails(userId: string, details: IUpdateUser) {
+  updateUserDetails(userId: string, details: IUpdateUser): "user_not_found" | "duplicate_email" | string {
     let user = this.getUserById(userId);
-    if (!user) return;
+    if (!user) return "user_not_found";
 
-    user = { ...user, ...details };
+    const findExistingEmail = this.getAllUsersAsArray().find(
+      (u) => u.email === details.email.toLowerCase() && u.id !== userId
+    );
+
+    if (findExistingEmail) {
+      return "duplicate_email";
+    }
+
+    const { password, email } = details;
+    user = { ...user, ...details, password: btoa(password), email: email.toLowerCase() };
 
     let allUsers = this.getAllUsers();
     allUsers = { ...allUsers, [user.id]: user };
 
     this.saveUsers(allUsers);
+
+    return user.id;
   }
 
   addFavoriteLocation(userId: string, locationId: string) {

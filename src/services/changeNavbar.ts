@@ -30,6 +30,7 @@ export function dynamicNavbar(user: User | null) {
     logoutListener.on("click", () => {
       UserService.logoutUser();
       dynamicNavbar(UserService.getLoggedInUser());
+      window.location.replace("/");
     });
   }
 }

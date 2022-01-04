@@ -17,7 +17,6 @@ jQuery(() => {
 
       const formValues = $(evt.target).serializeArray();
       const values = normalizeJqueryFormValues(formValues) as unknown;
-      console.log(values);
 
       const register = await UserService.registerNewUser(values as IRegisterUser);
       dynamicNavbar(UserService.getLoggedInUser());
