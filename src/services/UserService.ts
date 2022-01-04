@@ -36,6 +36,11 @@ interface IRegisterUser {
   password: string;
 }
 
+export interface ILoginUser {
+  email: string;
+  password: string;
+}
+
 interface IUpdateUser {
   firstName: string;
   lastName: string;
@@ -146,7 +151,7 @@ class UserService {
     return user.id;
   }
 
-  loginUser(props: { email: string; password: string }): User | null {
+  loginUser(props: ILoginUser): User | null {
     const userStore = JSON.parse(localStorage.getItem(USER_SERVICE_STORE) || "{}") as IUserStore;
     const users = Array.from(Object.values(userStore));
 
