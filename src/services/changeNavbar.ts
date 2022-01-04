@@ -1,4 +1,4 @@
-import UserService, { User } from "./UserService";
+import UserService, { User } from "./UserService.js";
 
 export function dynamicNavbar(user: User | null) {
   const primaryItems = jQuery("#primary-nav-items");

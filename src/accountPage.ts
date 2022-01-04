@@ -1,6 +1,6 @@
-import UserService, { IUpdateUser, User } from "./services/UserService";
-import { normalizeJqueryFormValues } from "./utils/formHelpers";
-import { dynamicNavbar } from "./services/changeNavbar";
+import UserService, { IUpdateUser, User } from "./services/UserService.js";
+import { normalizeJqueryFormValues } from "./utils/formHelpers.js";
+import { dynamicNavbar } from "./services/changeNavbar.js";
 
 function writeInitialUpdateFormValues(loggedInUser: User) {
   const { firstName, lastName, email, password } = loggedInUser;

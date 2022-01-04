@@ -1,5 +1,5 @@
-import { clearCookie, setCookie, getCookie } from "../utils/cookies";
-import { APP_PREFIX, USER_SERVICE_STORE, UUID_URI } from "../constants";
+import { clearCookie, setCookie, getCookie } from "../utils/cookies.js";
+import { APP_PREFIX, USER_SERVICE_STORE, UUID_URI } from "../constants.js";
 
 const ALL_USERS_URI = "/static/data/users.json";
 

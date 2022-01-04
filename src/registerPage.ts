@@ -1,6 +1,6 @@
-import UserService, { IRegisterUser } from "./services/UserService";
-import { normalizeJqueryFormValues } from "./utils/formHelpers";
-import { dynamicNavbar } from "./services/changeNavbar";
+import UserService, { IRegisterUser } from "./services/UserService.js";
+import { normalizeJqueryFormValues } from "./utils/formHelpers.js";
+import { dynamicNavbar } from "./services/changeNavbar.js";
 
 jQuery(() => {
   const loggedInUser = UserService.getLoggedInUser();

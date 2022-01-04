@@ -1,8 +1,8 @@
-import UserService from "./services/UserService";
-import userServiceTests from "./demo/userServiceTests";
+import UserService from "./services/UserService.js";
+import userServiceTests from "./demo/userServiceTests.js";
 
-import { dynamicNavbar } from "./services/changeNavbar";
-import { logger } from "./utils/logger";
+import { dynamicNavbar } from "./services/changeNavbar.js";
+import { logger } from "./utils/logger.js";
 
 interface Location {
   id: string;
