@@ -1,0 +1,16 @@
+.secondary-nav-item {
+  font-size: 1.3rem !important;
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  margin-top: 2.5px;
+  margin-bottom: 2.5px;
+}
+
+.secondary-nav-item-text-content {
+  flex-grow: 1;
+}
+
+.secondary-nav-item-text-icon {
+  min-width: 40px;
+}
