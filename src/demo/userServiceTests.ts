@@ -1,10 +1,10 @@
-import UserService from "../services/UserService";
+import UserService from "../services/UserService.js";
 
 export default async function userServiceTests() {
   // await UserService.registerNewUser({
   //   firstName: "sean",
   //   lastName: "cassiere",
-  //   email: "test@test.com",
+  //   email: "a@a.com",
   //   password: "123",
   // });
 

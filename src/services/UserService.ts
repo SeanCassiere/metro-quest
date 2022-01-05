@@ -1,5 +1,5 @@
-import { clearCookie, setCookie, getCookie } from "../utils/cookies";
-import { APP_PREFIX, USER_SERVICE_STORE, UUID_URI } from "../constants";
+import { clearCookie, setCookie, getCookie } from "../utils/cookies.js";
+import { APP_PREFIX, USER_SERVICE_STORE, UUID_URI } from "../constants.js";
 
 const ALL_USERS_URI = "/static/data/users.json";
 
@@ -29,39 +29,47 @@ interface IUserStore {
   [userId: string]: User;
 }
 
-interface IRegisterUser {
+export interface IRegisterUser {
   firstName: string;
   lastName: string;
   email: string;
   password: string;
 }
 
-interface IUpdateUser {
+export interface ILoginUser {
+  email: string;
+  password: string;
+}
+
+export interface IUpdateUser {
   firstName: string;
   lastName: string;
   email: string;
+  password: string;
 }
 
 class UserService {
   constructor() {}
 
-  getOnlineUsers(): Promise<IUserStore> {
+  getOnlineUsers(): Promise<void> {
     return new Promise((resolve, reject) => {
+      const existingUsers = JSON.parse(localStorage.getItem(USER_SERVICE_STORE) || "null");
+
+      if (existingUsers) {
+        resolve();
+        return;
+      }
+
       fetch(ALL_USERS_URI)
         .then((res) => res.json())
         .then((data) => {
-          const existingUsers = JSON.parse(localStorage.getItem(USER_SERVICE_STORE) || "null");
+          localStorage.setItem(USER_SERVICE_STORE, JSON.stringify({ ...data }));
 
-          if (existingUsers) {
-            localStorage.setItem(USER_SERVICE_STORE, JSON.stringify({ ...existingUsers, ...data }));
-          } else {
-            localStorage.setItem(USER_SERVICE_STORE, JSON.stringify({ ...data }));
-          }
-          resolve(data as IUserStore);
+          resolve();
         })
         .catch((e) => {
           console.error(`UserService error (getOnlineUsers)`, e);
-          reject([]);
+          reject();
         });
     });
   }
@@ -111,31 +119,40 @@ class UserService {
     return user ?? null;
   }
 
-  async registerNewUser(props: IRegisterUser): Promise<string> {
+  async registerNewUser(props: IRegisterUser): Promise<"duplicate_email" | string> {
+    const allUsersArray = this.getAllUsersAsArray();
+    const existingUser = allUsersArray.find((u) => u.email === props.email.toLowerCase());
+
+    if (existingUser) {
+      return "duplicate_email";
+    }
+
+    // getting UUID to use as the user's id
     const newUserId = await fetch(UUID_URI)
       .then((res) => res.json())
       .then((data) => data[0] as string)
       .catch(() => `${Math.floor(Math.random() * 100)}`);
+
     const user = new User(
       newUserId,
       props.firstName,
       props.lastName,
       props.email.toLowerCase(),
       btoa(props.password),
-      [],
-      [],
-      0,
-      []
+      [], // favoriteLocations
+      [], // orders
+      15, // userPoints
+      [] // userPointsHistory
     );
 
-    let users = JSON.parse(localStorage.getItem(USER_SERVICE_STORE) || "{}") as IUserStore;
+    let users = this.getAllUsers();
     users = { ...users, [user.id]: user };
     localStorage.setItem(USER_SERVICE_STORE, JSON.stringify(users));
 
     return user.id;
   }
 
-  loginUser(props: { email: string; password: string }): User | null {
+  loginUser(props: ILoginUser): User | null {
     const userStore = JSON.parse(localStorage.getItem(USER_SERVICE_STORE) || "{}") as IUserStore;
     const users = Array.from(Object.values(userStore));
 
@@ -172,16 +189,27 @@ class UserService {
     return true;
   }
 
-  updatedUserDetails(userId: string, details: IUpdateUser) {
+  updateUserDetails(userId: string, details: IUpdateUser): "user_not_found" | "duplicate_email" | string {
     let user = this.getUserById(userId);
-    if (!user) return;
+    if (!user) return "user_not_found";
 
-    user = { ...user, ...details };
+    const findExistingEmail = this.getAllUsersAsArray().find(
+      (u) => u.email === details.email.toLowerCase() && u.id !== userId
+    );
+
+    if (findExistingEmail) {
+      return "duplicate_email";
+    }
+
+    const { password, email } = details;
+    user = { ...user, ...details, password: btoa(password), email: email.toLowerCase() };
 
     let allUsers = this.getAllUsers();
     allUsers = { ...allUsers, [user.id]: user };
 
     this.saveUsers(allUsers);
+
+    return user.id;
   }
 
   addFavoriteLocation(userId: string, locationId: string) {

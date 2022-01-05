@@ -1,4 +1,4 @@
-import UserService, { User } from "./UserService";
+import UserService, { User } from "./UserService.js";
 
 export function dynamicNavbar(user: User | null) {
   const primaryItems = jQuery("#primary-nav-items");
@@ -30,6 +30,7 @@ export function dynamicNavbar(user: User | null) {
     logoutListener.on("click", () => {
       UserService.logoutUser();
       dynamicNavbar(UserService.getLoggedInUser());
+      window.location.replace("/");
     });
   }
 }
