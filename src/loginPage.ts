@@ -6,8 +6,21 @@ jQuery(() => {
   const loggedInUser = UserService.getLoggedInUser();
 
   // redirect to account page if the user is logged in
+  const pageParams = new URLSearchParams(document.location.search);
+
+  const redirectUrl = pageParams.get("redirect");
+
   if (loggedInUser) {
+    if (redirectUrl && redirectUrl !== "") {
+      window.location.replace(redirectUrl);
+      return;
+    }
     window.location.replace("/account.html?tab=profile");
+    return;
+  }
+
+  if (redirectUrl && redirectUrl !== "") {
+    $("#login-signup-now-link").attr("href", `/register.html?redirect=${redirectUrl}`);
   }
 
   $('form[name="loginForm"]').on("submit", (evt) => {
@@ -23,13 +36,8 @@ jQuery(() => {
 
     if (!login) {
       $("#loginFormErrorBlock").show();
-      console.log(login);
     } else {
       $("#loginFormErrorBlock").hide();
-
-      const pageParams = new URLSearchParams(document.location.search);
-
-      const redirectUrl = pageParams.get("redirect");
 
       if (redirectUrl && redirectUrl !== "") {
         window.location.replace(redirectUrl);
