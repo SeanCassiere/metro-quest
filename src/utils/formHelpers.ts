@@ -11,10 +11,7 @@ export function normalizeJqueryFormValues(values: JQuery.NameValuePair[]) {
 type SchemaKeyAndValue = { [field: keyof SchemaType]: string };
 
 export interface SchemaType {
-  [field: string]: {
-    message: string;
-    test: (value: any, inputObject: SchemaKeyAndValue) => boolean;
-  };
+  [field: string]: (value: any, inputObject: SchemaKeyAndValue) => { valid: boolean; message: string };
 }
 
 export interface ErrorType {
@@ -25,20 +22,23 @@ export interface ErrorType {
 export function validateValues(object: { [key: string]: any }, schema: SchemaType) {
   const returnErrors: ErrorType[] = [];
   const validKeys: string[] = [];
-  const errors = Object.keys(schema)
-    .filter((key) => {
-      const result = !schema[key].test(object[key], object);
-      if (!result) {
-        validKeys.push(key);
-      }
-      return result;
-    })
-    .map((key) => {
-      return { property: key, message: schema[key].message };
-    });
+  let messages: { [key: string]: string } = {};
 
-  if (errors.length > 0) {
-    errors.forEach(function (error) {
+  const errors = Array.from(Object.keys(schema)).filter((key) => {
+    const result = schema[key](object[key], object);
+    if (result.valid) {
+      validKeys.push(key);
+    }
+    messages = { ...messages, [key]: result.message };
+    return !result.valid;
+  });
+
+  const formatErrors = errors.map((key) => {
+    return { property: key, message: messages[key] };
+  });
+
+  if (formatErrors.length > 0) {
+    formatErrors.forEach((error) => {
       returnErrors.push(error);
     });
     return { success: false, errors: returnErrors, values: object, validKeys };
@@ -64,3 +64,48 @@ export function clearFormErrors(formNameSelector: string) {
   $(`form[name='${formNameSelector}'] input.is-invalid`).removeClass("is-invalid");
   $(`form[name='${formNameSelector}'] input.is-valid`).removeClass("is-valid");
 }
+
+export function showPasswordHandler(formNameSelector: string, showPasswordId: string) {
+  $(`form[name='${formNameSelector}'] #${showPasswordId}`).on("click", () => {
+    const dataParent = $(`form[name='${formNameSelector}'] #${showPasswordId}`).data("parent");
+    const passwordInput = $(`form[name='${formNameSelector}'] input[name='${dataParent}']`);
+    const passwordInputType = passwordInput.attr("type");
+    passwordInput.attr("type", passwordInputType === "password" ? "text" : "password");
+
+    const selectCurrentButton = $(`form[name='${formNameSelector}'] #${showPasswordId}[data-parent='${dataParent}']`);
+    selectCurrentButton.html(
+      passwordInputType === "password"
+        ? "<i class='fa fa-eye' aria-hidden='true'>"
+        : "<i class='fa fa-eye-slash' aria-hidden='true'>"
+    );
+  });
+}
+
+export const baseCredentialsSchema: SchemaType = {
+  email: (value) => {
+    if (value.length === 0) return { valid: false, message: "Email is required" };
+
+    const isEmailValid = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value);
+    return { valid: isEmailValid, message: "Email is invalid" };
+  },
+  password: (value) => {
+    if (value.length === 0) return { valid: false, message: "Password is required" };
+
+    const isPasswordValid = /^.{3,}$/.test(value);
+    return { valid: isPasswordValid, message: "Password must be at least 3 characters long" };
+  },
+};
+
+export const baseUserInfoSchema: SchemaType = {
+  firstName: (value) => {
+    if (value.length === 0) return { valid: false, message: "First name is required" };
+
+    const isFirstNameValid = /^.{1,}$/.test(value);
+    return { valid: isFirstNameValid, message: "First name is not valid" };
+  },
+  lastName: (value) => {
+    if (value.length === 0) return { valid: false, message: "Last name is required" };
+    const isLastNameValid = /^.{1,}$/.test(value);
+    return { valid: isLastNameValid, message: "Last name is not valid" };
+  },
+};

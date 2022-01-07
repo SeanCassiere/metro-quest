@@ -5,33 +5,20 @@ import {
   SchemaType,
   showFormErrors,
   clearFormErrors,
+  showPasswordHandler,
+  baseCredentialsSchema,
+  baseUserInfoSchema,
 } from "./utils/formHelpers.js";
 import { dynamicNavbar } from "./services/changeNavbar.js";
 
 const schema: SchemaType = {
-  firstName: {
-    message: "First name is not valid",
-    test: function (value: string) {
-      return /^.{1,}$/.test(value);
-    },
-  },
-  lastName: {
-    message: "Last name is not valid",
-    test: function (value: string) {
-      return /^.{1,}$/.test(value);
-    },
-  },
-  email: {
-    message: "Email is not valid",
-    test: function (value: string) {
-      return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value);
-    },
-  },
-  password: {
-    message: "Password must be at least 3 characters long",
-    test: function (value: any) {
-      return /^.{3,}$/.test(value);
-    },
+  ...baseCredentialsSchema,
+  ...baseUserInfoSchema,
+  confirmPassword: (value, data) => {
+    if (value.length === 0) return { valid: false, message: "Password is required" };
+
+    const isPasswordValid = value === data.password;
+    return { valid: isPasswordValid, message: "Both passwords must match" };
   },
 };
 
@@ -58,19 +45,8 @@ jQuery(() => {
   }
 
   // handle the show password button
-  $(".show-password").on("click", () => {
-    const dataParent = $(".show-password").data("parent");
-    const passwordInput = $(`input[name='${dataParent}']`);
-    const passwordInputType = passwordInput.attr("type");
-    passwordInput.attr("type", passwordInputType === "password" ? "text" : "password");
-
-    const selectCurrentButton = $(`.show-password[data-parent='${dataParent}']`);
-    selectCurrentButton.html(
-      passwordInputType === "password"
-        ? "<i class='fa fa-eye' aria-hidden='true'>"
-        : "<i class='fa fa-eye-slash' aria-hidden='true'>"
-    );
-  });
+  showPasswordHandler("registerForm", "show-password");
+  showPasswordHandler("registerForm", "show-password-confirm");
 
   $('form[name="registerForm"]')
     .on("submit", async (evt) => {

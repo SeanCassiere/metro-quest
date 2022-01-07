@@ -123,7 +123,7 @@
               <div id="lastNameFeedback" class="invalid-feedback"></div>
             </div>
             <div class="mb-2 w-100">
-              <input type="email" class="form-control" name="email" id="registerEmailInput" placeholder="Email" />
+              <input type="text" class="form-control" name="email" id="registerEmailInput" placeholder="Email" />
               <div id="emailFeedback" class="invalid-feedback"></div>
             </div>
             <div class="mb-2 w-100 input-group">
@@ -135,11 +135,26 @@
                 placeholder="Password"
               />
               <span class="input-group-text p-0 pl-2 pr-2">
-                <button type="button" data-parent="password" class="btn btn-sm show-password">
+                <button type="button" data-parent="password" class="btn btn-sm" id="show-password">
                   <i class="fa fa-eye-slash" aria-hidden="true"></i>
                 </button>
               </span>
               <div id="passwordFeedback" class="invalid-feedback"></div>
+            </div>
+            <div class="mb-2 w-100 input-group">
+              <input
+                type="password"
+                class="form-control"
+                name="confirmPassword"
+                id="registerConfirmPasswordInput"
+                placeholder="Confirm Password"
+              />
+              <span class="input-group-text p-0 pl-2 pr-2">
+                <button type="button" data-parent="confirmPassword" class="btn btn-sm" id="show-password-confirm">
+                  <i class="fa fa-eye-slash" aria-hidden="true"></i>
+                </button>
+              </span>
+              <div id="confirmPasswordFeedback" class="invalid-feedback"></div>
             </div>
             <div class="mb-2 w-100">
               <button class="btn btn-metro-orange text-white" type="submit" size="lg" style="width: 100%">
