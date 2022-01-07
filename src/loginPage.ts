@@ -8,19 +8,21 @@ jQuery(() => {
   // redirect to account page if the user is logged in
   const pageParams = new URLSearchParams(document.location.search);
 
-  const redirectUrl = pageParams.get("redirect");
+  const redirectParam = pageParams.get("redirect");
 
   if (loggedInUser) {
-    if (redirectUrl && redirectUrl !== "") {
-      window.location.replace(redirectUrl);
+    if (redirectParam && redirectParam !== "") {
+      const redirectNow = window.location.search.split("redirect=")[1];
+      window.location.replace(redirectNow);
       return;
     }
     window.location.replace("/account.html?tab=profile");
     return;
   }
 
-  if (redirectUrl && redirectUrl !== "") {
-    $("#login-signup-now-link").attr("href", `/register.html?redirect=${redirectUrl}`);
+  if (redirectParam && redirectParam !== "") {
+    const redirectNow = window.location.search.split("redirect=")[1];
+    $("#login-signup-now-link").attr("href", `/register.html?redirect=${redirectNow}`);
   }
 
   $('form[name="loginForm"]').on("submit", (evt) => {
@@ -39,8 +41,9 @@ jQuery(() => {
     } else {
       $("#loginFormErrorBlock").hide();
 
-      if (redirectUrl && redirectUrl !== "") {
-        window.location.replace(redirectUrl);
+      if (redirectParam && redirectParam !== "") {
+        const redirectNow = window.location.search.split("redirect=")[1];
+        window.location.replace(redirectNow);
       } else {
         window.location.replace("/");
       }
