@@ -5,22 +5,13 @@ import {
   SchemaType,
   showFormErrors,
   clearFormErrors,
+  showPasswordHandler,
+  baseCredentialsSchema,
 } from "./utils/formHelpers.js";
 import { dynamicNavbar } from "./services/changeNavbar.js";
 
 const schema: SchemaType = {
-  email: {
-    message: "Email is not valid",
-    test: function (value: string) {
-      return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value);
-    },
-  },
-  password: {
-    message: "Password must be at least 3 characters long",
-    test: function (value: any) {
-      return /^.{3,}$/.test(value);
-    },
-  },
+  ...baseCredentialsSchema,
 };
 
 jQuery(() => {
@@ -45,6 +36,9 @@ jQuery(() => {
     const redirectNow = window.location.search.split("redirect=")[1];
     $("#login-signup-now-link").attr("href", `/register.html?redirect=${redirectNow}`);
   }
+
+  // handle the show password button
+  showPasswordHandler("loginForm", "show-password");
 
   $('form[name="loginForm"]').on("submit", (evt) => {
     clearFormErrors("loginForm");
