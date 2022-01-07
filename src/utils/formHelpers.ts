@@ -8,10 +8,12 @@ export function normalizeJqueryFormValues(values: JQuery.NameValuePair[]) {
   return returnObject;
 }
 
+type SchemaKeyAndValue = { [field: keyof SchemaType]: string };
+
 export interface SchemaType {
   [field: string]: {
     message: string;
-    test: (value: any) => boolean;
+    test: (value: any, inputObject: SchemaKeyAndValue) => boolean;
   };
 }
 
@@ -24,14 +26,14 @@ export function validateValues(object: { [key: string]: any }, schema: SchemaTyp
   const returnErrors: ErrorType[] = [];
   const validKeys: string[] = [];
   const errors = Object.keys(schema)
-    .filter(function (key) {
-      const result = !schema[key].test(object[key]);
+    .filter((key) => {
+      const result = !schema[key].test(object[key], object);
       if (!result) {
         validKeys.push(key);
       }
       return result;
     })
-    .map(function (key) {
+    .map((key) => {
       return { property: key, message: schema[key].message };
     });
 
