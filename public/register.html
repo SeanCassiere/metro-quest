@@ -108,9 +108,9 @@
                 id="registerFirstNameInput"
                 name="firstName"
                 placeholder="First Name"
-                required
                 autofocus
               />
+              <div id="firstNameFeedback" class="invalid-feedback"></div>
             </div>
             <div class="mb-2 w-100">
               <input
@@ -119,28 +119,27 @@
                 id="registerLastNameInput"
                 name="lastName"
                 placeholder="Last Name"
-                required
               />
+              <div id="lastNameFeedback" class="invalid-feedback"></div>
             </div>
             <div class="mb-2 w-100">
-              <input
-                type="email"
-                class="form-control"
-                name="email"
-                id="registerEmailInput"
-                placeholder="Email"
-                required
-              />
+              <input type="email" class="form-control" name="email" id="registerEmailInput" placeholder="Email" />
+              <div id="emailFeedback" class="invalid-feedback"></div>
             </div>
-            <div class="mb-2 w-100">
+            <div class="mb-2 w-100 input-group">
               <input
                 type="password"
                 class="form-control"
                 name="password"
                 id="registerPasswordInput"
                 placeholder="Password"
-                required
               />
+              <span class="input-group-text p-0 pl-2 pr-2">
+                <button type="button" data-parent="password" class="btn btn-sm show-password">
+                  <i class="fa fa-eye-slash" aria-hidden="true"></i>
+                </button>
+              </span>
+              <div id="passwordFeedback" class="invalid-feedback"></div>
             </div>
             <div class="mb-2 w-100">
               <button class="btn btn-metro-orange text-white" type="submit" size="lg" style="width: 100%">

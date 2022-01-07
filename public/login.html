@@ -172,9 +172,6 @@
             "
           >
             <subtitle class="mb-3 card-form-subtitle">Enter your details to login</subtitle>
-            <div class="alert alert-warning w-100" role="alert" id="loginFormErrorBlock" style="display: none">
-              Either email or password is incorrect
-            </div>
             <div class="mb-2 w-100">
               <input
                 type="email"
@@ -182,9 +179,9 @@
                 id="registerEmailInput"
                 name="email"
                 placeholder="Email"
-                required
                 autofocus
               />
+              <div id="emailFeedback" class="invalid-feedback"></div>
             </div>
 
             <div class="mb-2 w-100">
@@ -194,8 +191,8 @@
                 id="registerPasswordInput"
                 name="password"
                 placeholder="Password"
-                required
               />
+              <div id="passwordFeedback" class="invalid-feedback"></div>
             </div>
             <div class="mb-2 w-100">
               <button class="btn btn-metro-orange text-white" type="submit" size="lg" style="width: 100%">Login</button>
