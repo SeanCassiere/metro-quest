@@ -137,9 +137,6 @@
                 "
               >
                 <subtitle class="mb-3 card-form-subtitle">Update your Metro Quest details below</subtitle>
-                <div class="alert w-100" role="alert" id="updateFormErrorBlock" style="display: none">
-                  Successfully updated details.
-                </div>
                 <div class="mb-2 w-100">
                   <input
                     type="text"
@@ -171,15 +168,20 @@
                     value=""
                   />
                 </div>
-                <div class="mb-2 w-100">
+                <div class="mb-2 w-100 input-group">
                   <input
                     type="password"
-                    name="password"
                     class="form-control"
+                    name="password"
                     id="registerPasswordInput"
                     placeholder="Password"
-                    value=""
                   />
+                  <span class="input-group-text p-0 pl-2 pr-2">
+                    <button type="button" data-parent="password" class="btn btn-sm show-password">
+                      <i class="fa fa-eye-slash" aria-hidden="true"></i>
+                    </button>
+                  </span>
+                  <div id="passwordFeedback" class="invalid-feedback"></div>
                 </div>
                 <div class="mb-2 w-100">
                   <button class="btn btn-metro-orange text-white" type="submit" size="lg" style="width: 100%">
