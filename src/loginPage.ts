@@ -35,6 +35,8 @@ jQuery(() => {
   if (redirectParam && redirectParam !== "") {
     const redirectNow = window.location.search.split("redirect=")[1];
     $("#login-signup-now-link").attr("href", `/register.html?redirect=${redirectNow}`);
+    $("#login-page-subtitle").hide();
+    $("#login-page-redirect-alert").show();
   }
 
   // handle the show password button
