@@ -171,7 +171,15 @@
               account-floating-flexible-width
             "
           >
-            <subtitle class="mb-3 card-form-subtitle">Enter your details to login</subtitle>
+            <div
+              class="alert alert-metro-orange text-center w-100"
+              id="login-page-redirect-alert"
+              style="display: none"
+              role="alert"
+            >
+              Please sign in to continue
+            </div>
+            <subtitle class="mb-3 card-form-subtitle" id="login-page-subtitle">Enter your details to login</subtitle>
             <div class="mb-2 w-100">
               <input
                 type="text"
@@ -198,16 +206,6 @@
               </span>
               <div id="passwordFeedback" class="invalid-feedback"></div>
             </div>
-            <!-- <div class="mb-2 w-100">
-              <input
-                type="password"
-                class="form-control"
-                id="registerPasswordInput"
-                name="password"
-                placeholder="Password"
-              />
-              <div id="passwordFeedback" class="invalid-feedback"></div>
-            </div> -->
             <div class="mb-2 w-100">
               <button class="btn btn-metro-orange text-white" type="submit" size="lg" style="width: 100%">Login</button>
             </div>
