@@ -2,7 +2,7 @@ import UserService from "./services/UserService.js";
 import userServiceTests from "./demo/userServiceTests.js";
 
 import { dynamicNavbar } from "./services/changeNavbar.js";
-import { logger } from "./utils/logger.js";
+// import { logger } from "./utils/logger.js";
 
 interface Location {
   id: string;
@@ -47,7 +47,6 @@ function locationsWriting() {
 
 export default async function mainFunc() {
   await UserService.getOnlineUsers();
-  logger("Application initialized");
 
   userServiceTests(); // testing the user service functions
 
@@ -60,6 +59,5 @@ export default async function mainFunc() {
 // @use $(() => {}) or jQuery(() => {})
 // @ref https://github.com/yiisoft/yii2/issues/14620
 jQuery(() => {
-  console.log("app started from jquery");
   mainFunc();
 });

@@ -51,14 +51,18 @@ jQuery(() => {
   $('form[name="registerForm"]')
     .on("submit", async (evt) => {
       clearFormErrors("registerForm");
+
       $("#registerFormErrorBlock").hide();
       evt.preventDefault();
 
       const formValues = $(evt.target).serializeArray();
+
+      $('form[name="registerForm"] input').prop("disabled", true);
       const values = normalizeJqueryFormValues(formValues) as unknown;
 
       const valid = validateValues(values as IRegisterUser, schema);
       if (!valid.success) {
+        $('form[name="registerForm"] input').prop("disabled", false);
         showFormErrors("registerForm", valid.errors, valid.validKeys);
         return;
       }
@@ -67,6 +71,7 @@ jQuery(() => {
 
       // checking if the register method returned any known errors
       if (register === "duplicate_email") {
+        $('form[name="registerForm"] input').prop("disabled", false);
         showFormErrors("registerForm", [{ property: "email", message: "This email is already in use" }], []);
       } else {
         $("#registerFormErrorBlock").hide();
