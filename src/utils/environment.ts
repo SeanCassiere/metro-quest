@@ -9,6 +9,8 @@ const serverUrls = {
   getStripeKey: "/api/StripeKey",
 };
 
+type ServerUrls = typeof serverUrls;
+
 export function getServerUrls() {
   const env = getCurrentEnvironment();
 
@@ -21,7 +23,7 @@ export function getServerUrls() {
     const [key, value] = entry;
     prev = { [key]: `http://localhost:${PORT}${value}`, ...prev };
     return prev;
-  }, {});
+  }, {} as ServerUrls);
 
   return returnObject;
 }
