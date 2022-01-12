@@ -90,6 +90,23 @@
     margin-top: 2%;
 }
 
+#userName{
+    font-weight: bold;
+    margin-left: 0.5%;
+    margin-top: 5%;
+}
+
+#commentDate{
+    margin-top: -2%;
+    margin-left: 0.5%;
+    font-size: 12px;
+}
+
+#comment {
+    margin-left: 0.5%;
+    font-size: 16px;
+}
+
 @media screen and (max-width: 1024px) {
     .desbox{
         background-color: #F0E5CF;
