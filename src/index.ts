@@ -1,4 +1,5 @@
 import UserService from "./services/UserService.js";
+import LocationService from "./services/LocationService.js";
 import userServiceTests from "./demo/userServiceTests.js";
 
 import { dynamicNavbar } from "./services/changeNavbar.js";
@@ -46,6 +47,7 @@ function locationsWriting() {
 }
 
 export default async function mainFunc() {
+  await LocationService.getOnlineLocations();
   await UserService.getOnlineUsers();
 
   userServiceTests(); // testing the user service functions

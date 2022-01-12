@@ -17,32 +17,13 @@
     />
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAeMkQvru6oqfWbrAWeeExTHln7Bkm2V7Q"></script>
     <script>
-      const params=new URLSearchParams(window.location.search);
-      //console.log("id") 
-      const locationId=params.get("id");
-        fetch("/static/data/locations.json")
-            .then (response => response.json())
-            .then (data => {
-                document.querySelector("#locationTitle").innerText = data.locName +"| Metro Quest";
-                document.querySelector("#locationHeader").innerText = data.locName;
-                document.querySelector("#AboutLoc").innerText = "About "+ data.locName;
-                document.querySelector("#Description").innerText = data.locDes ;
-                document.getElementById("locationImage").src = data.locImg; 
-                document.getElementById("locVideo").src = data.locVideo;
-                document.getElementById("locMap").src = data.locMap;
-                //const locations = Array.from(data).filter(location => location.id === locationId);
-
-// if (data && data[locationId]) {
-//   document.querySelector("#locationTitle").innerText = data.name +"| Metro Quest";
-//   document.querySelector("#locationHeader").innerText = data.name;
-//   document.querySelector("#AboutLoc").innerText = "About "+ data.name;
-//   document.querySelector("#Description").innerText = data.description ;
-//   document.getElementById("locationImage").src = data.coverImgUrl; 
-//   document.getElementById("locVideo").src = data.videoUri;
-//   document.getElementById("locMap").src = data.mapCords;
-// }
-            })
-            
+    // document.querySelector("#locationTitle").innerText = data.locName +"| Metro Quest";
+    // document.querySelector("#locationHeader").innerText = data.locName;
+    // document.querySelector("#AboutLoc").innerText = "About "+ data.locName;
+    // document.querySelector("#Description").innerText = data.locDes ;
+    // document.getElementById("locationImage").src = data.locImg; 
+    // document.getElementById("locVideo").src = data.locVideo;
+    // document.getElementById("locMap").src = data.locMap;
     </script>
     <title id="locationTitle"></title>
   </head>
@@ -104,49 +85,55 @@
       </nav>
     </header>
     <!---->
-    <div id="LocationTemp"></div>
-    <div
-      class="d-flex flex-column h-100 justify-content-space-between mt-8"
-      style="background-color: #f7f6f2; min-height: 94vh"
-    >
-    <div class="imageContainer">
-      <img id="locationImage" src="">
-      <h1 id= "locationHeader"></h1>
-    </div>
-    <p id="Rating"><div id="rateYo"></div></p>
-    <div style="width: 100%">
-    <iframe id="locMap" src=""></iframe>
-    <div class="bookbtn">
-      <button class="btn btn-metro-orange text-white" type="submit" size="lg" style="width: 55.3%; height: 50px; display:inline; float: none;">Book A Trip !</button>
-    </div>
-    <div class="aboutbox">
-      <h4 id="AboutLoc"></h3>
-    </div>
-    <iframe id="locVideo" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <div class="desbox">
-      <p id="Description"></p>
-    </div>
-    <h4 id="comments">Comments</h4>
-    <div class="commentbox">
-      <input
-      type="text"
-      class="form-control"
-      id="commentbox"
-      name="comment"
-      placeholder="Add a public comment"
-      autofocus
-    /> 
-    <div class="btnrow">
-      <button class="btn btn-metro-orange text-white" type="reset" size="lg" style="width: 48%; height: 50px; display:inline-block; ">Cancel</button>
-      <button class="btn btn-metro-orange text-white" type="submit" size="lg" style="width: 48%; height: 50px; display:inline-block; ">Comment</button>
-    </div>
-    <p id="userName">user69420</p>
-    <p id="commentDate">1 day ago</p>
-    <p id="comment">Example Comment</p>
-    </div>
-    <!-- Location Template -->
-    </div>
+    <div id="location-content">
+      <!---->
 
+      <div id="LocationTemp"></div>
+      <div
+        class="d-flex flex-column h-100 justify-content-space-between mt-8"
+        style="background-color: #f7f6f2; min-height: 94vh"
+      >
+      <div class="imageContainer">
+        <img id="locationImage" src="">
+        <h1 id= "locationHeader"></h1>
+      </div>
+      <p id="Rating" class="m-0">
+        <div id="rateYo"></div>
+      </p>
+      <div style="width: 100%">
+        <iframe id="locMap" src=""></iframe>
+        <div class="bookbtn">
+          <button class="btn btn-metro-orange text-white" type="submit" size="lg" style="width: 55.3%; height: 50px; display:inline; float: none;">Book A Trip !</button>
+        </div>
+        <div class="aboutbox">
+          <h4 id="AboutLoc"></h3>
+        </div>
+        <iframe id="locVideo" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="desbox">
+          <p id="Description"></p>
+        </div>
+        <h4 id="comments">Comments</h4>
+        <div class="commentbox">
+          <input
+          type="text"
+          class="form-control"
+          id="commentbox"
+          name="comment"
+          placeholder="Add a public comment"
+        /> 
+          <div class="btnrow">
+            <button class="btn btn-metro-orange text-white" type="reset" size="lg" style="width: 48%; height: 50px; display:inline-block; ">Cancel</button>
+            <button class="btn btn-metro-orange text-white" type="submit" size="lg" style="width: 48%; height: 50px; display:inline-block; ">Comment</button>
+          </div>
+          <p id="userName">user69420</p>
+          <p id="commentDate">1 day ago</p>
+          <p id="comment">Example Comment</p>
+        </div>
+      <!-- Location Template -->
+      </div>
+
+      <!---->
+    </div>
       <footer class="pb-3 bg-metro-blue">
         <div style="height: 60px; background-color: #4b6587"></div>
         <ul class="nav justify-content-center pb-1 mb-1">
@@ -161,16 +148,13 @@
 
     <script src="/static/jquery-3.6.0.min.js"></script>
     <script src="/static/bootstrap.bundle.min.js"></script>
-    <script src="/scripts/index.js" type="module"></script>
-    <script src="/scripts/loginPage.js" type="module"></script>
     <script src="/static/jquery.rateyo.js"></script>
+    <script src="/scripts/index.js" type="module"></script>
+    <script src="/scripts/location.js" type="module"></script>
     <script>
       $(function () {
- 
- $("#rateYo").rateYo({
-});
-
-});
+        $("#rateYo").rateYo({});
+      });
     </script>
   </body>
 </html>
