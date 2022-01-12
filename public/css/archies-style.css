@@ -67,7 +67,7 @@
     margin-top: -1%;
 }
 
-#comments{
+.comments{
     margin-left: 1%;
 }
 .commentbox{
@@ -75,10 +75,10 @@
     max-width: 1880px;
     width: 100%;
     height: fit-content;
-    padding: 20px;
-    margin-left: 1%;
+    /* padding: 20px; */
+    /* margin-left: 1%;
     margin-top: 1%;
-    margin-bottom: 1%;
+    margin-bottom: 1%; */
 }
 .btnrow{
     margin-left:69%;
@@ -90,19 +90,19 @@
     margin-top: 2%;
 }
 
-#userName{
+.comment-item-username{
     font-weight: bold;
     margin-left: 0.5%;
-    margin-top: 5%;
+    margin-top: 1em;
 }
 
-#commentDate{
-    margin-top: -2%;
+.comment-item-comment-date{
+    margin-top: -1em;
     margin-left: 0.5%;
     font-size: 12px;
 }
 
-#comment {
+.comment-item-comment-text {
     margin-left: 0.5%;
     font-size: 16px;
 }
@@ -174,10 +174,7 @@
         max-width: 1024px;
         width: 100%;
         height: fit-content;
-        padding: 20px;
-        margin-left: 0%;
-        margin-top: 1%;
-        margin-bottom: 1%;
+        padding: 15px 10px;
     }
     .btnrow{
         margin-left: 65%;
@@ -252,10 +249,7 @@
         max-width: 844px;
         width: 100%;
         height: fit-content;
-        padding: 20px;
-        margin-left: 0%;
-        margin-top: 1%;
-        margin-bottom: 1%;
+        padding: 15px 10px;
     }
     .btnrow{
         margin-left: 50%;
@@ -263,7 +257,7 @@
     }
   }
 
-  @media screen and (max-width: 768px) {
+@media screen and (max-width: 768px) {
     .desbox{
         background-color: #F0E5CF;
         max-width: 844px;
@@ -330,10 +324,7 @@
         max-width: 768px;
         width: 100%;
         height: fit-content;
-        padding: 20px;
-        margin-left: 0%;
-        margin-top: 1%;
-        margin-bottom: 1%;
+        padding: 15px 10px;
     }
     .btnrow{
         margin-left: 50%;
@@ -409,10 +400,10 @@
         max-width: 390px;
         width: 100%;
         height: fit-content;
-        padding: 20px;
-        margin-left: 0%;
+        padding: 15px 10px;
+        /* margin-left: 0%;
         margin-top: 1%;
-        margin-bottom: 1%;
+        margin-bottom: 1%; */
     }
     .btnrow{
         margin-left:50%;

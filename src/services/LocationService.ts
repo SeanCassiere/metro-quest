@@ -1,9 +1,11 @@
-import { LOCATION_SERVICE_STORE } from "../constants.js";
+import { LOCATION_SERVICE_STORE, UUID_URI } from "../constants.js";
+import { User } from "./UserService.js";
 
 const ALL_LOCATIONS_URI = "/static/data/locations.json";
 
-interface ILocationComments {
+export interface ILocationComments {
   id: string;
+  userId: string;
   userName: string;
   textContent: string;
   date: string;
@@ -62,6 +64,13 @@ class LocationService {
     localStorage.setItem(LOCATION_SERVICE_STORE, JSON.stringify(locationsStore));
   }
 
+  private saveLocation(location: Location) {
+    const locations = this.getAllLocationsAsArray();
+    const filterLocations = locations.filter((loc) => loc.id !== location.id);
+    filterLocations.push(location);
+    this.saveLocationsArray(filterLocations);
+  }
+
   private saveLocationsArray(locations: Location[]) {
     const locationsStore: ILocationStore = {};
 
@@ -95,6 +104,25 @@ class LocationService {
     const findLocation = locationsArray.find((location) => location.id === locationId);
 
     return findLocation ? findLocation : null;
+  }
+
+  async addComment(user: User, location: Location, { textContent }: { textContent: string }) {
+    const newCommentId = await fetch(UUID_URI)
+      .then((res) => res.json())
+      .then((data) => data.token as string)
+      .catch(() => `${Math.floor(Math.random() * 100)}`);
+
+    const newComment: ILocationComments = {
+      id: newCommentId,
+      userId: user.id,
+      userName: `${user.firstName} ${user.lastName}`,
+      textContent: textContent,
+      date: new Date().toISOString(),
+    };
+
+    const updatedLocation = location;
+    updatedLocation.comments.push(newComment);
+    this.saveLocation(updatedLocation);
   }
 }
 

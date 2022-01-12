@@ -16,15 +16,6 @@
       crossorigin="anonymous"
     />
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAeMkQvru6oqfWbrAWeeExTHln7Bkm2V7Q"></script>
-    <script>
-    // document.querySelector("#locationTitle").innerText = data.locName +"| Metro Quest";
-    // document.querySelector("#locationHeader").innerText = data.locName;
-    // document.querySelector("#AboutLoc").innerText = "About "+ data.locName;
-    // document.querySelector("#Description").innerText = data.locDes ;
-    // document.getElementById("locationImage").src = data.locImg; 
-    // document.getElementById("locVideo").src = data.locVideo;
-    // document.getElementById("locMap").src = data.locMap;
-    </script>
     <title id="locationTitle"></title>
   </head>
   <body class="h-100" style="background-color: #f7f6f2">
@@ -84,6 +75,7 @@
         </div>
       </nav>
     </header>
+    <div id="logout-modal"></div>
     <!---->
     <div id="location-content">
       <!---->
@@ -114,20 +106,44 @@
         </div>
         <h4 id="comments">Comments</h4>
         <div class="commentbox">
-          <input
-          type="text"
-          class="form-control"
-          id="commentbox"
-          name="comment"
-          placeholder="Add a public comment"
-        /> 
-          <div class="btnrow">
-            <button class="btn btn-metro-orange text-white" type="reset" size="lg" style="width: 48%; height: 50px; display:inline-block; ">Cancel</button>
-            <button class="btn btn-metro-orange text-white" type="submit" size="lg" style="width: 48%; height: 50px; display:inline-block; ">Comment</button>
+          <form class='mx-1' name="comment-form">
+            <div class="w-100">
+              <input type="text" readonly class="form-control-plaintext" id="staticCommentName" value="Not signed in">
+            </div>
+            <div class="mb-2 w-100">
+              <input
+                type="text"
+                class="form-control"
+                id="commentTextInput"
+                name="textContent"
+                placeholder="Add a public comment"
+                autocomplete="off"
+                disabled
+              />
+              <div id="commentTextInput" class="invalid-feedback"></div>
+            </div>
+            <div class="d-flex justify-content-end gap-1" id="comment-form-button-group">
+              <button class="btn btn-metro-blue text-white" type="reset" size="md">Cancel</button>
+              <button class="btn btn-metro-orange text-white" type="submit" size="md">Comment</button>
+            </div>
+          </form>
+          <div id="location-comments-list" class="pt-1 mt-2">
+            <div class="bg-secondary px-3 py-1 border-radious-5 rounded mt-1" style="--bs-bg-opacity: .1">
+              <p class="comment-item-username">user69420</p>
+              <p class="comment-item-comment-date">1 day ago</p>
+              <p class="comment-item-comment-text">Example Comment</p>
+            </div>
+            <div class="bg-primary px-3 py-1 border-radious-5 rounded mt-1" style="--bs-bg-opacity: .1">
+              <p class="comment-item-username">user69420</p>
+              <p class="comment-item-comment-date">1 day ago</p>
+              <p class="comment-item-comment-text">Example Comment</p>
+            </div>
+            <div class="bg-secondary px-3 py-1 border-radious-5 rounded mt-1" style="--bs-bg-opacity: .1">
+              <p class="comment-item-username" style="text-align: right;">user69420</p>
+              <p class="comment-item-comment-date" style="text-align: right;">1 day ago</p>
+              <p class="comment-item-comment-text w-100" style="text-align: right;">Example Comment</p>
+            </div>
           </div>
-          <p id="userName">user69420</p>
-          <p id="commentDate">1 day ago</p>
-          <p id="comment">Example Comment</p>
         </div>
       <!-- Location Template -->
       </div>

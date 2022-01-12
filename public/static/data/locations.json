@@ -16,9 +16,10 @@
     "comments": [
       {
         "id": "6f7be0a6-2094-40b0-8881-2691ffae332a",
+        "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844",
         "userName": "John Doe",
         "textContent": "Lorem ipsum",
-        "date": ""
+        "date": "2022-01-12T08:48:32.015Z"
       }
     ]
   }
