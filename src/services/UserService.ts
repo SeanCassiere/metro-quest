@@ -236,6 +236,16 @@ class UserService {
     const saveUser: User = { ...user, favoriteLocations: newFavorites };
 
     let allUsers = this.getAllUsers();
+    allUsers = { ...allUsers, [user.id]: saveUser };
+
+    this.saveUsers(allUsers);
+  }
+
+  removeAllFavoriteLocations(userId: string) {
+    let user: User = this.getUserById(userId)!;
+
+    user = { ...user, favoriteLocations: [] };
+    let allUsers = this.getAllUsers();
     allUsers = { ...allUsers, [user.id]: user };
 
     this.saveUsers(allUsers);

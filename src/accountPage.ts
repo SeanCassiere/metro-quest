@@ -1,4 +1,5 @@
 import UserService, { IUpdateUser, User } from "./services/UserService.js";
+import LocationService from "./services/LocationService.js";
 import {
   normalizeJqueryFormValues,
   SchemaType,
@@ -33,6 +34,49 @@ function writeInitialAccountMetadataValues(loggedInUser: User) {
   $("#account-user-full-name").text(`${loggedInUser.firstName} ${loggedInUser.lastName}`);
   $("#account-user-email").text(`${loggedInUser.email}`);
   $("#account-user-points").text(`${loggedInUser.userPoints}`);
+}
+
+function writeFavoriteLocations(locationIds: string[]) {
+  let text = "";
+
+  locationIds.forEach((locationId) => {
+    const locationData = LocationService.getLocationById(locationId);
+
+    if (locationData) {
+      text += `
+      <div class="card" style="width: 100%">
+        <img src="${locationData.largeCoverImgUrl}" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">${locationData.name}</h5>
+          <a href="/location.html?id=${locationData.id}" class="btn btn-sm btn-metro-orange text-white"
+            ><i class="fas fa-eye" aria-hidden="true"></i>View</a
+          >
+          <button class="btn btn-sm btn-danger clear-button" data-parent="${locationData.id}">
+            <i class="fas fa-trash" aria-hidden="true"></i>Clear
+          </button>
+        </div>
+      </div>
+      `;
+    }
+  });
+
+  $("#account-favorite-locations-grid").html(text);
+}
+
+function writeRemoveFavLocationListener(loggedInUser: User) {
+  const logoutListener = jQuery(`.clear-button`);
+  if (logoutListener) {
+    logoutListener.on("click", () => {
+      const id = logoutListener.data("parent");
+      if (id === "all") {
+        UserService.removeAllFavoriteLocations(loggedInUser.id);
+      } else {
+        UserService.removeFavoriteLocation(loggedInUser.id, id);
+      }
+      const user = UserService.getUserById(loggedInUser.id)!;
+      writeFavoriteLocations(user.favoriteLocations);
+    });
+  }
 }
 
 const schema: SchemaType = {
@@ -112,4 +156,9 @@ jQuery(() => {
     writeInitialUpdateFormValues(userRefreshed!);
     dynamicNavbar(userRefreshed);
   });
+
+  // user favorite locations
+  const userFavoriteLocations = loggedInUser.favoriteLocations;
+  writeFavoriteLocations(userFavoriteLocations);
+  writeRemoveFavLocationListener(loggedInUser);
 });
