@@ -132,18 +132,18 @@ jQuery(() => {
 
 const writeCommentsText = (comments: ILocationComments[], loggedInUser: User | null) => {
   let text = "";
+  const reversedComments = comments.reverse();
 
-  for (let i = 0; i < comments.length; i++) {
-    const date = new Date(comments[i].date);
+  for (let i = 0; i < reversedComments.length; i++) {
     text += `
     <div class="bg-${
-      i % 2 == 0 ? "secondary" : "primary"
+      loggedInUser && reversedComments[i].userId === loggedInUser.id ? "primary" : "secondary"
     } px-3 py-1 border-radius-5 rounded mt-1" style="--bs-bg-opacity: .1; text-align: ${
-      loggedInUser && comments[i].userId === loggedInUser.id ? "right" : "left"
+      loggedInUser && reversedComments[i].userId === loggedInUser.id ? "right" : "left"
     }">
-      <p class="comment-item-username">${comments[i].userName}</p>
-      <p class="comment-item-comment-date">${timeSince(new Date(comments[i].date))}</p>
-      <p class="comment-item-comment-text">${comments[i].textContent}</p>
+      <p class="comment-item-username">${reversedComments[i].userName}</p>
+      <p class="comment-item-comment-date">${timeSince(new Date(reversedComments[i].date))}</p>
+      <p class="comment-item-comment-text">${reversedComments[i].textContent}</p>
     </div>
     `;
   }
