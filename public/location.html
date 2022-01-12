@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link href="/css/bootstrap.css" rel="stylesheet" />
+    <link href="/css/sean-style.css" rel="stylesheet" />
+    <link href="/css/archies-style.css" rel="stylesheet" />
+    <link href="/css/common.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/static/jquery.rateyo.css"/>
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAeMkQvru6oqfWbrAWeeExTHln7Bkm2V7Q"></script>
+    <script>
+      const params=new URLSearchParams(window.location.search);
+      //console.log("id") 
+      const locationId=params.get("id");
+        fetch("/static/data/locations.json")
+            .then (response => response.json())
+            .then (data => {
+                document.querySelector("#locationTitle").innerText = data.locName +"| Metro Quest";
+                document.querySelector("#locationHeader").innerText = data.locName;
+                document.querySelector("#AboutLoc").innerText = "About "+ data.locName;
+                document.querySelector("#Description").innerText = data.locDes ;
+                document.getElementById("locationImage").src = data.locImg; 
+                document.getElementById("locVideo").src = data.locVideo;
+                document.getElementById("locMap").src = data.locMap;
+                //const locations = Array.from(data).filter(location => location.id === locationId);
+
+// if (data && data[locationId]) {
+//   document.querySelector("#locationTitle").innerText = data.name +"| Metro Quest";
+//   document.querySelector("#locationHeader").innerText = data.name;
+//   document.querySelector("#AboutLoc").innerText = "About "+ data.name;
+//   document.querySelector("#Description").innerText = data.description ;
+//   document.getElementById("locationImage").src = data.coverImgUrl; 
+//   document.getElementById("locVideo").src = data.videoUri;
+//   document.getElementById("locMap").src = data.mapCords;
+// }
+            })
+            
+    </script>
+    <title id="locationTitle"></title>
+  </head>
+  <body class="h-100" style="background-color: #f7f6f2">
+    <header>
+      <nav class="navbar navbar-dark fixed-top bg-metro-blue">
+        <div class="container">
+          <button
+            class="btn btn-small p-1 me-2"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar"
+          >
+            <span class="navbar-toggler-icon p-0"></span>
+          </button>
+          <a class="navbar-brand" href="/">
+            <img class="mt-2" src="/static/images/nav-logo-small.png" width="100px" alt="MetroQuest Navbar Logo" />
+            <!-- MetroQuest -->
+          </a>
+          <ul class="navbar-nav ms-auto d-flex flex-row" id="primary-nav-items">
+            <li class="nav-item">
+              <a class="nav-link pe-2" aria-current="page" href="#">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Sign Up</a>
+            </li>
+          </ul>
+          <div
+            class="offcanvas offcanvas-start"
+            tabindex="-1"
+            id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel"
+          >
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title w-100" id="offcanvasNavbarLabel">
+                <div class="d-flex justify-content-center w-100">
+                  <img
+                    class="mt-2 flex-shrink"
+                    src="/static/images/nav-logo-offcanvas-full.png"
+                    width="150px"
+                    alt="MetroQuest Navbar Logo"
+                  />
+                </div>
+              </h5>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" id="secondary-nav-items">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Link</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!---->
+    <div id="LocationTemp"></div>
+    <div
+      class="d-flex flex-column h-100 justify-content-space-between mt-8"
+      style="background-color: #f7f6f2; min-height: 94vh"
+    >
+    <div class="imageContainer">
+      <img id="locationImage" src="">
+      <h1 id= "locationHeader"></h1>
+    </div>
+    <p id="Rating"><div id="rateYo"></div></p>
+    <div style="width: 100%">
+    <iframe id="locMap" src=""></iframe>
+    <div class="bookbtn">
+      <button class="btn btn-metro-orange text-white" type="submit" size="lg" style="width: 55.3%; height: 50px; display:inline; float: none;">Book A Trip !</button>
+    </div>
+    <div class="aboutbox">
+      <h4 id="AboutLoc"></h3>
+    </div>
+    <iframe id="locVideo" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div class="desbox">
+      <p id="Description"></p>
+    </div>
+    <h4 id="comments">Comments</h4>
+    <div class="commentbox">
+      <input
+      type="text"
+      class="form-control"
+      id="commentbox"
+      name="comment"
+      placeholder="Add a public comment"
+      autofocus
+    /> 
+    <div class="btnrow">
+      <button class="btn btn-metro-orange text-white" type="reset" size="lg" style="width: 48%; height: 50px; display:inline-block; ">Cancel</button>
+      <button class="btn btn-metro-orange text-white" type="submit" size="lg" style="width: 48%; height: 50px; display:inline-block; ">Comment</button>
+    </div>
+    <p id="userName">user69420</p>
+    <p id="commentDate">1 day ago</p>
+    <p id="comment">Example Comment</p>
+    </div>
+    <!-- Location Template -->
+    </div>
+
+      <footer class="pb-3 bg-metro-blue">
+        <div style="height: 60px; background-color: #4b6587"></div>
+        <ul class="nav justify-content-center pb-1 mb-1">
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-white-50">Home</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-white-50">Categories</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-white-50">About</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-white-50">Contact</a></li>
+        </ul>
+        <p class="text-center text-white-50">&copy; 2021 Company, Inc</p>
+      </footer>
+    </div>
+
+    <script src="/static/jquery-3.6.0.min.js"></script>
+    <script src="/static/bootstrap.bundle.min.js"></script>
+    <script src="/scripts/index.js" type="module"></script>
+    <script src="/scripts/loginPage.js" type="module"></script>
+    <script src="/static/jquery.rateyo.js"></script>
+    <script>
+      $(function () {
+ 
+ $("#rateYo").rateYo({
+});
+
+});
+    </script>
+  </body>
+</html>
+
