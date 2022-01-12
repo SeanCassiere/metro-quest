@@ -7,13 +7,23 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
-iframe {
+#locVideo {
     width: 100%;
     max-width: 750px;
     height: 400px;
     margin-left: 60%;
     margin-top: 1%;
 }
+
+#locMap {
+    width: 100%;
+    max-width: 1050px;
+    height: 650px;
+    margin-left: 1%;
+    margin-top: 0%;
+}
+
+
 #locationImage{
     height: 175px;
     width: 100%;
@@ -39,6 +49,7 @@ iframe {
     width: 100%;
     padding: 10px;
     margin-left: 60%;
+    margin-top: -38.3%;
 }
 .desbox{
     background-color: #F0E5CF;
@@ -50,11 +61,39 @@ iframe {
     margin-top: 1%;
     margin-bottom: 1%;
 }
+#rateYo{
+    margin-left: 90%;
+    margin-bottom: 1%;
+    margin-top: -1%;
+}
 
-@media screen and (max-width: 842px) {
+#comments{
+    margin-left: 1%;
+}
+.commentbox{
+    background-color: #F0E5CF;
+    max-width: 1880px;
+    width: 100%;
+    height: fit-content;
+    padding: 20px;
+    margin-left: 1%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+.btnrow{
+    margin-left:69%;
+    margin-right:-20px;
+    margin-top: 1%;
+}
+
+.bookbtn{
+    margin-top: 2%;
+}
+
+@media screen and (max-width: 390px) {
     .desbox{
         background-color: #F0E5CF;
-        width: 750px;
+        width: 390px;
         width: 100%;
         height: fit-content;
         padding: 20px;
@@ -64,14 +103,15 @@ iframe {
     }
     .aboutbox{
         background-color: #4B6587;
-        max-width: 750px;
+        max-width: 390px;
         width: 100%;
         padding: 10px;
         margin-left: 0%;
+        margin-top: 2%;
     }
-    iframe {
+    #locVideo {
         width: 100%;
-        max-width: 750px;
+        max-width: 390px;
         height: 250px;
         margin-left: 0%;
         margin-top: 1%;
@@ -94,5 +134,46 @@ iframe {
     }
     h4{
         font-size: 20px;
+    }
+    #rateYo{
+        margin-left: 56%;
+        margin-bottom: 1%;
+        margin-top: -5%;
+    }
+    #locMap {
+        width: 100%;
+        max-width: 390px;
+        height: 390px;
+        margin-left: 0%;
+        margin-top: 0%;
+    }
+    .bookbtn{
+        margin-top: 2%;
+        margin: auto;
+        width: 100%;
+    }
+    
+    .commentbox{
+        background-color: #F0E5CF;
+        max-width: 390px;
+        width: 100%;
+        height: fit-content;
+        padding: 20px;
+        margin-left: 0%;
+        margin-top: 1%;
+        margin-bottom: 1%;
+    }
+    .btnrow{
+        margin-left:-5%;
+        margin-top: 2%;
+    }
+    #locationHeader{
+        text-transform: uppercase;
+        color: white;
+        text-align: center;
+        position: absolute;
+        top: 21%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
   }

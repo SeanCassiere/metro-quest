@@ -8,13 +8,18 @@
     <link href="/css/sean-style.css" rel="stylesheet" />
     <link href="/css/archies-style.css" rel="stylesheet" />
     <link href="/css/common.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/static/jquery.rateyo.css"/>
     <link
       rel="stylesheet"
       href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
       integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
       crossorigin="anonymous"
     />
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAeMkQvru6oqfWbrAWeeExTHln7Bkm2V7Q"></script>
     <script>
+      const params=new URLSearchParams(window.location.search);
+      //console.log("id") 
+      const locationId=params.get("id");
         fetch("/static/data/locations.json")
             .then (response => response.json())
             .then (data => {
@@ -24,7 +29,20 @@
                 document.querySelector("#Description").innerText = data.locDes ;
                 document.getElementById("locationImage").src = data.locImg; 
                 document.getElementById("locVideo").src = data.locVideo;
+                document.getElementById("locMap").src = data.locMap;
+                //const locations = Array.from(data).filter(location => location.id === locationId);
+
+// if (data && data[locationId]) {
+//   document.querySelector("#locationTitle").innerText = data.name +"| Metro Quest";
+//   document.querySelector("#locationHeader").innerText = data.name;
+//   document.querySelector("#AboutLoc").innerText = "About "+ data.name;
+//   document.querySelector("#Description").innerText = data.description ;
+//   document.getElementById("locationImage").src = data.coverImgUrl; 
+//   document.getElementById("locVideo").src = data.videoUri;
+//   document.getElementById("locMap").src = data.mapCords;
+// }
             })
+            
     </script>
     <title id="locationTitle"></title>
   </head>
@@ -95,13 +113,33 @@
       <img id="locationImage" src="">
       <h1 id= "locationHeader"></h1>
     </div>
-    <p id="Rating">Rating Goes Here</p>
+    <p id="Rating"><div id="rateYo"></div></p>
+    <div style="width: 100%">
+    <iframe id="locMap" src=""></iframe>
+    <div class="bookbtn">
+      <button class="btn btn-metro-orange text-white" type="submit" size="lg" style="width: 55.3%; height: 50px; display:inline; float: none;">Book A Trip !</button>
+    </div>
     <div class="aboutbox">
       <h4 id="AboutLoc"></h3>
     </div>
     <iframe id="locVideo" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     <div class="desbox">
       <p id="Description"></p>
+    </div>
+    <h4 id="comments">Comments</h4>
+    <div class="commentbox">
+      <input
+      type="text"
+      class="form-control"
+      id="commentbox"
+      name="comment"
+      placeholder="Add a public comment"
+      autofocus
+    /> 
+    <div class="btnrow">
+      <button class="btn btn-metro-orange text-white" type="reset" size="lg" style="width: 48%; height: 50px; display:inline-block; ">Cancel</button>
+      <button class="btn btn-metro-orange text-white" type="submit" size="lg" style="width: 48%; height: 50px; display:inline-block; ">Comment</button>
+    </div>
     </div>
     <!-- Location Template -->
     </div>
@@ -122,7 +160,15 @@
     <script src="/static/bootstrap.bundle.min.js"></script>
     <script src="/scripts/index.js" type="module"></script>
     <script src="/scripts/loginPage.js" type="module"></script>
-    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="/static/jquery.rateyo.js"></script>
+    <script>
+      $(function () {
+ 
+ $("#rateYo").rateYo({
+});
+
+});
+    </script>
   </body>
 </html>
 
