@@ -59,6 +59,31 @@ jQuery(() => {
   $("#locVideo").attr("src", `${findLocation.videoUri}`);
   $("#locMap").attr("src", `${findLocation.mapUri}`);
 
+  // setup rating
+  $("#rateYo")
+    // @ts-ignore: Unreachable code error
+    .rateYo({
+      precision: 2,
+      halfStar: true,
+      onInit: (_: number, rateInstance: any) => {
+        const updatedLocation = LocationService.getLocationById(findLocation.id)!;
+        rateInstance.rating(updatedLocation.ratings.currentRating);
+      },
+      onChange: (rating: number, rateYoInstance: any) => {
+        if (!loggedInUser) {
+          window.location.replace(`/login.html?redirect=${window.location.pathname}${window.location.search}`);
+          return;
+        }
+        if (!LocationService.hasUserRated(findLocation.id, loggedInUser)) {
+          LocationService.addRating(findLocation.id, loggedInUser, rating);
+          window.location.replace(`${window.location.pathname}${window.location.search}`);
+          return;
+        }
+      },
+      rating: findLocation.ratings.currentRating,
+      readOnly: LocationService.hasUserRated(findLocation.id, loggedInUser),
+    });
+
   // write user comments to DOM
   const comments = findLocation.comments;
   writeCommentsText(comments, loggedInUser);

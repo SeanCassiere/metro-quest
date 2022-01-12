@@ -9,9 +9,9 @@
     "videoUri": "https://www.youtube.com/embed/BTwuKCqFwJY",
     "largeCoverImgUrl": "/static/images/locations/stonehenge.jpg",
     "ratings": {
-      "totalRatings": 0,
-      "currentRating": 0,
-      "ratedUsers": []
+      "totalRatings": 1,
+      "currentRating": 3.5,
+      "ratedUsers": ["c3064eb0-25a4-46ef-81f4-e0657b898844"]
     },
     "comments": [
       {

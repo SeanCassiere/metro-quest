@@ -124,6 +124,36 @@ class LocationService {
     updatedLocation.comments.push(newComment);
     this.saveLocation(updatedLocation);
   }
+
+  addRating(locationId: string, user: User | null, rating: number) {
+    if (user) {
+      let location = this.getLocationById(locationId)!;
+      if (location.ratings.ratedUsers.includes(user.id)) {
+        return "already_rated";
+      }
+
+      let newRating = location.ratings;
+      newRating.totalRatings += 1;
+      newRating.currentRating = (newRating.currentRating + rating) / newRating.totalRatings;
+      newRating.ratedUsers.push(user.id);
+
+      location = { ...location, ratings: newRating };
+
+      this.saveLocation(location);
+      return "success";
+    } else {
+      return "not_logged_in";
+    }
+  }
+
+  hasUserRated(locationId: string, user: User | null): boolean {
+    if (user) {
+      const location = this.getLocationById(locationId)!;
+      return location.ratings.ratedUsers.includes(user.id);
+    } else {
+      return false;
+    }
+  }
 }
 
 export default new LocationService();
