@@ -1,8 +1,26 @@
 {
-    "locId": "1",
-    "locName": "Stonehenge",
-    "locDes" : "Stonehenge is a prehistoric monument on Salisbury Plain in Wiltshire, England, two miles west of Amesbury. It consists of an outer ring of vertical sarsen standing stones, each around 13 feet high, seven feet wide, and weighing around 25 tons, topped by connecting horizontal lintel stones. Inside is a ring of smaller bluestones. Inside these are free-standing trilithons, two bulkier vertical Sarsens joined by one lintel. The whole monument, now ruinous, is orientated towards the sunrise on the summer solstice. The stones are set within earthworks in the middle of the most dense complex of Neolithic and Bronze Age monuments in England, including several hundred tumuli (burial mounds). ",
-    "locMap": "https://www.google.com/maps/embed/v1/place?q=place_id:ChIJEfYKhTvmc0gR3dLTvOJwkZc&key=AIzaSyAeMkQvru6oqfWbrAWeeExTHln7Bkm2V7Q",
-    "locImg": "/static/images/locations/stonehenge.jpg",
-    "locVideo": "https://www.youtube.com/embed/BTwuKCqFwJY"
+  "37876241-13f7-48ea-b086-cf8761ce0591": {
+    "id": "37876241-13f7-48ea-b086-cf8761ce0591",
+    "name": "Stonehenge",
+    "description": [
+      "Stonehenge is a prehistoric monument on Salisbury Plain in Wiltshire, England, two miles west of Amesbury. It consists of an outer ring of vertical sarsen standing stones, each around 13 feet high, seven feet wide, and weighing around 25 tons, topped by connecting horizontal lintel stones. Inside is a ring of smaller bluestones. Inside these are free-standing trilithons, two bulkier vertical Sarsens joined by one lintel. The whole monument, now ruinous, is orientated towards the sunrise on the summer solstice. The stones are set within earthworks in the middle of the most dense complex of Neolithic and Bronze Age monuments in England, including several hundred tumuli (burial mounds)."
+    ],
+    "mapUri": "https://www.google.com/maps/embed/v1/place?q=place_id:ChIJEfYKhTvmc0gR3dLTvOJwkZc&key=AIzaSyAeMkQvru6oqfWbrAWeeExTHln7Bkm2V7Q",
+    "videoUri": "https://www.youtube.com/embed/BTwuKCqFwJY",
+    "largeCoverImgUrl": "/static/images/locations/stonehenge.jpg",
+    "ratings": {
+      "totalRatings": 1,
+      "currentRating": 3.5,
+      "ratedUsers": ["c3064eb0-25a4-46ef-81f4-e0657b898844"]
+    },
+    "comments": [
+      {
+        "id": "6f7be0a6-2094-40b0-8881-2691ffae332a",
+        "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844",
+        "userName": "John Doe",
+        "textContent": "Lorem ipsum",
+        "date": "2022-01-12T08:48:32.015Z"
+      }
+    ]
+  }
 }

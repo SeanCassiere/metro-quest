@@ -5,7 +5,7 @@
     "lastName": "last",
     "email": "example@example.com",
     "password": "MTIz",
-    "favoriteLocations": [],
+    "favoriteLocations": ["37876241-13f7-48ea-b086-cf8761ce0591"],
     "orders": [],
     "userPoints": 42,
     "userPointsHistory": [
