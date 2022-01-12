@@ -90,6 +90,240 @@
     margin-top: 2%;
 }
 
+@media screen and (max-width: 1024px) {
+    .desbox{
+        background-color: #F0E5CF;
+        max-width: 1024px;
+        width: 100%;
+        height: fit-content;
+        padding: 20px;
+        margin-left: 0%;
+        margin-top: 1%;
+        margin-bottom: 1%;
+    }
+    .aboutbox{
+        background-color: #4B6587;
+        max-width: 490px;
+        width: 100%;
+        padding: 10px;
+        margin-left: 52%;
+        margin-top: -44%;
+    }
+    #locVideo {
+        width: 100%;
+        max-width: 490px;
+        height: 390px;
+        margin-left: 52%;
+        margin-top: 1%;
+    }
+    #locationImage{
+        height: 95px;
+        width: 100%;
+        margin-top: -15%;
+        margin-bottom: -20%;
+        object-fit: cover;
+    }
+    #locationHeader{
+        text-transform: uppercase;
+        color: white;
+        text-align: center;
+        position: absolute;
+        margin-top: -1%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    h4{
+        font-size: 20px;
+    }
+    #rateYo{
+        margin-left: 78%;
+        margin-bottom: 1%;
+        margin-top: -4%;
+    }
+    #locMap {
+        width: 100%;
+        max-width: 510px;
+        height: 390px;
+        margin-left: 0%;
+        margin-top: -2%;
+    }
+    .bookbtn{
+        margin-top: 1%;
+        width: 90%;
+    }
+    
+    .commentbox{
+        background-color: #F0E5CF;
+        max-width: 1024px;
+        width: 100%;
+        height: fit-content;
+        padding: 20px;
+        margin-left: 0%;
+        margin-top: 1%;
+        margin-bottom: 1%;
+    }
+    .btnrow{
+        margin-left: 65%;
+        margin-top: 2%;
+    }
+  }
+
+@media screen and (max-width: 844px) {
+    .desbox{
+        background-color: #F0E5CF;
+        max-width: 844px;
+        width: 100%;
+        height: fit-content;
+        padding: 20px;
+        margin-left: 0%;
+        margin-top: 1%;
+        margin-bottom: 1%;
+    }
+    .aboutbox{
+        background-color: #4B6587;
+        max-width: 390px;
+        width: 100%;
+        padding: 10px;
+        margin-left: 53%;
+        margin-top: -53%;
+    }
+    #locVideo {
+        width: 100%;
+        max-width: 390px;
+        height: 390px;
+        margin-left: 53%;
+        margin-top: 1%;
+    }
+    #locationImage{
+        height: 95px;
+        width: 100%;
+        margin-top: -15%;
+        margin-bottom: -20%;
+        object-fit: cover;
+    }
+    #locationHeader{
+        text-transform: uppercase;
+        color: white;
+        text-align: center;
+        position: absolute;
+        margin-top: 5%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    h4{
+        font-size: 20px;
+    }
+    #rateYo{
+        margin-left: 78%;
+        margin-bottom: 1%;
+        margin-top: -5%;
+    }
+    #locMap {
+        width: 100%;
+        max-width: 420px;
+        height: 390px;
+        margin-left: 0%;
+        margin-top: -2%;
+    }
+    .bookbtn{
+        margin-top: 1%;
+        width: 90%;
+    }
+    
+    .commentbox{
+        background-color: #F0E5CF;
+        max-width: 844px;
+        width: 100%;
+        height: fit-content;
+        padding: 20px;
+        margin-left: 0%;
+        margin-top: 1%;
+        margin-bottom: 1%;
+    }
+    .btnrow{
+        margin-left: 50%;
+        margin-top: 2%;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .desbox{
+        background-color: #F0E5CF;
+        max-width: 844px;
+        width: 100%;
+        height: fit-content;
+        padding: 20px;
+        margin-left: 0%;
+        margin-top: 1%;
+        margin-bottom: 1%;
+    }
+    .aboutbox{
+        background-color: #4B6587;
+        max-width: 380px;
+        width: 100%;
+        padding: 10px;
+        margin-left: 52%;
+        margin-top: -59%;
+    }
+    #locVideo {
+        width: 100%;
+        max-width: 380px;
+        height: 390px;
+        margin-left: 52%;
+        margin-top: 1%;
+    }
+    #locationImage{
+        height: 95px;
+        width: 100%;
+        margin-top: -15%;
+        margin-bottom: -20%;
+        object-fit: cover;
+    }
+    #locationHeader{
+        text-transform: uppercase;
+        color: white;
+        text-align: center;
+        position: absolute;
+        margin-top: -6%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    h4{
+        font-size: 20px;
+    }
+    #rateYo{
+        margin-left: 78%;
+        margin-bottom: 1%;
+        margin-top: -5%;
+    }
+    #locMap {
+        width: 100%;
+        max-width: 380px;
+        height: 390px;
+        margin-left: 0%;
+        margin-top: -2%;
+    }
+    .bookbtn{
+        margin-top: 1%;
+        width: 90%;
+    }
+    
+    .commentbox{
+        background-color: #F0E5CF;
+        max-width: 768px;
+        width: 100%;
+        height: fit-content;
+        padding: 20px;
+        margin-left: 0%;
+        margin-top: 1%;
+        margin-bottom: 1%;
+    }
+    .btnrow{
+        margin-left: 50%;
+        margin-top: 2%;
+    }
+  }
+
 @media screen and (max-width: 390px) {
     .desbox{
         background-color: #F0E5CF;
@@ -128,7 +362,7 @@
         color: white;
         text-align: center;
         position: absolute;
-        top: 13%;
+        margin-top:-4%;
         left: 50%;
         transform: translate(-50%, -50%);
     }
@@ -143,7 +377,7 @@
     #locMap {
         width: 100%;
         max-width: 390px;
-        height: 390px;
+        height: 380px;
         margin-left: 0%;
         margin-top: 0%;
     }
@@ -164,16 +398,8 @@
         margin-bottom: 1%;
     }
     .btnrow{
-        margin-left:-5%;
+        margin-left:50%;
         margin-top: 2%;
     }
-    #locationHeader{
-        text-transform: uppercase;
-        color: white;
-        text-align: center;
-        position: absolute;
-        top: 21%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
   }
+
