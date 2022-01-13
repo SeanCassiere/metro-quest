@@ -14,6 +14,8 @@ import {
 import { getServerUrls } from "./utils/environment.js";
 import { dynamicNavbar } from "./services/changeNavbar.js";
 
+const CLEAR_LOCATION_KEY = "clear-location-id";
+
 function writeInitialUpdateFormValues(loggedInUser: User) {
   const { firstName, lastName, email, password } = loggedInUser;
   const rawValues = {
@@ -68,8 +70,13 @@ function writeFavoriteLocations(locationIds: string[]) {
 function writeRemoveFavLocationListener(loggedInUser: User) {
   const clearListener = jQuery(".clear-listener");
   if (clearListener) {
-    clearListener.on("click", () => {
-      sessionStorage.setItem("clear-location-id", clearListener.data("parent"));
+    clearListener.on("click", function () {
+      const existing = sessionStorage.getItem(CLEAR_LOCATION_KEY);
+      if (existing) {
+        sessionStorage.removeItem(CLEAR_LOCATION_KEY);
+      }
+      console.log($(this).data("parent"));
+      sessionStorage.setItem(CLEAR_LOCATION_KEY, $(this).data("parent"));
     });
   }
 
@@ -88,7 +95,7 @@ function writeRemoveFavLocationListener(loggedInUser: User) {
   const clearButtonSingle = jQuery(".clear-button-single");
   if (clearButtonSingle) {
     clearButtonSingle.on("click", () => {
-      UserService.removeFavoriteLocation(loggedInUser.id, sessionStorage.getItem("clear-location-id")!);
+      UserService.removeFavoriteLocation(loggedInUser.id, sessionStorage.getItem(CLEAR_LOCATION_KEY)!);
       const user = UserService.getUserById(loggedInUser.id)!;
       writeFavoriteLocations(user.favoriteLocations);
     });
