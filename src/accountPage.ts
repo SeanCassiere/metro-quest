@@ -1,5 +1,5 @@
 import UserService, { IUpdateUser, User } from "./services/UserService.js";
-import LocationService from "./services/LocationService.js";
+import LocationService, { Location } from "./services/LocationService.js";
 import {
   normalizeJqueryFormValues,
   SchemaType,
@@ -9,7 +9,9 @@ import {
   showPasswordHandler,
   baseCredentialsSchema,
   baseUserInfoSchema,
+  emailCredentialsSchema,
 } from "./utils/formHelpers.js";
+import { getServerUrls } from "./utils/environment.js";
 import { dynamicNavbar } from "./services/changeNavbar.js";
 
 function writeInitialUpdateFormValues(loggedInUser: User) {
@@ -98,6 +100,10 @@ const schema: SchemaType = {
   ...baseUserInfoSchema,
 };
 
+const emailSchema: SchemaType = {
+  ...emailCredentialsSchema,
+};
+
 jQuery(() => {
   const loggedInUser = UserService.getLoggedInUser();
 
@@ -175,4 +181,50 @@ jQuery(() => {
   const userFavoriteLocations = loggedInUser.favoriteLocations;
   writeFavoriteLocations(userFavoriteLocations);
   writeRemoveFavLocationListener(loggedInUser);
+
+  $(`form[name="email-favorites-form"] input#favoritesEmailInput`).attr("value", loggedInUser.email);
+  $(`form[name="email-favorites-form"]`).on("submit", async (evt: JQuery.TriggeredEvent) => {
+    clearFormErrors("email-favorites-form");
+    evt.preventDefault();
+    evt.stopPropagation();
+
+    const formValues = $(evt.target).serializeArray();
+    const values = normalizeJqueryFormValues(formValues) as unknown;
+
+    const valid = validateValues(values as { email: string }, emailSchema);
+    if (!valid.success) {
+      showFormErrors("email-favorites-form", valid.errors, valid.validKeys);
+      return;
+    }
+
+    const user = UserService.getLoggedInUser()!;
+    let locations: Location[] = [];
+    user.favoriteLocations.forEach((locId) => {
+      const findLocation = LocationService.getLocationById(locId);
+      if (findLocation) {
+        locations.push(findLocation);
+      }
+    });
+
+    $(`form[name="email-favorites-form"] button#close-email-favorites`).prop("disabled", true);
+    $(`form[name="email-favorites-form"] button#submit-email-favorites`).prop("disabled", true);
+
+    const host = window.location.protocol + "//" + window.location.host;
+    const EMAIL_URL = getServerUrls().sendFavoritesEmail;
+    const { email } = values as { email: string };
+    await fetch(EMAIL_URL, {
+      method: "POST",
+      body: JSON.stringify({ locations, recipientEmail: email, name: user.firstName, host: host }),
+      headers: { "Content-Type": "application/json" },
+    }).finally(() => {
+      showFormErrors("email-favorites-form", [], ["email"]);
+      setTimeout(() => {
+        $(`form[name="email-favorites-form"] button#close-email-favorites`).prop("disabled", false);
+        $(`form[name="email-favorites-form"] button#submit-email-favorites`).prop("disabled", false);
+        $(`form[name="email-favorites-form"] input#favoritesEmailInput`).removeAttr("value");
+        $(`form[name="email-favorites-form"] input#favoritesEmailInput`).attr("value", loggedInUser.email);
+        $(`form[name="email-favorites-form"] button#close-email-favorites`).trigger("click");
+      }, 2000);
+    });
+  });
 });

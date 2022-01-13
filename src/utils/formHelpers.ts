@@ -81,13 +81,17 @@ export function showPasswordHandler(formNameSelector: string, showPasswordId: st
   });
 }
 
-export const baseCredentialsSchema: SchemaType = {
+export const emailCredentialsSchema: SchemaType = {
   email: (value) => {
     if (value.length === 0) return { valid: false, message: "Email is required" };
 
     const isEmailValid = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value);
     return { valid: isEmailValid, message: "Email is invalid" };
   },
+};
+
+export const baseCredentialsSchema: SchemaType = {
+  ...emailCredentialsSchema,
   password: (value) => {
     if (value.length === 0) return { valid: false, message: "Password is required" };
 
