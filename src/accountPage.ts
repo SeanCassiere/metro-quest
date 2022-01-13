@@ -1,5 +1,5 @@
 import UserService, { IUpdateUser, User } from "./services/UserService.js";
-import LocationService from "./services/LocationService.js";
+import LocationService, { Location } from "./services/LocationService.js";
 import {
   normalizeJqueryFormValues,
   SchemaType,
@@ -9,8 +9,12 @@ import {
   showPasswordHandler,
   baseCredentialsSchema,
   baseUserInfoSchema,
+  emailCredentialsSchema,
 } from "./utils/formHelpers.js";
+import { getServerUrls } from "./utils/environment.js";
 import { dynamicNavbar } from "./services/changeNavbar.js";
+
+const CLEAR_LOCATION_KEY = "clear-location-id";
 
 function writeInitialUpdateFormValues(loggedInUser: User) {
   const { firstName, lastName, email, password } = loggedInUser;
@@ -51,7 +55,7 @@ function writeFavoriteLocations(locationIds: string[]) {
           <a href="/location.html?id=${locationData.id}" class="btn btn-sm btn-metro-orange text-white"
             ><i class="fas fa-eye" aria-hidden="true"></i>View</a
           >
-          <button class="btn btn-sm btn-danger clear-button" data-parent="${locationData.id}">
+          <button class="btn btn-sm btn-danger clear-listener" data-parent="${locationData.id}" data-bs-toggle="modal" data-bs-target="#clearSingleLocation">
             <i class="fas fa-trash" aria-hidden="true"></i>Clear
           </button>
         </div>
@@ -64,15 +68,34 @@ function writeFavoriteLocations(locationIds: string[]) {
 }
 
 function writeRemoveFavLocationListener(loggedInUser: User) {
+  const clearListener = jQuery(".clear-listener");
+  if (clearListener) {
+    clearListener.on("click", function () {
+      const existing = sessionStorage.getItem(CLEAR_LOCATION_KEY);
+      if (existing) {
+        sessionStorage.removeItem(CLEAR_LOCATION_KEY);
+      }
+      console.log($(this).data("parent"));
+      sessionStorage.setItem(CLEAR_LOCATION_KEY, $(this).data("parent"));
+    });
+  }
+
   const logoutListener = jQuery(`.clear-button`);
   if (logoutListener) {
     logoutListener.on("click", () => {
       const id = logoutListener.data("parent");
       if (id === "all") {
         UserService.removeAllFavoriteLocations(loggedInUser.id);
-      } else {
-        UserService.removeFavoriteLocation(loggedInUser.id, id);
       }
+      const user = UserService.getUserById(loggedInUser.id)!;
+      writeFavoriteLocations(user.favoriteLocations);
+    });
+  }
+
+  const clearButtonSingle = jQuery(".clear-button-single");
+  if (clearButtonSingle) {
+    clearButtonSingle.on("click", () => {
+      UserService.removeFavoriteLocation(loggedInUser.id, sessionStorage.getItem(CLEAR_LOCATION_KEY)!);
       const user = UserService.getUserById(loggedInUser.id)!;
       writeFavoriteLocations(user.favoriteLocations);
     });
@@ -82,6 +105,10 @@ function writeRemoveFavLocationListener(loggedInUser: User) {
 const schema: SchemaType = {
   ...baseCredentialsSchema,
   ...baseUserInfoSchema,
+};
+
+const emailSchema: SchemaType = {
+  ...emailCredentialsSchema,
 };
 
 jQuery(() => {
@@ -161,4 +188,50 @@ jQuery(() => {
   const userFavoriteLocations = loggedInUser.favoriteLocations;
   writeFavoriteLocations(userFavoriteLocations);
   writeRemoveFavLocationListener(loggedInUser);
+
+  $(`form[name="email-favorites-form"] input#favoritesEmailInput`).attr("value", loggedInUser.email);
+  $(`form[name="email-favorites-form"]`).on("submit", async (evt: JQuery.TriggeredEvent) => {
+    clearFormErrors("email-favorites-form");
+    evt.preventDefault();
+    evt.stopPropagation();
+
+    const formValues = $(evt.target).serializeArray();
+    const values = normalizeJqueryFormValues(formValues) as unknown;
+
+    const valid = validateValues(values as { email: string }, emailSchema);
+    if (!valid.success) {
+      showFormErrors("email-favorites-form", valid.errors, valid.validKeys);
+      return;
+    }
+
+    const user = UserService.getLoggedInUser()!;
+    let locations: Location[] = [];
+    user.favoriteLocations.forEach((locId) => {
+      const findLocation = LocationService.getLocationById(locId);
+      if (findLocation) {
+        locations.push(findLocation);
+      }
+    });
+
+    $(`form[name="email-favorites-form"] button#close-email-favorites`).prop("disabled", true);
+    $(`form[name="email-favorites-form"] button#submit-email-favorites`).prop("disabled", true);
+
+    const host = window.location.protocol + "//" + window.location.host;
+    const EMAIL_URL = getServerUrls().sendFavoritesEmail;
+    const { email } = values as { email: string };
+    await fetch(EMAIL_URL, {
+      method: "POST",
+      body: JSON.stringify({ locations, recipientEmail: email, name: user.firstName, host: host }),
+      headers: { "Content-Type": "application/json" },
+    }).finally(() => {
+      showFormErrors("email-favorites-form", [], ["email"]);
+      setTimeout(() => {
+        $(`form[name="email-favorites-form"] button#close-email-favorites`).prop("disabled", false);
+        $(`form[name="email-favorites-form"] button#submit-email-favorites`).prop("disabled", false);
+        $(`form[name="email-favorites-form"] input#favoritesEmailInput`).removeAttr("value");
+        $(`form[name="email-favorites-form"] input#favoritesEmailInput`).attr("value", loggedInUser.email);
+        $(`form[name="email-favorites-form"] button#close-email-favorites`).trigger("click");
+      }, 2000);
+    });
+  });
 });

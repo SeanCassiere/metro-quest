@@ -11,10 +11,17 @@ export interface ILocationComments {
   date: string;
 }
 
+interface IRatingHistory {
+  userId: string;
+  rating: number;
+}
+
 interface ILocationRatings {
   totalRatings: number;
   currentRating: number;
+  totalRatingValue: number;
   ratedUsers: string[];
+  ratingHistory: IRatingHistory[];
 }
 
 export class Location {
@@ -134,8 +141,10 @@ class LocationService {
 
       let newRating = location.ratings;
       newRating.totalRatings += 1;
-      newRating.currentRating = (newRating.currentRating + rating) / newRating.totalRatings;
+      newRating.totalRatingValue += rating;
+      newRating.currentRating = newRating.totalRatingValue / newRating.totalRatings;
       newRating.ratedUsers.push(user.id);
+      newRating.ratingHistory.push({ userId: user.id, rating: rating });
 
       location = { ...location, ratings: newRating };
 
@@ -144,6 +153,43 @@ class LocationService {
     } else {
       return "not_logged_in";
     }
+  }
+
+  updateRating(locationId: string, user: User | null, rating: number) {
+    let location = this.getLocationById(locationId);
+    if (!user || !location) {
+      return;
+    }
+
+    if (!location.ratings.ratedUsers.includes(user.id)) {
+      return;
+    }
+
+    let userRating = location.ratings.ratingHistory.find((historyItem) => historyItem.userId === user.id)!;
+
+    let newRating = location.ratings;
+    newRating.totalRatingValue -= userRating.rating;
+    newRating.totalRatingValue += rating;
+    newRating.currentRating = newRating.totalRatingValue / newRating.totalRatings;
+    const historyWithoutExisting = newRating.ratingHistory.filter((historyItem) => historyItem.userId !== user.id);
+    newRating.ratingHistory = [...historyWithoutExisting, { userId: user.id, rating: rating }];
+
+    location = { ...location, ratings: newRating };
+
+    this.saveLocation(location);
+    return;
+  }
+
+  getUserRating(locationId: string, user: User | null) {
+    const location = this.getLocationById(locationId);
+
+    if (!user || !location) return 0;
+
+    const history = location.ratings.ratingHistory.find((historyItem) => historyItem.userId === user.id);
+
+    if (!history) return 0;
+
+    return history.rating;
   }
 
   hasUserRated(locationId: string, user: User | null): boolean {
