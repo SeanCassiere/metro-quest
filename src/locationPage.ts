@@ -18,7 +18,8 @@ const schema: SchemaType = {
   },
 };
 
-jQuery(() => {
+jQuery(async () => {
+  await LocationService.getOnlineLocations();
   const loggedInUser = UserService.getLoggedInUser();
 
   const params = new URLSearchParams(window.location.search);
@@ -65,24 +66,32 @@ jQuery(() => {
     .rateYo({
       precision: 2,
       halfStar: true,
-      onInit: (_: number, rateInstance: any) => {
-        const updatedLocation = LocationService.getLocationById(findLocation.id)!;
-        rateInstance.rating(updatedLocation.ratings.currentRating);
+      rating: LocationService.getUserRating(findLocation.id, loggedInUser),
+      onSet: (rating: number, rateYoInstance: any) => {
+        if (LocationService.hasUserRated(findLocation.id, loggedInUser)) {
+          LocationService.updateRating(findLocation.id, loggedInUser, rating);
+        } else {
+          LocationService.addRating(findLocation.id, loggedInUser, rating);
+        }
+
+        $("#rating-avg").text(
+          `Avg. ${LocationService.getLocationById(findLocation.id)?.ratings.currentRating} / 5, Total: ${
+            LocationService.getLocationById(findLocation.id)?.ratings.totalRatings
+          }`
+        );
       },
-      onChange: (rating: number, rateYoInstance: any) => {
+      onChange: () => {
         if (!loggedInUser) {
           window.location.replace(`/login.html?redirect=${window.location.pathname}${window.location.search}`);
-          return;
-        }
-        if (!LocationService.hasUserRated(findLocation.id, loggedInUser)) {
-          LocationService.addRating(findLocation.id, loggedInUser, rating);
-          window.location.replace(`${window.location.pathname}${window.location.search}`);
-          return;
         }
       },
-      rating: findLocation.ratings.currentRating,
-      readOnly: LocationService.hasUserRated(findLocation.id, loggedInUser),
     });
+
+  $("#rating-avg").text(
+    `Avg. ${LocationService.getLocationById(findLocation.id)?.ratings.currentRating} / 5, Total: ${
+      LocationService.getLocationById(findLocation.id)?.ratings.totalRatings
+    }`
+  );
 
   // write user comments to DOM
   const comments = findLocation.comments;

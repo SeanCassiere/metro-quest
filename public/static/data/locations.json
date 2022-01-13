@@ -11,7 +11,9 @@
     "ratings": {
       "totalRatings": 1,
       "currentRating": 3.5,
-      "ratedUsers": ["c3064eb0-25a4-46ef-81f4-e0657b898844"]
+      "totalRatingValue": 3.5,
+      "ratedUsers": ["c3064eb0-25a4-46ef-81f4-e0657b898844"],
+      "ratingHistory": [{ "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844", "rating": 3.5 }]
     },
     "comments": [
       {
