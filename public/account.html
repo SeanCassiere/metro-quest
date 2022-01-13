@@ -74,6 +74,76 @@
     </header>
     <!---->
     <div id="logout-modal"></div>
+
+    <!--clear locations modal-->
+    <div
+      class="modal fade"
+      id="clearLocation"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="clearLocationLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="clearLocationLabel">Clear all locations</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <span id="clearLocationContent">Are you sure you want to clear all locations.</span>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-metro-blue" data-bs-dismiss="modal">Close</button>
+            <button
+              type="button"
+              class="btn btn-metro-orange text-white clear-button"
+              data-parent="all"
+              data-bs-dismiss="modal"
+            >
+              I am sure
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--clear single location modal-->
+    <div
+      class="modal fade"
+      id="clearSingleLocation"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="clearSingleLocationLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="cleaSinglerLocationLabel">Clear this locations</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <span id="clearLocationContent">Are you sure you want to clear this location?</span>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-metro-blue" data-bs-dismiss="modal">Close</button>
+            <button
+              type="button"
+              class="btn btn-metro-orange text-white clear-button-single"
+              data-parent="none"
+              data-bs-dismiss="modal"
+            >
+              I am sure
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Content-->
     <div
       class="d-flex flex-column h-100 justify-content-space-between mt-8"
       style="background-color: #f7f6f2; min-height: 94vh"
@@ -208,7 +278,13 @@
                   <button class="btn btn-sm btn-outline-metro-orange" type="button">
                     <i class="fas fa-envelope" aria-hidden="true"></i><span class="px-1">Email</span>
                   </button>
-                  <button class="btn btn-sm btn-danger clear-button" type="button" data-parent="all">
+                  <button
+                    class="btn btn-sm btn-danger"
+                    type="button"
+                    data-parent="all"
+                    data-bs-toggle="modal"
+                    data-bs-target="#clearLocation"
+                  >
                     <i class="fas fa-trash" aria-hidden="true"></i><span class="px-1">Clear</span>
                   </button>
                 </div>

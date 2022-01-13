@@ -51,7 +51,7 @@ function writeFavoriteLocations(locationIds: string[]) {
           <a href="/location.html?id=${locationData.id}" class="btn btn-sm btn-metro-orange text-white"
             ><i class="fas fa-eye" aria-hidden="true"></i>View</a
           >
-          <button class="btn btn-sm btn-danger clear-button" data-parent="${locationData.id}">
+          <button class="btn btn-sm btn-danger clear-listener" data-parent="${locationData.id}" data-bs-toggle="modal" data-bs-target="#clearSingleLocation">
             <i class="fas fa-trash" aria-hidden="true"></i>Clear
           </button>
         </div>
@@ -64,15 +64,29 @@ function writeFavoriteLocations(locationIds: string[]) {
 }
 
 function writeRemoveFavLocationListener(loggedInUser: User) {
+  const clearListener = jQuery(".clear-listener");
+  if (clearListener) {
+    clearListener.on("click", () => {
+      sessionStorage.setItem("clear-location-id", clearListener.data("parent"));
+    });
+  }
+
   const logoutListener = jQuery(`.clear-button`);
   if (logoutListener) {
     logoutListener.on("click", () => {
       const id = logoutListener.data("parent");
       if (id === "all") {
         UserService.removeAllFavoriteLocations(loggedInUser.id);
-      } else {
-        UserService.removeFavoriteLocation(loggedInUser.id, id);
       }
+      const user = UserService.getUserById(loggedInUser.id)!;
+      writeFavoriteLocations(user.favoriteLocations);
+    });
+  }
+
+  const clearButtonSingle = jQuery(".clear-button-single");
+  if (clearButtonSingle) {
+    clearButtonSingle.on("click", () => {
+      UserService.removeFavoriteLocation(loggedInUser.id, sessionStorage.getItem("clear-location-id")!);
       const user = UserService.getUserById(loggedInUser.id)!;
       writeFavoriteLocations(user.favoriteLocations);
     });
