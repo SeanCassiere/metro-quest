@@ -3,12 +3,20 @@ import { User } from "./UserService.js";
 
 const ALL_LOCATIONS_URI = "/static/data/locations.json";
 
-export interface ILocationComments {
+interface IComment {
   id: string;
   userId: string;
   userName: string;
   textContent: string;
   date: string;
+}
+
+export interface IParentComment extends IComment {
+  replies: IComment[];
+}
+
+export interface ILocationComments {
+  [id: string]: IParentComment;
 }
 
 interface IRatingHistory {
@@ -33,7 +41,7 @@ export class Location {
     public videoUri: string,
     public largeCoverImgUrl: string,
     public ratings: ILocationRatings,
-    public comments: ILocationComments[]
+    public comments: ILocationComments
   ) {}
 }
 
@@ -56,7 +64,7 @@ class LocationService {
       fetch(ALL_LOCATIONS_URI)
         .then((res) => res.json())
         .then((data) => {
-          localStorage.setItem(LOCATION_SERVICE_STORE, JSON.stringify({ ...data }));
+          this.saveLocations(data);
 
           resolve();
         })
@@ -113,22 +121,37 @@ class LocationService {
     return findLocation ? findLocation : null;
   }
 
+  getCommentsAsArray(locationId: string): IParentComment[] {
+    const location = this.getLocationById(locationId);
+
+    if (!location) return [];
+
+    const comments: IParentComment[] = [];
+
+    Object.keys(location.comments).forEach((commentId) => {
+      comments.push(location.comments[commentId]);
+    });
+
+    return comments;
+  }
+
   async addComment(user: User, location: Location, { textContent }: { textContent: string }) {
     const newCommentId = await fetch(UUID_URI)
       .then((res) => res.json())
       .then((data) => data.token as string)
       .catch(() => `${Math.floor(Math.random() * 100)}`);
 
-    const newComment: ILocationComments = {
+    const newComment: IParentComment = {
       id: newCommentId,
       userId: user.id,
       userName: `${user.firstName} ${user.lastName}`,
       textContent: textContent,
       date: new Date().toISOString(),
+      replies: [],
     };
 
     const updatedLocation = location;
-    updatedLocation.comments.push(newComment);
+    updatedLocation.comments = { ...updatedLocation.comments, [newComment.id]: newComment };
     this.saveLocation(updatedLocation);
   }
 
@@ -199,6 +222,28 @@ class LocationService {
     } else {
       return false;
     }
+  }
+
+  async addCommentReply(user: User, location: Location, commentId: string, { textContent }: { textContent: string }) {
+    const commentUUID = await fetch(UUID_URI)
+      .then((res) => res.json())
+      .then((data) => data.token as string)
+      .catch(() => `${Math.floor(Math.random() * 100)}`);
+
+    const commentReply: IComment = {
+      id: commentUUID,
+      userId: user.id,
+      userName: `${user.firstName} ${user.lastName}`,
+      textContent: textContent,
+      date: new Date().toISOString(),
+    };
+
+    const parentComment = location.comments[commentId];
+    parentComment.replies.push(commentReply);
+
+    const updatedLocation = { ...location, comments: { ...location.comments, [parentComment.id]: parentComment } };
+
+    this.saveLocation(updatedLocation);
   }
 }
 

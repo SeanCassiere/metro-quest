@@ -15,15 +15,24 @@
       "ratedUsers": ["c3064eb0-25a4-46ef-81f4-e0657b898844"],
       "ratingHistory": [{ "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844", "rating": 3.5 }]
     },
-    "comments": [
-      {
+    "comments": {
+      "6f7be0a6-2094-40b0-8881-2691ffae332a": {
         "id": "6f7be0a6-2094-40b0-8881-2691ffae332a",
         "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844",
-        "userName": "John Doe",
+        "userName": "Test Test",
         "textContent": "Lorem ipsum",
-        "date": "2022-01-12T08:48:32.015Z"
+        "date": "2022-01-12T08:48:32.015Z",
+        "replies": [
+          {
+            "id": "cb00f069-c882-4ea9-a0a9-73f26a6f770c",
+            "userId": "55879dc3-d9c4-4e14-9f8a-ffc53d4ba351",
+            "userName": "Sean Cassiere",
+            "textContent": "My response to your comment",
+            "date": "2022-01-13T09:32:32.015Z"
+          }
+        ]
       }
-    ]
+    }
   },
   "fda0cccf-5db7-4091-959b-a044f0689f50": {
     "id": "fda0cccf-5db7-4091-959b-a044f0689f50",
@@ -41,14 +50,23 @@
       "ratedUsers": ["c3064eb0-25a4-46ef-81f4-e0657b898844"],
       "ratingHistory": [{ "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844", "rating": 3.5 }]
     },
-    "comments": [
-      {
+    "comments": {
+      "6f7be0a6-2094-40b0-8881-2691ffae332a": {
         "id": "6f7be0a6-2094-40b0-8881-2691ffae332a",
         "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844",
-        "userName": "John Doe",
+        "userName": "Test Test",
         "textContent": "Lorem ipsum",
-        "date": "2022-01-12T08:48:32.015Z"
+        "date": "2022-01-12T08:48:32.015Z",
+        "replies": [
+          {
+            "id": "cb00f069-c882-4ea9-a0a9-73f26a6f770c",
+            "userId": "55879dc3-d9c4-4e14-9f8a-ffc53d4ba351",
+            "userName": "Sean Cassiere",
+            "textContent": "My response to your comment",
+            "date": "2022-01-13T09:32:32.015Z"
+          }
+        ]
       }
-    ]
+    }
   }
 }

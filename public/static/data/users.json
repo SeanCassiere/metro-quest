@@ -17,5 +17,24 @@
         "description": "Points added"
       }
     ]
+  },
+  "55879dc3-d9c4-4e14-9f8a-ffc53d4ba351": {
+    "id": "55879dc3-d9c4-4e14-9f8a-ffc53d4ba351",
+    "firstName": "Sean",
+    "lastName": "Cassiere",
+    "email": "sean@sean.com",
+    "password": "MTIz",
+    "favoriteLocations": ["37876241-13f7-48ea-b086-cf8761ce0591", "fda0cccf-5db7-4091-959b-a044f0689f50"],
+    "orders": [],
+    "userPoints": 50,
+    "userPointsHistory": [
+      {
+        "dateISO": "2022-01-03T04:20:40.951Z",
+        "prevPoints": 0,
+        "valueChange": 42,
+        "type": "add",
+        "description": "Points added"
+      }
+    ]
   }
 }
