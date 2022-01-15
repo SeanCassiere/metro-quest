@@ -1,5 +1,5 @@
 import UserService, { User } from "./services/UserService.js";
-import LocationService, { ILocationComments } from "./services/LocationService.js";
+import LocationService, { IParentComment } from "./services/LocationService.js";
 import {
   normalizeJqueryFormValues,
   validateValues,
@@ -94,8 +94,7 @@ jQuery(async () => {
   );
 
   // write user comments to DOM
-  const comments = findLocation.comments;
-  writeCommentsText(comments, loggedInUser);
+  writeCommentsText(LocationService.getCommentsAsArray(findLocation.id), loggedInUser);
 
   // comment form setup
   if (!loggedInUser) {
@@ -127,8 +126,7 @@ jQuery(async () => {
     }
 
     await LocationService.addComment(loggedInUser!, formLocation, values as { textContent: string });
-    const updatedLocation = LocationService.getLocationById(id)!;
-    writeCommentsText(updatedLocation.comments, loggedInUser);
+    writeCommentsText(LocationService.getCommentsAsArray(id), loggedInUser);
 
     // reset the form to the original state
     evt.currentTarget.reset();
@@ -139,7 +137,7 @@ jQuery(async () => {
   });
 });
 
-const writeCommentsText = (comments: ILocationComments[], loggedInUser: User | null) => {
+const writeCommentsText = (comments: IParentComment[], loggedInUser: User | null) => {
   let text = "";
   const reversedComments = comments.reverse();
 
