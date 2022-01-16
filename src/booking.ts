@@ -1,13 +1,3 @@
-// var _awaiter = (this && this._awaiter) || function (thisArg, _arguments, P, generator) {
-//     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-//     return new (P || (P = Promise))(function (resolve, reject) {
-//         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-//         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-//         function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-//         step((generator = generator.apply(thisArg, _arguments || [])).next());
-//     });
-// };
-
 // import LocationService, { Location } from "./services/LocationService.js";
 import UserService from "./services/UserService.js";
 import { dynamicNavbar } from "./services/changeNavbar.js";
@@ -71,18 +61,18 @@ $("#finalCheckout").click(function () {
   console.log(localStorage.getItem("cardnumber"));
 });
 
-//Locations
-// jQuery(function(){
-//     return __awaiter(this, void 0, void 0, function* () {
-//         yield LocationService.getOnlineLocations();
-//         let locations = LocationService.getAllLocationsAsArray();
-//         $("#bookingFromInput").ready(function(){
-//             let text = ""
-//             allLocations.forEach(element => {
-//                 text += `<option value="${element.name}">${element.name}</option>`
-//             });
-//             console.log(text)
-//             $(this).html(text)
-//         })
-//     });
-// })
+Locations;
+jQuery(function () {
+  return __awaiter(this, void 0, void 0, function* () {
+    yield LocationService.getOnlineLocations();
+    let locations = LocationService.getAllLocationsAsArray();
+    $("#bookingFromInput").ready(function () {
+      let text = "";
+      allLocations.forEach((element) => {
+        text += `<option value="${element.name}">${element.name}</option>`;
+      });
+      console.log(text);
+      $(this).html(text);
+    });
+  });
+});
