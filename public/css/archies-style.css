@@ -42,7 +42,7 @@
     object-fit: cover;
 }
 
-#homegrid{
+.homegrid{
     /* height: 175px; */
     width: 100%;
     margin-bottom: 3%;
