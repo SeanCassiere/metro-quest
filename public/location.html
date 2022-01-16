@@ -9,6 +9,7 @@
     <link href="/css/archies-style.css" rel="stylesheet" />
     <link href="/css/common.css" rel="stylesheet" />
     <link rel="stylesheet" href="/static/jquery.rateyo.css"/>
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />
     <link
       rel="stylesheet"
       href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -16,6 +17,9 @@
       crossorigin="anonymous"
     />
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAeMkQvru6oqfWbrAWeeExTHln7Bkm2V7Q"></script>
+
+    
+
     <title id="locationTitle"></title>
   </head>
   <body class="h-100" style="background-color: #f7f6f2">
@@ -77,80 +81,113 @@
     </header>
     <div id="logout-modal"></div>
     <!---->
-    <div id="location-content">
-      <!---->
-
-      <div id="LocationTemp"></div>
-      <div
-        class="d-flex flex-column h-100 justify-content-space-between mt-8"
-        style="background-color: #f7f6f2; min-height: 94vh"
-      >
-      <div class="imageContainer">
-        <img id="locationImage" src="">
-        <h1 id= "locationHeader"></h1>
-      </div>
-      <p id="Rating" class="m-0">
-        <div id="rateYo"></div>
-        <small class="d-block" style="text-align: right; padding-right: 1em;" id="rating-avg">Avg 0 / 5.</small>
-      </p>
-      <div style="width: 100%">
-        <iframe id="locMap" src=""></iframe>
-        <div class="bookbtn">
-          <button class="btn btn-metro-orange text-white" type="submit" size="lg" style="width: 55.3%; height: 50px; display:inline; float: none;">Book A Trip !</button>
-        </div>
-        <div class="aboutbox">
-          <h4 id="AboutLoc"></h3>
-        </div>
-        <iframe id="locVideo" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <div class="desbox">
-          <p id="Description"></p>
-        </div>
-        <h4 id="comments">Comments</h4>
-        <div class="commentbox">
-          <form class='mx-1' name="comment-form">
-            <div class="w-100">
-              <input type="text" readonly class="form-control-plaintext" id="staticCommentName" value="Not signed in">
-            </div>
-            <div class="mb-2 w-100">
-              <input
-                type="text"
-                class="form-control"
-                id="commentTextInput"
-                name="textContent"
-                placeholder="Add a public comment"
-                autocomplete="off"
-                disabled
-              />
-              <div id="commentTextInput" class="invalid-feedback"></div>
-            </div>
-            <div class="d-flex justify-content-end gap-1" id="comment-form-button-group">
-              <button class="btn btn-metro-blue text-white" type="reset" size="md">Cancel</button>
-              <button class="btn btn-metro-orange text-white" type="submit" size="md">Comment</button>
-            </div>
-          </form>
-          <div id="location-comments-list" class="pt-1 mt-2">
-            <div class="bg-secondary px-3 py-1 border-radious-5 rounded mt-1" style="--bs-bg-opacity: .1">
-              <p class="comment-item-username">user69420</p>
-              <p class="comment-item-comment-date">1 day ago</p>
-              <p class="comment-item-comment-text">Example Comment</p>
-            </div>
-            <div class="bg-primary px-3 py-1 border-radious-5 rounded mt-1" style="--bs-bg-opacity: .1">
-              <p class="comment-item-username">user69420</p>
-              <p class="comment-item-comment-date">1 day ago</p>
-              <p class="comment-item-comment-text">Example Comment</p>
-            </div>
-            <div class="bg-secondary px-3 py-1 border-radious-5 rounded mt-1" style="--bs-bg-opacity: .1">
-              <p class="comment-item-username" style="text-align: right;">user69420</p>
-              <p class="comment-item-comment-date" style="text-align: right;">1 day ago</p>
-              <p class="comment-item-comment-text w-100" style="text-align: right;">Example Comment</p>
-            </div>
+    <div
+    class="d-flex flex-column h-100 justify-content-space-between mt-8"
+    style="background-color: #f7f6f2; min-height: 94vh"
+  >
+    <div class="flex-grow-1 container">
+      <!-- <div class="flex-grow-1 account-floating-card"> -->
+        <!-- <div id="location-content"> -->
+          <!---->
+    
+          <div id="LocationTemp"></div>
+          <!-- <div
+            class="d-flex flex-column h-100 justify-content-space-between mt-8"
+            style="background-color: #f7f6f2; min-height: 94vh"
+          > -->
+          <div class="imageContainer">
+            <img id="locationImage" src="">
+            <h1 id= "locationHeader"></h1>
           </div>
-        </div>
-      <!-- Location Template -->
+          <p id="Rating" class="m-0">
+            <div id="rateYo"></div>
+            <small class="d-block" style="text-align: left; padding-right: 1em;" id="rating-avg">Avg 0 / 5.</small>
+          </p>
+          <button class="btn btn-metro-blue text-white" type="reset" size="md" style="margin-bottom: 2%;">Add To Favourites</button>
+          <div style="width: 100%">
+            <!-- <iframe id="locMap" src=""></iframe> -->
+          <div data-role="popup" id="popupMap" data-overlay-theme="a" data-theme="a" data-corners="false" data-tolerance="15,15">
+              <iframe id="locmap" src="map.html" width="100%" height="550px;"></iframe>
+          </div>
+          <div class="bookbtn">
+            <button class="btn btn-metro-orange text-white" type="submit" size="lg" style="width: 100%; height: 50px; display:inline;">Book A Trip !</button>
+          </div>
+            <!-- <div class="bookbtn">
+              <button class="btn btn-metro-orange text-white" type="submit" size="lg" style="width: 55.3%; height: 50px; display:inline; float: none;">Book A Trip !</button> -->
+            <!-- </div> -->
+            <div class="aboutbox">
+              <h4 id="AboutLoc"></h3>
+            </div>
+            <iframe id="locVideo" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="desbox">
+              <p id="Description"></p>
+            </div>
+            <h4 id="comments">Comments</h4>
+            <div class="commentbox">
+              <form class='mx-1' name="comment-form">
+                <div class="w-100">
+                  <input type="text" readonly class="form-control-plaintext" id="staticCommentName" value="Not signed in">
+                </div>
+                <div class="mb-2 w-100">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="commentTextInput"
+                    name="textContent"
+                    placeholder="Add a public comment"
+                    autocomplete="off"
+                    disabled
+                  />
+                  <div id="commentTextInput" class="invalid-feedback"></div>
+                </div>
+                <div class="d-flex justify-content-end gap-1" id="comment-form-button-group">
+                  <button class="btn btn-metro-blue text-white" type="reset" size="md">Cancel</button>
+                  <button class="btn btn-metro-orange text-white" type="submit" size="md">Comment</button>
+                </div>
+              </form>
+
+              <div class="bg-secondary px-3 py-1 border-radious-5 rounded mt-1" style="--bs-bg-opacity: .1"></div>
+              <p class="comment-item-username">user69420</p>
+              <p class="comment-item-comment-date">1 day ago</p>
+              <p class="comment-item-comment-text">Example Comment</p>  
+              <a href="#" style="margin-left: 0.5%; color: #FB743E; text-decoration: none;">Reply</a>
+              </div> 
+              <div class="bg-secondary px-3 py-1 border-radious-5 rounded mt-1" style="--bs-bg-opacity: .1"></div>
+              <p class="comment-item-username">user69420</p>
+              <p class="comment-item-comment-date">1 day ago</p>
+              <p class="comment-item-comment-text">Example Comment</p>  
+              <a href="#" style="margin-left: 0.5%; color: #FB743E; text-decoration: none;">Reply</a>
+              <p class="comment-item-username" style="margin-left: 2%;">user42069</p>
+              <p class="comment-item-comment-date" style="margin-left: 2%;">1 day ago</p>
+              <p class="comment-item-comment-text" style="margin-left: 2%;">Example Reply</p>  
+              </div>     
+
+              <div id="location-comments-list" class="pt-1 mt-2">
+                <div class="bg-secondary px-3 py-1 border-radious-5 rounded mt-1" style="--bs-bg-opacity: .1">
+                  <p class="comment-item-username">user69420</p>
+                  <p class="comment-item-comment-date">1 day ago</p>
+                  <p class="comment-item-comment-text">Example Comment</p>
+                </div>
+                <div class="bg-primary px-3 py-1 border-radious-5 rounded mt-1" style="--bs-bg-opacity: .1">
+                  <p class="comment-item-username">user69420</p>
+                  <p class="comment-item-comment-date">1 day ago</p>
+                  <p class="comment-item-comment-text">Example Comment</p>
+                </div>
+                <div class="bg-secondary px-3 py-1 border-radious-5 rounded mt-1" style="--bs-bg-opacity: .1">
+                  <p class="comment-item-username" style="text-align: right;">user69420</p>
+                  <p class="comment-item-comment-date" style="text-align: right;">1 day ago</p>
+                  <p class="comment-item-comment-text w-100" style="text-align: right;">Example Comment</p>
+                </div>
+              </div>
+            </div>
+          <!-- Location Template -->
+          </div>
+    
+          <!---->
+         <!-- </div> -->
+      </div>
       </div>
 
-      <!---->
-    </div>
       <footer class="pb-3 bg-metro-blue">
         <div style="height: 60px; background-color: #4b6587"></div>
         <ul class="nav justify-content-center pb-1 mb-1">
@@ -168,6 +205,7 @@
     <script src="/static/jquery.rateyo.js"></script>
     <script src="/scripts/index.js" type="module"></script>
     <script src="/scripts/locationPage.js" type="module"></script>
+
   </body>
 </html>
 
