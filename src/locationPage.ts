@@ -1,5 +1,5 @@
 import UserService, { User } from "./services/UserService.js";
-import LocationService, { IParentComment } from "./services/LocationService.js";
+import LocationService, { IParentComment, Location } from "./services/LocationService.js";
 import {
   normalizeJqueryFormValues,
   validateValues,
@@ -58,7 +58,8 @@ jQuery(async () => {
   $("#Description").text(`${findLocation.description}`);
   $("#locationImage").attr("src", `${findLocation.largeCoverImgUrl}`);
   $("#locVideo").attr("src", `${findLocation.videoUri}`);
-  $("#locMap").attr("src", `${findLocation.mapUri}`);
+  // $("#locMap").attr("src", `${findLocation.mapUri}`);
+  $("#location-map").attr("src", `/map.html?id=${findLocation.id}`);
 
   // setup rating
   $("#rateYo")
@@ -93,8 +94,29 @@ jQuery(async () => {
     }`
   );
 
+  $("#add-to-fav").on("click", function (evt: JQuery.TriggeredEvent) {
+    if (!loggedInUser) {
+      window.location.replace(`/login.html?redirect=${window.location.pathname}${window.location.search}`);
+      return;
+    }
+    if (loggedInUser.favoriteLocations.includes(findLocation.id)) {
+      $(this).text("Already in list");
+
+      setTimeout(() => {
+        $(this).text("Add to Favorites");
+      }, 2000);
+    } else {
+      UserService.addFavoriteLocation(loggedInUser.id, findLocation.id);
+      $(this).text("Added!");
+
+      setTimeout(() => {
+        window.location.replace(`/account.html?tab=favorites`);
+      }, 500);
+    }
+  });
+
   // write user comments to DOM
-  writeCommentsText(LocationService.getCommentsAsArray(findLocation.id), loggedInUser);
+  writeCommentsText(LocationService.getCommentsAsArray(findLocation.id), loggedInUser, findLocation);
 
   // comment form setup
   if (!loggedInUser) {
@@ -126,7 +148,7 @@ jQuery(async () => {
     }
 
     await LocationService.addComment(loggedInUser!, formLocation, values as { textContent: string });
-    writeCommentsText(LocationService.getCommentsAsArray(id), loggedInUser);
+    writeCommentsText(LocationService.getCommentsAsArray(id), loggedInUser, findLocation!);
 
     // reset the form to the original state
     evt.currentTarget.reset();
@@ -137,23 +159,106 @@ jQuery(async () => {
   });
 });
 
-const writeCommentsText = (comments: IParentComment[], loggedInUser: User | null) => {
+const writeCommentsText = (comments: IParentComment[], loggedInUser: User | null, currentLocation: Location) => {
   let text = "";
   const reversedComments = comments.reverse();
 
   for (let i = 0; i < reversedComments.length; i++) {
-    text += `
-    <div class="bg-${
-      loggedInUser && reversedComments[i].userId === loggedInUser.id ? "primary" : "secondary"
-    } px-3 py-1 border-radius-5 rounded mt-1" style="--bs-bg-opacity: .1; text-align: ${
-      loggedInUser && reversedComments[i].userId === loggedInUser.id ? "right" : "left"
+    let commentText = `
+    <div class="bg-secondary px-3 py-1 border-radius-5 rounded mt-1" style="--bs-bg-opacity: .1" id="comment-${
+      reversedComments[i].id
     }">
-      <p class="comment-item-username">${reversedComments[i].userName}</p>
-      <p class="comment-item-comment-date">${timeSince(new Date(reversedComments[i].date))}</p>
-      <p class="comment-item-comment-text">${reversedComments[i].textContent}</p>
-    </div>
-    `;
+      <div>
+        <p class="comment-item-username">${reversedComments[i].userName}</p>
+        <p class="comment-item-comment-date">${timeSince(new Date(reversedComments[i].date))}</p>
+        <p class="comment-item-comment-text">${reversedComments[i].textContent}</p>
+      </div>
+      <button class="btn btn-sm reply-button" style="margin-top: -1.5em; padding-left: 0;color: #FB743E; text-decoration: none;" data-parent="${
+        reversedComments[i].id
+      }">Reply</button>
+      `;
+
+    commentText += `
+      <div style="">
+        <form id="reply-${reversedComments[i].id}" name="reply-form-${reversedComments[i].id}" style="display: none;">
+          <div class="row">
+            <div class="col-9">
+              <input
+                type="text"
+                class="form-control"
+                id="replyTextInput"
+                name="textContent"
+                placeholder="Reply..."
+                autocomplete="off"
+              />
+              <div id="replyTextInput" class="invalid-feedback"></div>
+            </div>
+            <div class="col-3">
+              <button type="submit" class="btn btn-metro-orange text-white" style="width: 100%">Post</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      `;
+
+    if (reversedComments[i].replies.length > 0) {
+      reversedComments[i].replies.forEach((reply) => {
+        commentText += `
+        <div style="margin-left: 1em;">
+          <p class="comment-item-username">${reply.userName}</p>
+          <p class="comment-item-comment-date">${timeSince(new Date(reply.date))}</p>
+          <p class="comment-item-comment-text" style="margin-top: -0.45em;">${reply.textContent}</p>
+        </div>
+        `;
+      });
+    }
+
+    commentText += "</div>";
+
+    text += commentText;
   }
 
   $("#location-comments-list").html(text);
+  $(`#location-comments-list .reply-button`).on("click", function (evt: JQuery.TriggeredEvent) {
+    if (!loggedInUser) {
+      window.location.replace(`/login.html?redirect=${window.location.pathname}${window.location.search}`);
+      return;
+    }
+    const parentCommentId = $(this).data("parent");
+    const selectReplyForm = $(`#reply-${parentCommentId}`);
+    if (selectReplyForm.is(":visible")) {
+      selectReplyForm.hide();
+    } else {
+      selectReplyForm.show();
+    }
+  });
+
+  reversedComments.forEach((comment) => {
+    $(`form#reply-${comment.id}`).on("submit", async function (evt: JQuery.TriggeredEvent) {
+      evt.preventDefault();
+      evt.stopPropagation();
+
+      const formLocation = LocationService.getLocationById(currentLocation.id)!;
+      const formValues = $(evt.target).serializeArray();
+      const values = normalizeJqueryFormValues(formValues) as unknown;
+
+      const valid = validateValues(values as { textContent: string }, schema);
+      if (!valid.success) {
+        showFormErrors(`reply-form-${comment.id}`, valid.errors, valid.validKeys);
+        return;
+      } else {
+        showFormErrors(`reply-form-${comment.id}`, [], valid.validKeys);
+      }
+
+      await LocationService.addCommentReply(loggedInUser!, formLocation, comment.id, values as { textContent: string });
+      writeCommentsText(LocationService.getCommentsAsArray(currentLocation.id), loggedInUser, currentLocation);
+
+      // reset the form to the original state
+      evt.currentTarget.reset();
+
+      setTimeout(() => {
+        clearFormErrors(`reply-form-${comment.id}`);
+      }, 1500);
+    });
+  });
 };

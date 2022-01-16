@@ -103,11 +103,10 @@
             <div id="rateYo"></div>
             <small class="d-block" style="text-align: left; padding-right: 1em;" id="rating-avg">Avg 0 / 5.</small>
           </p>
-          <button class="btn btn-metro-blue text-white" type="reset" size="md" style="margin-bottom: 2%;">Add To Favourites</button>
+          <button class="btn btn-metro-blue text-white" type="button" id="add-to-fav" size="md" style="margin-bottom: 2%;">Add to Favorites</button>
           <div style="width: 100%">
-            <!-- <iframe id="locMap" src=""></iframe> -->
           <div data-role="popup" id="popupMap" data-overlay-theme="a" data-theme="a" data-corners="false" data-tolerance="15,15">
-              <iframe id="locmap" src="map.html" width="100%" height="550px;"></iframe>
+              <iframe id="location-map" width="100%" height="550px;" loading="lazy"></iframe>
           </div>
           <div class="bookbtn">
             <button class="btn btn-metro-orange text-white" type="submit" size="lg" style="width: 100%; height: 50px; display:inline;">Book A Trip !</button>
@@ -123,8 +122,9 @@
               <p id="Description"></p>
             </div>
             <h4 id="comments">Comments</h4>
-            <div class="commentbox">
-              <form class='mx-1' name="comment-form">
+            <div class="commentbox mb-2 pb-2">
+              <!-- <div id="comment-form" style="margin-bottom: 4em; display: none; height: 1px;"></div> -->
+              <form class='mx-1 pt-3' id="comment-form" name="comment-form">
                 <div class="w-100">
                   <input type="text" readonly class="form-control-plaintext" id="staticCommentName" value="Not signed in">
                 </div>
@@ -145,40 +145,8 @@
                   <button class="btn btn-metro-orange text-white" type="submit" size="md">Comment</button>
                 </div>
               </form>
-
-              <div class="bg-secondary px-3 py-1 border-radious-5 rounded mt-1" style="--bs-bg-opacity: .1"></div>
-              <p class="comment-item-username">user69420</p>
-              <p class="comment-item-comment-date">1 day ago</p>
-              <p class="comment-item-comment-text">Example Comment</p>  
-              <a href="#" style="margin-left: 0.5%; color: #FB743E; text-decoration: none;">Reply</a>
-              </div> 
-              <div class="bg-secondary px-3 py-1 border-radious-5 rounded mt-1" style="--bs-bg-opacity: .1"></div>
-              <p class="comment-item-username">user69420</p>
-              <p class="comment-item-comment-date">1 day ago</p>
-              <p class="comment-item-comment-text">Example Comment</p>  
-              <a href="#" style="margin-left: 0.5%; color: #FB743E; text-decoration: none;">Reply</a>
-              <p class="comment-item-username" style="margin-left: 2%;">user42069</p>
-              <p class="comment-item-comment-date" style="margin-left: 2%;">1 day ago</p>
-              <p class="comment-item-comment-text" style="margin-left: 2%;">Example Reply</p>  
-              </div>     
-
-              <div id="location-comments-list" class="pt-1 mt-2">
-                <div class="bg-secondary px-3 py-1 border-radious-5 rounded mt-1" style="--bs-bg-opacity: .1">
-                  <p class="comment-item-username">user69420</p>
-                  <p class="comment-item-comment-date">1 day ago</p>
-                  <p class="comment-item-comment-text">Example Comment</p>
-                </div>
-                <div class="bg-primary px-3 py-1 border-radious-5 rounded mt-1" style="--bs-bg-opacity: .1">
-                  <p class="comment-item-username">user69420</p>
-                  <p class="comment-item-comment-date">1 day ago</p>
-                  <p class="comment-item-comment-text">Example Comment</p>
-                </div>
-                <div class="bg-secondary px-3 py-1 border-radious-5 rounded mt-1" style="--bs-bg-opacity: .1">
-                  <p class="comment-item-username" style="text-align: right;">user69420</p>
-                  <p class="comment-item-comment-date" style="text-align: right;">1 day ago</p>
-                  <p class="comment-item-comment-text w-100" style="text-align: right;">Example Comment</p>
-                </div>
-              </div>
+              
+              <div id="location-comments-list" class="pt-1 mt-2"></div>
             </div>
           <!-- Location Template -->
           </div>
