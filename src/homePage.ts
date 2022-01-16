@@ -7,39 +7,45 @@ jQuery(async function () {
   let locations = LocationService.getAllLocationsAsArray();
   writeLocationsToDom(locations);
 
-  $(`form[name="home-location-sorting-form"] .class-form-input`).on("change", function () {
-    let allLocations = LocationService.getAllLocationsAsArray();
-    const searchValue = $(`form[name="home-location-sorting-form"] input[name="search"]`).val() as string;
-    const alphabetSortValue = $(`form[name="home-location-sorting-form"] select[name="alphabet"]`).val();
-    const ratingSortValue = $(`form[name="home-location-sorting-form"] select[name="rating"]`).val();
-
-    if (searchValue.trim() === "" && alphabetSortValue === "0" && ratingSortValue === "0") {
-      writeLocationsToDom(allLocations);
-      return;
-    }
-
-    if (searchValue.trim().length > 0) {
-      allLocations = allLocations.filter((loc) => loc.name.toLowerCase().includes(searchValue.toLowerCase()));
-    }
-
-    if (alphabetSortValue === "1") {
-      allLocations = allLocations.sort((a, b) => a.name.localeCompare(b.name));
-    } else if (alphabetSortValue === "2") {
-      allLocations = allLocations.sort((a, b) => b.name.localeCompare(a.name));
-    }
-
-    if (ratingSortValue === "1") {
-      allLocations = allLocations.sort((a, b) => {
-        return a.ratings.currentRating - b.ratings.currentRating;
-      });
-    } else if (ratingSortValue === "2") {
-      allLocations = allLocations.sort((a, b) => {
-        return b.ratings.currentRating - a.ratings.currentRating;
-      });
-    }
-    writeLocationsToDom(allLocations);
-  });
+  $(`form[name="home-location-sorting-form"]`).on("submit", searchFormHandler);
+  $(`form[name="home-location-sorting-form"] .class-form-input`).on("change", searchFormHandler);
 });
+
+function searchFormHandler(evt: JQuery.TriggeredEvent) {
+  evt.preventDefault();
+  evt.stopPropagation();
+
+  let allLocations = LocationService.getAllLocationsAsArray();
+  const searchValue = $(`form[name="home-location-sorting-form"] input[name="search"]`).val() as string;
+  const alphabetSortValue = $(`form[name="home-location-sorting-form"] select[name="alphabet"]`).val();
+  const ratingSortValue = $(`form[name="home-location-sorting-form"] select[name="rating"]`).val();
+
+  if (searchValue.trim() === "" && alphabetSortValue === "0" && ratingSortValue === "0") {
+    writeLocationsToDom(allLocations);
+    return;
+  }
+
+  if (searchValue.trim().length > 0) {
+    allLocations = allLocations.filter((loc) => loc.name.toLowerCase().includes(searchValue.toLowerCase()));
+  }
+
+  if (alphabetSortValue === "1") {
+    allLocations = allLocations.sort((a, b) => a.name.localeCompare(b.name));
+  } else if (alphabetSortValue === "2") {
+    allLocations = allLocations.sort((a, b) => b.name.localeCompare(a.name));
+  }
+
+  if (ratingSortValue === "1") {
+    allLocations = allLocations.sort((a, b) => {
+      return a.ratings.currentRating - b.ratings.currentRating;
+    });
+  } else if (ratingSortValue === "2") {
+    allLocations = allLocations.sort((a, b) => {
+      return b.ratings.currentRating - a.ratings.currentRating;
+    });
+  }
+  writeLocationsToDom(allLocations);
+}
 
 function writeLocationsToDom(locations: Location[]) {
   let locationHtml = "";
@@ -67,6 +73,27 @@ function writeLocationsToDom(locations: Location[]) {
     </div>
     `;
   });
+
+  if (locations.length === 0) {
+    locationHtml += `
+    <div class="col-md-12">
+      <div class="card mb-4 shadow-sm">
+        <div class="card-body">
+          <p class="card-text" style="font-weight: bold">No results found</p>
+          <p class="card-text">
+            No results found matching your search.
+          </p>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+              <p></p>
+              <a href="/" class="btn btn-sm btn-outline-secondary">Home</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    `;
+  }
   jQuery("#home-locations-content").html(locationHtml);
 }
 
