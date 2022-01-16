@@ -94,6 +94,27 @@ jQuery(async () => {
     }`
   );
 
+  $("#add-to-fav").on("click", function (evt: JQuery.TriggeredEvent) {
+    if (!loggedInUser) {
+      window.location.replace(`/login.html?redirect=${window.location.pathname}${window.location.search}`);
+      return;
+    }
+    if (loggedInUser.favoriteLocations.includes(findLocation.id)) {
+      $(this).text("Already in list");
+
+      setTimeout(() => {
+        $(this).text("Add to Favorites");
+      }, 2000);
+    } else {
+      UserService.addFavoriteLocation(loggedInUser.id, findLocation.id);
+      $(this).text("Added!");
+
+      setTimeout(() => {
+        window.location.replace(`/account.html?tab=favorites`);
+      }, 500);
+    }
+  });
+
   // write user comments to DOM
   writeCommentsText(LocationService.getCommentsAsArray(findLocation.id), loggedInUser, findLocation);
 

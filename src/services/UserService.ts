@@ -219,6 +219,8 @@ class UserService {
 
     if (!user) return;
 
+    if (user.favoriteLocations.includes(locationId)) return;
+
     user = { ...user, favoriteLocations: [...user.favoriteLocations, locationId] };
     let allUsers = this.getAllUsers();
     allUsers = { ...allUsers, [user.id]: user };
