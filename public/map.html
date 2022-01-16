@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Map</title>
+    <script>
+        function initialize() {
+            var myLatlng = new google.maps.LatLng( 51.179541124747374, -1.8262150000000001 ); //get coordinates from json
+            var myOptions = {
+                zoom: 15,
+                center: myLatlng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            }
+            var map = new google.maps.Map( document.getElementById( "map_canvas" ), myOptions );
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAeMkQvru6oqfWbrAWeeExTHln7Bkm2V7Q"></script>
+    <style>
+        html {
+            height: 100%;
+            overflow: hidden; 
+        }
+        body {
+            margin: 0;
+            padding: 0%;
+            height: 100%;
+            
+        }
+        #map_canvas {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+<body onload="initialize()">
+
+    <div id="map_canvas"></div>
+
+</body>
+</html>
