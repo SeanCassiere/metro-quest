@@ -7,6 +7,7 @@ const PORT = 4500;
 const serverUrls = {
   getUUID: "/api/UUID",
   getStripeKey: "/api/StripeKey",
+  sendFavoritesEmail: "/api/SendFavoritesEmail",
 };
 
 type ServerUrls = typeof serverUrls;
