@@ -37,7 +37,7 @@ export class Location {
     public id: string,
     public name: string,
     public description: string[],
-    public mapUri: string,
+    public mapCords: { lat: string; long: string },
     public videoUri: string,
     public largeCoverImgUrl: string,
     public ratings: ILocationRatings,
