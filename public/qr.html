@@ -90,10 +90,10 @@
             data-overlay-theme="a"
             data-theme="d"
             data-tolerance="15,15"
-            class="ui-content"
-			style="width: -webkit-fill-available;"
+            class="video-box"
+			      style="width: -webkit-fill-available;"
           >
-            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" class="responsive-iframe" seamless></iframe>
+            <iframe src="https://www.youtube.com/embed/43rBuGxk60I" class="responsive-iframe" seamless></iframe>
           </div>
         </div>
   
@@ -132,12 +132,35 @@
         <p class="text-center text-white-50">&copy; 2021 Company, Inc</p>
       </footer>
     </div>
-
     
     <script src="/static/jquery-3.6.0.min.js"></script>
+    <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+    <script type="text/javascript">
+      let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+      scanner.addListener('scan', function (content) {
+        window.location.replace(content);
+      });
+      Instascan.Camera.getCameras().then(function (cameras) {
+        if (cameras.length > 0) {
+          scanner.start(cameras[0]);
+        } else {
+          console.error('No cameras found.');
+        }
+      }).catch(function (e) {
+        console.error(e);
+      });
+      jQuery(function(){ 
+        $("#qr-btn").on('click', function () {
+          $("#preview").toggleClass("hidden");
+        });
+      });
+      
+    </script>
+    
+    
 	<!-- <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+    
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script src="/static/bootstrap.bundle.min.js"></script>
     <script src="/scripts/qrPage.js" type="module"></script>
