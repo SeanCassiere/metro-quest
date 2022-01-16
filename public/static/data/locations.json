@@ -6,6 +6,10 @@
       "Stonehenge is a prehistoric monument on Salisbury Plain in Wiltshire, England, two miles west of Amesbury. It consists of an outer ring of vertical sarsen standing stones, each around 13 feet high, seven feet wide, and weighing around 25 tons, topped by connecting horizontal lintel stones. Inside is a ring of smaller bluestones. Inside these are free-standing trilithons, two bulkier vertical Sarsens joined by one lintel. The whole monument, now ruinous, is orientated towards the sunrise on the summer solstice. The stones are set within earthworks in the middle of the most dense complex of Neolithic and Bronze Age monuments in England, including several hundred tumuli (burial mounds)."
     ],
     "mapUri": "https://www.google.com/maps/embed/v1/place?q=place_id:ChIJEfYKhTvmc0gR3dLTvOJwkZc&key=AIzaSyAeMkQvru6oqfWbrAWeeExTHln7Bkm2V7Q",
+    "mapCords": {
+      "lat": 51.179541124747374,
+      "long": -1.8262150000000001
+    },
     "videoUri": "https://www.youtube.com/embed/BTwuKCqFwJY",
     "largeCoverImgUrl": "/static/images/locations/stonehenge.jpg",
     "ratings": {
@@ -49,6 +53,10 @@
       "Stonehenge is a prehistoric monument on Salisbury Plain in Wiltshire, England, two miles west of Amesbury. It consists of an outer ring of vertical sarsen standing stones, each around 13 feet high, seven feet wide, and weighing around 25 tons, topped by connecting horizontal lintel stones. Inside is a ring of smaller bluestones. Inside these are free-standing trilithons, two bulkier vertical Sarsens joined by one lintel. The whole monument, now ruinous, is orientated towards the sunrise on the summer solstice. The stones are set within earthworks in the middle of the most dense complex of Neolithic and Bronze Age monuments in England, including several hundred tumuli (burial mounds)."
     ],
     "mapUri": "https://www.google.com/maps/embed/v1/place?q=place_id:ChIJEfYKhTvmc0gR3dLTvOJwkZc&key=AIzaSyAeMkQvru6oqfWbrAWeeExTHln7Bkm2V7Q",
+    "mapCords": {
+      "lat": 30.20073,
+      "long": 74.4905
+    },
     "videoUri": "https://www.youtube.com/embed/BTwuKCqFwJY",
     "largeCoverImgUrl": "/static/images/locations/stonehenge.jpg",
     "ratings": {

@@ -58,7 +58,8 @@ jQuery(async () => {
   $("#Description").text(`${findLocation.description}`);
   $("#locationImage").attr("src", `${findLocation.largeCoverImgUrl}`);
   $("#locVideo").attr("src", `${findLocation.videoUri}`);
-  $("#locMap").attr("src", `${findLocation.mapUri}`);
+  // $("#locMap").attr("src", `${findLocation.mapUri}`);
+  $("#location-map").attr("src", `/map.html?id=${findLocation.id}`);
 
   // setup rating
   $("#rateYo")
