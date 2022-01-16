@@ -103,7 +103,7 @@
                         <input
                           type="text"
                           class="form-control"
-                          id="bookingFromInput"
+                          id="bookingFromSummaryInput"
                           name="from"
                           placeholder="From"
                           autofocus
@@ -116,7 +116,7 @@
                         <input
                           type="text"
                           class="form-control"
-                          id="bookingToInput"
+                          id="bookingToSummaryInput"
                           name="to"
                           placeholder="To"
                           autofocus
@@ -170,7 +170,7 @@
                         <input
                           type="text"
                           class="form-control"
-                          id="bookingTripFareInput"
+                          id="bookingTripFareSummaryInput"
                           name="tripFare"
                           placeholder="Trip Fare"
                           autofocus
@@ -267,6 +267,9 @@
       document.getElementById("bookingDepartureDateSummaryInput").setAttribute("value", localStorage.getItem("datevalue"));
       document.getElementById("bookingDepartureTimeSummaryInput").setAttribute("value", localStorage.getItem("timevalue"));
       document.getElementById("bookingContactNoSummaryInput").setAttribute("value", localStorage.getItem("contactnovalue"));
+      document.getElementById("bookingFromSummaryInput").setAttribute("value", localStorage.getItem("fromvalue"));
+      document.getElementById("bookingToSummaryInput").setAttribute("value", localStorage.getItem("tovalue"));
+      document.getElementById("bookingTripFareSummaryInput").setAttribute("value", localStorage.getItem("tripvalue"));
     </script>
 
     <script src="/static/jquery-3.6.0.min.js"></script>

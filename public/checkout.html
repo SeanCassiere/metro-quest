@@ -13,6 +13,7 @@
       integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
       crossorigin="anonymous"
     />
+    <!-- <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" /> -->
     <title>Checkout | Metro Quest</title>
   </head>
   <body class="h-100" style="background-color: #f7f6f2">
@@ -103,7 +104,7 @@
                         <input
                           type="text"
                           class="form-control"
-                          id="bookingFromInput"
+                          id="bookingFromSummaryInput"
                           name="from"
                           placeholder="From"
                           autofocus
@@ -116,7 +117,7 @@
                         <input
                           type="text"
                           class="form-control"
-                          id="bookingToInput"
+                          id="bookingToSummaryInput"
                           name="to"
                           placeholder="To"
                           autofocus
@@ -172,7 +173,7 @@
                         <input
                           type="text"
                           class="form-control"
-                          id="bookingTripFareInput"
+                          id="bookingTripFareSummaryInput"
                           name="tripFare"
                           placeholder="Trip Fare"
                           autofocus
@@ -268,6 +269,7 @@
                   id="bookingCardNoInput"
                   name="cardNo"
                   placeholder="Card Number"
+                  maxlength="16"
                   autofocus
                 />
             </div>
@@ -324,6 +326,7 @@
                             id="bookingCardCvvInput"
                             name="cardCvv"
                             placeholder="CVV"
+                            maxlength="3"
                             autofocus
                         />
                     </div>
@@ -335,11 +338,35 @@
                 </div>
             </div>
             <div class="mb-2 w-100">
-                <a href="bookingSummary.html" id="finalCheckout" class="btn btn-metro-orange text-white" role="button" aria-pressed="true" size="lg" style="width: 100%">CHECKOUT</a>
-              <!-- <button class="btn btn-metro-orange text-white" type="submit" size="lg" style="width: 100%">
-                CHECKOUT
-              </button> -->
+                <!-- <a href="bookingSummary.html" id="finalCheckout" class="btn btn-metro-orange text-white" role="button" aria-pressed="true" size="lg" style="width: 100%">CHECKOUT</a> -->
+                <button type="button" class="btn btn-metro-orange text-white submit-button" data-bs-toggle="modal" data-bs-target="#exampleModalCenter" style="width: 100%">
+                  CHECKOUT
+                </button>
+                <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                  Launch demo modal
+                </button> -->
             </div>
+
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Are you sure to checkout?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <!-- <div class="modal-body">
+                    
+                  </div> -->
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                    <a type="button" class="btn btn-primary" href="bookingSummary.html">Yes</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div class="mb-2 w-100">
               <button class="btn btn-outline-metro-orange" type="reset" size="lg" style="width: 100%">CLEAR</button>
             </div>
@@ -363,9 +390,14 @@
       document.getElementById("bookingDepartureDateSummaryInput").setAttribute("value", localStorage.getItem("datevalue"));
       document.getElementById("bookingDepartureTimeSummaryInput").setAttribute("value", localStorage.getItem("timevalue"));
       document.getElementById("bookingContactNoSummaryInput").setAttribute("value", localStorage.getItem("contactnovalue"));
+      document.getElementById("bookingFromSummaryInput").setAttribute("value", localStorage.getItem("fromvalue"));
+      document.getElementById("bookingToSummaryInput").setAttribute("value", localStorage.getItem("tovalue"));
+      document.getElementById("bookingTripFareSummaryInput").setAttribute("value", localStorage.getItem("tripvalue"));
     </script>
 
     <script src="/static/jquery-3.6.0.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script> -->
+    <!-- <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
     <script src="/static/bootstrap.bundle.min.js"></script>
     <script src="/scripts/index.js" type="module"></script>
     <script src="/scripts/booking.js" type="module"></script>

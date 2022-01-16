@@ -1,4 +1,4 @@
-// import LocationService, { Location } from "./services/LocationService.js";
+import LocationService, { Location } from "./services/LocationService.js";
 import UserService from "./services/UserService.js";
 import { dynamicNavbar } from "./services/changeNavbar.js";
 
@@ -17,8 +17,18 @@ jQuery(() => {
 });
 
 //From
+$("#checkoutSubmit").click(function () {
+  var from = $("#bookingFromInput").val() as string;
+  localStorage.setItem("fromvalue", from);
+  console.log(localStorage.getItem("fromvalue"));
+});
 
 //To
+$("#checkoutSubmit").click(function () {
+  var from = $("#bookingToInput").val() as string;
+  localStorage.setItem("tovalue", from);
+  console.log(localStorage.getItem("tovalue"));
+});
 
 //Departure Date
 $("#checkoutSubmit").click(function () {
@@ -61,18 +71,46 @@ $("#finalCheckout").click(function () {
   console.log(localStorage.getItem("cardnumber"));
 });
 
-Locations;
-jQuery(function () {
-  return __awaiter(this, void 0, void 0, function* () {
-    yield LocationService.getOnlineLocations();
-    let locations = LocationService.getAllLocationsAsArray();
-    $("#bookingFromInput").ready(function () {
-      let text = "";
-      allLocations.forEach((element) => {
-        text += `<option value="${element.name}">${element.name}</option>`;
-      });
-      console.log(text);
-      $(this).html(text);
+// Locations-From
+jQuery(async function () {
+  await LocationService.getOnlineLocations();
+  let allLocations = LocationService.getAllLocationsAsArray();
+  console.log(allLocations);
+  $("#bookingFromInput").ready(function () {
+    let text = "";
+    allLocations.forEach((element) => {
+      text += `<option value="${element.name}">${element.name}</option>`;
     });
+    console.log(text);
+    $("#bookingFromInput").html(text);
   });
+});
+
+// Locations-To
+jQuery(async function () {
+  await LocationService.getOnlineLocations();
+  let allLocations = LocationService.getAllLocationsAsArray();
+  console.log(allLocations);
+  $("#bookingToInput").ready(function () {
+    let text = "";
+    allLocations.forEach((element) => {
+      text += `<option value="${element.name}">${element.name}</option>`;
+    });
+    console.log(text);
+    $("#bookingToInput").html(text);
+  });
+});
+
+//Trip-Fare
+$(document).ready(function () {
+  var precision = 100; // 2 decimals
+  var randomnum: any = Math.floor(Math.random() * (30 * precision - 1 * precision) + 1 * precision) / (1 * precision);
+  var tripFare: any = document.getElementById("bookingTripFareInput")!.setAttribute("value", randomnum);
+  console.log("works", tripFare);
+});
+
+$("#checkoutSubmit").click(function () {
+  var tripFare = $("#bookingTripFareInput").val() as string;
+  localStorage.setItem("tripvalue", tripFare);
+  console.log(localStorage.getItem("tripvalue"));
 });
