@@ -13,7 +13,7 @@ jQuery(async function () {
     const alphabetSortValue = $(`form[name="home-location-sorting-form"] select[name="alphabet"]`).val();
     const ratingSortValue = $(`form[name="home-location-sorting-form"] select[name="rating"]`).val();
 
-    if (searchValue.trim() === "" && alphabetSortValue === "0" && ratingSortValue === "1") {
+    if (searchValue.trim() === "" && alphabetSortValue === "0" && ratingSortValue === "0") {
       writeLocationsToDom(allLocations);
       return;
     }
@@ -29,9 +29,13 @@ jQuery(async function () {
     }
 
     if (ratingSortValue === "1") {
-      allLocations = allLocations.sort((a, b) => a.ratings.currentRating - b.ratings.currentRating);
+      allLocations = allLocations.sort((a, b) => {
+        return a.ratings.currentRating - b.ratings.currentRating;
+      });
     } else if (ratingSortValue === "2") {
-      allLocations = allLocations.sort((a, b) => b.ratings.currentRating - a.ratings.currentRating);
+      allLocations = allLocations.sort((a, b) => {
+        return b.ratings.currentRating - a.ratings.currentRating;
+      });
     }
     writeLocationsToDom(allLocations);
   });
@@ -48,6 +52,8 @@ function writeLocationsToDom(locations: Location[]) {
           <p class="card-text" style="font-weight: bold">${location.name}</p>
           <img class="homegrid" src="${location.largeCoverImgUrl}" />
           <p class="card-text">
+            Rating: ${location.ratings.currentRating} / 5
+            <br />
             ${location.description[0].substring(0, 105)}...
           </p>
           <div class="d-flex justify-content-between align-items-center">

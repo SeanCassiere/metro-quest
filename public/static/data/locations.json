@@ -31,6 +31,14 @@
             "date": "2022-01-13T09:32:32.015Z"
           }
         ]
+      },
+      "fda0cccf-5db7-4091-959b-a044f0689f50": {
+        "id": "fda0cccf-5db7-4091-959b-a044f0689f50",
+        "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844",
+        "userName": "Test Test",
+        "textContent": "Lorem ipsum",
+        "date": "2022-01-12T08:48:32.015Z",
+        "replies": []
       }
     }
   },
@@ -45,10 +53,10 @@
     "largeCoverImgUrl": "/static/images/locations/stonehenge.jpg",
     "ratings": {
       "totalRatings": 1,
-      "currentRating": 3.5,
-      "totalRatingValue": 3.5,
+      "currentRating": 1,
+      "totalRatingValue": 1,
       "ratedUsers": ["c3064eb0-25a4-46ef-81f4-e0657b898844"],
-      "ratingHistory": [{ "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844", "rating": 3.5 }]
+      "ratingHistory": [{ "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844", "rating": 1 }]
     },
     "comments": {
       "6f7be0a6-2094-40b0-8881-2691ffae332a": {
