@@ -1,3 +1,5 @@
+import UserService from "./services/UserService";
+
 (function () {
   function buildQuiz() {
     // variable to store the HTML output
@@ -165,7 +167,19 @@
     submitbutton.addEventListener("click", showResults);
   }
 
-  $("#submit").click(function () {
-    localStorage.setItem("points", overrallPoints.toString());
+  //calling user service to add points
+  jQuery(() => {
+    const loggedInUser = UserService.getLoggedInUser();
+    if (!loggedInUser) {
+      window.location.replace(`/login.html?redirect=${window.location.pathname}${window.location.search}`);
+      return;
+    }
+    console.log(loggedInUser);
+    //add point to the user
+    $("#submit").click(function () {
+      UserService.addPointsToUser(loggedInUser.id, overrallPoints);
+    });
   });
+
+  localStorage.setItem("points", overrallPoints.toString());
 })();
