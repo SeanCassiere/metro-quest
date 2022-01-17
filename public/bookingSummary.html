@@ -147,33 +147,34 @@
                 </div>
               </div>
             </div>
-            <div class="mb-2 w-100">
-              <input
-                type="text"
-                class="form-control"
-                id="bookingTicketsSummaryInput"
-                name="noOfTickets"
-                placeholder="Number of Tickets"
-                autofocus
-                readonly
-              />
-            </div>
             <div class="row">
               <div class="col">
                 <div class="mb-2 w-100">
                   <input
                     type="text"
                     class="form-control"
-                    id="bookingTripFareSummaryInput"
-                    name="tripFare"
-                    placeholder="Trip Fare"
+                    id="bookingTicketsSummaryInput"
+                    name="noOfTickets"
+                    placeholder="Number of Tickets"
                     autofocus
                     readonly
                   />
                 </div>
               </div>
               <div class="col">
-                <div class="mb-2 w-100"></div>
+                <div class="input-group mb-2 w-100">
+                  <span class="input-group-text" id="bookingTripFareSummaryInput">£</span>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="bookingTripFareSummaryInput"
+                    name="tripFare"
+                    value=""
+                    placeholder="Trip Fare"
+                    autofocus
+                    readonly
+                  />
+                </div>
               </div>
             </div>
             <div class="d-flex flex-column justify-content-center align-items-center gap-2">
@@ -285,8 +286,11 @@
       </footer>
     </div>
 
+    <script src="/static/jquery-3.6.0.min.js"></script>
     <script>
-      document.getElementById("bookingTicketsSummaryInput").setAttribute("value", localStorage.getItem("textvalue"));
+      document
+        .getElementById("bookingTicketsSummaryInput")
+        .setAttribute("value", `${localStorage.getItem("textvalue")} tickets`);
       document
         .getElementById("bookingDepartureDateSummaryInput")
         .setAttribute("value", localStorage.getItem("datevalue"));
@@ -298,12 +302,9 @@
         .setAttribute("value", localStorage.getItem("contactnovalue"));
       document.getElementById("bookingFromSummaryInput").setAttribute("value", localStorage.getItem("fromvalue"));
       document.getElementById("bookingToSummaryInput").setAttribute("value", localStorage.getItem("tovalue"));
-      document
-        .getElementById("bookingTripFareSummaryInput")
-        .setAttribute("value", localStorage.getItem("finalTripFare"));
+      $("input#bookingTripFareSummaryInput").attr("value", localStorage.getItem("finalTripFare"));
     </script>
 
-    <script src="/static/jquery-3.6.0.min.js"></script>
     <script src="/static/bootstrap.bundle.min.js"></script>
     <script src="/scripts/index.js" type="module"></script>
     <script src="/scripts/booking.js" type="module"></script>

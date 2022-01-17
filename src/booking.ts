@@ -15,9 +15,9 @@ jQuery(() => {
     $("#bookingLastNameInput").val(loggedInUser.lastName);
     $("#bookingEmailInput").val(loggedInUser.email);
     if (loggedInUser.userPoints <= 0) {
-      $("#bookingPromotionCodeInput").prop("readonly", true);
+      $("input#bookingPromotionCodeInput").prop("readonly", true);
     }
-    $("#bookingPromotionCodeInput").val(loggedInUser.userPoints);
+    $("input#bookingPromotionCodeInput").val(loggedInUser.userPoints);
   }
 });
 
@@ -110,7 +110,7 @@ jQuery(async function () {
 $(document).ready(function () {
   var precision = 100; //2 decimals
   var randomnum: any = Math.floor(Math.random() * (30 * precision - 1 * precision) + 1 * precision) / (1 * precision);
-  var tripFare: any = document.getElementById("bookingTripFareInput")!.setAttribute("value", randomnum);
+  var tripFare: any = $("input#bookingTripFareInput").attr("value", randomnum);
   localStorage.setItem("tempTripFare", randomnum);
   // console.log("works", randomnum);
 });
@@ -126,7 +126,7 @@ jQuery(() => {
   $("#promoCodeApply").click(function (e) {
     e.preventDefault();
     $(this).data("clicked", true);
-    var promoCodeValue: number = parseFloat($("#bookingPromotionCodeInput").val() as string);
+    var promoCodeValue: number = parseFloat($("input#bookingPromotionCodeInput").val() as string);
     // console.log(promoCodeValue);
     var tripFareValue: number = parseFloat(localStorage.getItem("tempTripFare") as string);
     if (promoCodeValue <= 0) {
@@ -152,7 +152,7 @@ $("#checkoutSubmit").click(function () {
   if ($("#promoCodeApply").data("clicked")) {
     localStorage.setItem("finalTripFare", finalTripFare);
   } else {
-    var tripFare = $("#bookingTripFareInput").val() as string;
+    var tripFare = $("input#bookingTripFareInput").val() as string;
     localStorage.setItem("finalTripFare", tripFare);
     // console.log(localStorage.getItem("finalTripFare"));
   }

@@ -13,6 +13,7 @@ import {
 } from "./utils/formHelpers.js";
 import { getServerUrls } from "./utils/environment.js";
 import { dynamicNavbar } from "./services/changeNavbar.js";
+import { CURRENCY } from "./constants.js";
 
 const CLEAR_LOCATION_KEY = "clear-location-id";
 
@@ -37,7 +38,7 @@ function writeInitialUpdateFormValues(loggedInUser: User) {
 function writeInitialAccountMetadataValues(loggedInUser: User) {
   $("#account-user-full-name").text(`${loggedInUser.firstName} ${loggedInUser.lastName}`);
   $("#account-user-email").text(`${loggedInUser.email}`);
-  $("#account-user-points").text(`${loggedInUser.userPoints}`);
+  $("#account-user-points").text(`${CURRENCY}${loggedInUser.userPoints.toFixed(2)}`);
 }
 
 function writeFavoriteLocations(locationIds: string[]) {
