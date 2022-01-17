@@ -8,6 +8,7 @@ const serverUrls = {
   getUUID: "/api/UUID",
   getStripeKey: "/api/StripeKey",
   sendFavoritesEmail: "/api/SendFavoritesEmail",
+  postStripeCheckoutSession: "/api/StripeCheckoutSession",
 };
 
 type ServerUrls = typeof serverUrls;

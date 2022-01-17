@@ -6,6 +6,7 @@ const cors = require("cors");
 const generateUUID = require("./controllers/generateUUID");
 const getStripeKey = require("./controllers/getStripeKey");
 const emailFavorites = require("./controllers/emailFavorites");
+const generateStripeCheckoutSession = require("./controllers/generateStripeCheckoutSession");
 
 dotenv.config();
 const PORT = process.env.PORT ?? 4500;
@@ -35,6 +36,13 @@ app.post("/api/SendFavoritesEmail", async (req, res) => {
   }
 
   return res.json({ success: true });
+});
+
+app.get("/api/StripeCheckoutSession", async (req, res) => {
+  const { host, price, email } = req.query;
+  // console.log(req.query);
+  const id = await generateStripeCheckoutSession({ host, price, email });
+  res.redirect(303, id.url);
 });
 
 app.listen(PORT, () => {

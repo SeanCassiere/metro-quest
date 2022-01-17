@@ -1,5 +1,5 @@
 import LocationService, { Location } from "./services/LocationService.js";
-
+import { getServerUrls } from "./utils/environment.js";
 import UserService from "./services/UserService.js";
 import { dynamicNavbar } from "./services/changeNavbar.js";
 
@@ -140,4 +140,22 @@ jQuery(() => {
     localStorage.setItem("finalTripFare", finalTripFare);
     console.log(localStorage.getItem("finalTripFare"));
   });
+});
+
+// stripe redirect code
+function onSubmitCode(e: JQuery.TriggeredEvent) {
+  e.preventDefault();
+  $(`form[name="payment-form"]`).attr("action", getServerUrls().postStripeCheckoutSession);
+  $(`form[name="payment-form"] input[name="email"]`).attr("value", "test@test.com"); // change these fields
+  $(`form[name="payment-form"] input[name="price"]`).attr("value", "20"); // change these fields
+  $(`form[name="payment-form"] input[name="host"]`).attr(
+    "value",
+    `${window.location.protocol}//${window.location.host}`
+  );
+
+  e.currentTarget.submit();
+}
+
+jQuery(() => {
+  $('form[name="payment-form"]').on("submit", onSubmitCode);
 });
