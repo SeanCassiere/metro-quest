@@ -52,13 +52,13 @@ function writeLocationsToDom(locations: Location[]) {
 
   locations.forEach((location) => {
     locationHtml += `
-    <div class="col-md-3">
-      <div class="card mb-4 shadow-sm">
+    <div class="col-md-6 col-xl-3 mb-4">
+      <div class="h-100 card shadow-sm">
         <div class="card-body">
           <p class="card-text" style="font-weight: bold">${location.name}</p>
           <img class="homegrid" src="${location.largeCoverImgUrl}" />
           <p class="card-text">
-            Rating: ${location.ratings.currentRating} / 5
+            <span class="fw-bold">Rating: ${location.ratings.currentRating} / 5</span>
             <br />
             ${location.description[0].substring(0, 105)}...
           </p>
