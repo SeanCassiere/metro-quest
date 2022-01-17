@@ -9,7 +9,7 @@ jQuery(() => {
     window.location.replace(`/login.html?redirect=${window.location.pathname}${window.location.search}`);
     return;
   }
-  console.log(loggedInUser);
+  // console.log(loggedInUser);
   if (loggedInUser) {
     $("#bookingFirstNameInput").val(loggedInUser.firstName);
     $("#bookingLastNameInput").val(loggedInUser.lastName);
@@ -25,35 +25,35 @@ jQuery(() => {
 $("#checkoutSubmit").click(function () {
   var from = $("#bookingFromInput").val() as string;
   localStorage.setItem("fromvalue", from);
-  console.log(localStorage.getItem("fromvalue"));
+  // console.log(localStorage.getItem("fromvalue"));
 });
 
 //To
 $("#checkoutSubmit").click(function () {
   var from = $("#bookingToInput").val() as string;
   localStorage.setItem("tovalue", from);
-  console.log(localStorage.getItem("tovalue"));
+  // console.log(localStorage.getItem("tovalue"));
 });
 
 //Departure Date
 $("#checkoutSubmit").click(function () {
   var departureDate = $("#bookingDepartureDateInput").val() as string;
   localStorage.setItem("datevalue", departureDate);
-  console.log(localStorage.getItem("datevalue"));
+  // console.log(localStorage.getItem("datevalue"));
 });
 
 //Departure Time
 $("#checkoutSubmit").click(function () {
   var departureTime = $("#bookingDepartureTimeInput").val() as string;
   localStorage.setItem("timevalue", departureTime);
-  console.log(localStorage.getItem("timevalue"));
+  // console.log(localStorage.getItem("timevalue"));
 });
 
 //Number Of Tickets
 $("#checkoutSubmit").click(function () {
   var noOfTickets = $("#bookingTicketsInput").val() as string;
   localStorage.setItem("textvalue", noOfTickets);
-  console.log(localStorage.getItem("textvalue"));
+  // console.log(localStorage.getItem("textvalue"));
 });
 
 //Promotion Code
@@ -66,7 +66,7 @@ $("#checkoutSubmit").click(function () {
 $("#checkoutSubmit").click(function () {
   var contactNo = $("#bookingContactNoInput").val() as string;
   localStorage.setItem("contactnovalue", contactNo);
-  console.log(localStorage.getItem("contactnovalue"));
+  // console.log(localStorage.getItem("contactnovalue"));
 });
 
 //Credit Card Number
@@ -80,13 +80,13 @@ $("#checkoutSubmit").click(function () {
 jQuery(async function () {
   await LocationService.getOnlineLocations();
   let allLocations = LocationService.getAllLocationsAsArray();
-  console.log(allLocations);
+  // console.log(allLocations);
   $("#bookingFromInput").ready(function () {
     let text = "";
     allLocations.forEach((element) => {
       text += `<option value="${element.name}">${element.name}</option>`;
     });
-    console.log(text);
+    // console.log(text);
     $("#bookingFromInput").append(text);
   });
 });
@@ -95,24 +95,24 @@ jQuery(async function () {
 jQuery(async function () {
   await LocationService.getOnlineLocations();
   let allLocations = LocationService.getAllLocationsAsArray();
-  console.log(allLocations);
+  // console.log(allLocations);
   $("#bookingToInput").ready(function () {
     let text = "";
     allLocations.forEach((element) => {
       text += `<option value="${element.name}">${element.name}</option>`;
     });
-    console.log(text);
+    // console.log(text);
     $("#bookingToInput").append(text);
   });
 });
 
 //Trip-Fare
 $(document).ready(function () {
-  var precision = 1;
+  var precision = 100; //2 decimals
   var randomnum: any = Math.floor(Math.random() * (30 * precision - 1 * precision) + 1 * precision) / (1 * precision);
   var tripFare: any = document.getElementById("bookingTripFareInput")!.setAttribute("value", randomnum);
   localStorage.setItem("tempTripFare", randomnum);
-  console.log("works", randomnum);
+  // console.log("works", randomnum);
 });
 
 //User-points calculation
@@ -126,16 +126,16 @@ jQuery(() => {
   $("#promoCodeApply").click(function (e) {
     e.preventDefault();
     $(this).data("clicked", true);
-    var promoCodeValue: number = parseInt($("#bookingPromotionCodeInput").val() as string);
+    var promoCodeValue: number = parseFloat($("#bookingPromotionCodeInput").val() as string);
     // console.log(promoCodeValue);
-    var tripFareValue: number = parseInt(localStorage.getItem("tempTripFare") as string);
+    var tripFareValue: number = parseFloat(localStorage.getItem("tempTripFare") as string);
     if (promoCodeValue <= 0) {
-      promoCodeValue = 0;
+      promoCodeValue = 0.5;
     }
     if (promoCodeValue > tripFareValue) {
       promoCodeValue = tripFareValue;
       finalTripFare = tripFareValue - promoCodeValue;
-      console.log(finalTripFare);
+      // console.log(finalTripFare);
     } else {
       finalTripFare = tripFareValue - promoCodeValue;
     }
@@ -154,7 +154,7 @@ $("#checkoutSubmit").click(function () {
   } else {
     var tripFare = $("#bookingTripFareInput").val() as string;
     localStorage.setItem("finalTripFare", tripFare);
-    console.log(localStorage.getItem("finalTripFare"));
+    // console.log(localStorage.getItem("finalTripFare"));
   }
 });
 
