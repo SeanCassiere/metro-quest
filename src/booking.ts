@@ -1,4 +1,5 @@
 import LocationService, { Location } from "./services/LocationService.js";
+
 import UserService from "./services/UserService.js";
 import { dynamicNavbar } from "./services/changeNavbar.js";
 
