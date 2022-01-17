@@ -7,7 +7,7 @@
     <link href="/css/bootstrap.css" rel="stylesheet" />
     <link href="/css/common.css" rel="stylesheet" />
     <link href="/css/yomal-style.css" rel="stylesheet" />
-	<!-- <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" /> -->
+    <!-- <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" /> -->
     <link
       rel="stylesheet"
       href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -73,17 +73,30 @@
         </div>
       </nav>
     </header>
-    <div class="d-flex flex-column h-100 justify-content-space-between mt-8 flex-grow-1 qr-floating-card"
-	style="background-color: #f7f6f2; min-height: 94vh">
-      <br/>
+    <div
+      class="d-flex flex-column h-100 justify-content-space-between mt-8 flex-grow-1 qr-floating-card"
+      style="background-color: #f7f6f2; min-height: 94vh"
+    >
+      <br />
       <div>
         <div class="col">
-          <div style="height: 50px; background-color: #4b6587; border-radius: 5px; margin: 1%; display: table; width: -webkit-fill-available;">
-            <div style="text-align: left; padding-left: 10px; display: table-cell; vertical-align: middle; color: #ffffff;">
-                Video Tutorial - How to use QR code
+          <div
+            style="
+              height: 50px;
+              background-color: #4b6587;
+              border-radius: 5px;
+              margin: 1%;
+              display: table;
+              width: -webkit-fill-available;
+            "
+          >
+            <div
+              style="text-align: left; padding-left: 10px; display: table-cell; vertical-align: middle; color: #ffffff"
+            >
+              Video Tutorial - How to use QR code
             </div>
           </div>
-    
+
           <div
             data-role="popup"
             id="popupVideo"
@@ -91,19 +104,30 @@
             data-theme="d"
             data-tolerance="15,15"
             class="video-box"
-			      style="width: -webkit-fill-available;"
+            style="width: -webkit-fill-available"
           >
             <iframe src="https://www.youtube.com/embed/43rBuGxk60I" class="responsive-iframe" seamless></iframe>
           </div>
         </div>
-  
+
         <div class="col">
-          <div style="height: 50px; background-color: #4b6587; border-radius: 5px; margin: 1%; display: table; width: -webkit-fill-available;">
-            <div style="text-align: left; padding-left: 10px; color: #ffffff; display: table-cell; vertical-align: middle;">
+          <div
+            style="
+              height: 50px;
+              background-color: #4b6587;
+              border-radius: 5px;
+              margin: 1%;
+              display: table;
+              width: -webkit-fill-available;
+            "
+          >
+            <div
+              style="text-align: left; padding-left: 10px; color: #ffffff; display: table-cell; vertical-align: middle"
+            >
               QR code
             </div>
           </div>
-    
+
           <div style="height: auto; background-color: #f0e5cf; border-radius: 5px; margin: 1%; padding: 15%">
             <div style="background-color: #fb743e; border-radius: 7px">
               <div class="qr-image">
@@ -116,51 +140,73 @@
           </div>
         </div>
       </div>
-      
-      <video id="preview" class="hidden" style="width: 500px; height: 500px; margin: 0px auto; "></video>
 
-      
+      <video id="preview" class="hidden" style="width: 500px; height: 500px; margin: 0px auto"></video>
 
       <footer class="pb-3 bg-metro-blue">
-        <div style="height: 60px; background-color: #4b6587"></div>
+        <div
+          class="d-flex justify-content-center align-items-center gap-4 pt-2 pb-1"
+          style="min-height: 60px; background-color: #4b6587"
+        >
+          <div>
+            <a href="https://www.facebook.com/cnn" target="_blank">
+              <img src="/static/images/facebook.png" alt="Facebook" width="45" height="45" />
+            </a>
+          </div>
+          <div>
+            <a href="https://www.instagram.com/mkbhd/" target="_blank">
+              <img src="/static/images/instagram.png" alt="Instagram" width="45" height="45" />
+            </a>
+          </div>
+          <div>
+            <a href="https://twitter.com/elonmusk" target="_blank">
+              <img src="/static/images/twitter.png" alt="Twitter" width="45" height="45" />
+            </a>
+          </div>
+          <div>
+            <a href="https://www.youtube.com/channel/UCCHZrKdmBnZEalEO-6uUY7w" target="_blank">
+              <img src="/static/images/youtube.png" alt="YouTube" width="45" height="45" />
+            </a>
+          </div>
+        </div>
         <ul class="nav justify-content-center pb-1 mb-1">
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-white-50">Home</a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-white-50">Categories</a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-white-50">About</a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-white-50">Contact</a></li>
+          <li class="nav-item"><a href="/" class="nav-link px-2 text-white-50">Home</a></li>
+          <li class="nav-item"><a href="/qr.html" class="nav-link px-2 text-white-50">Scan QR</a></li>
+          <li class="nav-item"><a href="/booking.html" class="nav-link px-2 text-white-50">Booking</a></li>
+          <li class="nav-item"><a href="/account.html" class="nav-link px-2 text-white-50">Account</a></li>
         </ul>
-        <p class="text-center text-white-50">&copy; 2021 Company, Inc</p>
+        <p class="text-center text-white-50">&copy; 2021 Metro Quest</p>
       </footer>
     </div>
-    
+
     <script src="/static/jquery-3.6.0.min.js"></script>
     <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
     <script type="text/javascript">
-      let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
-      scanner.addListener('scan', function (content) {
+      let scanner = new Instascan.Scanner({ video: document.getElementById("preview") });
+      scanner.addListener("scan", function (content) {
         window.location.replace(content);
       });
-      Instascan.Camera.getCameras().then(function (cameras) {
-        if (cameras.length > 0) {
-          scanner.start(cameras[0]);
-        } else {
-          console.error('No cameras found.');
-        }
-      }).catch(function (e) {
-        console.error(e);
-      });
-      jQuery(function(){ 
-        $("#qr-btn").on('click', function () {
+      Instascan.Camera.getCameras()
+        .then(function (cameras) {
+          if (cameras.length > 0) {
+            scanner.start(cameras[0]);
+          } else {
+            console.error("No cameras found.");
+          }
+        })
+        .catch(function (e) {
+          console.error(e);
+        });
+      jQuery(function () {
+        $("#qr-btn").on("click", function () {
           $("#preview").toggleClass("hidden");
         });
       });
-      
     </script>
-    
-    
-	<!-- <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script> -->
+
+    <!-- <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    
+
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script src="/static/bootstrap.bundle.min.js"></script>
     <script src="/scripts/qrPage.js" type="module"></script>

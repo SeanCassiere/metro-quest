@@ -8,8 +8,8 @@
     <link href="/css/bootstrap.css" rel="stylesheet" />
     <link href="/css/common.css" rel="stylesheet" />
     <link href="/css/yomal-style.css" rel="stylesheet" />
-    <link href="/css/override-jquery.css" rel="stylesheet"/>
-    
+    <link href="/css/override-jquery.css" rel="stylesheet" />
+
     <link
       rel="stylesheet"
       href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -80,52 +80,93 @@
       style="background-color: #f7f6f2; min-height: 94vh"
     >
       <br />
-      <div style="height: 100px; background-color: #4b6587; border-radius: 5px; margin: 1%; display: table;">
-        <div style="display: table-cell; vertical-align: middle; text-align: center; font-size: 30px; color: #ffffff;">
-            Welcome to MetroQ Questionaire
+      <div style="height: 100px; background-color: #4b6587; border-radius: 5px; margin: 1%; display: table">
+        <div style="display: table-cell; vertical-align: middle; text-align: center; font-size: 30px; color: #ffffff">
+          Welcome to MetroQ Questionaire
         </div>
       </div>
-      <div style="height: 70px; background-color: #f0e5cf; border-radius: 5px; margin: 1%; display: table;">
-        <div class="text-black" style="text-align: left; padding-left: 10px; display: table-cell; vertical-align: middle; ">
-            Select the correct answers from the questions below and gain points to obtain amazing discounts !!<br/>
-            <div style="padding-left: 30px;">
-              -  Gain +1 point to each question answered correctly
-            </div>   
+      <div style="height: 70px; background-color: #f0e5cf; border-radius: 5px; margin: 1%; display: table">
+        <div
+          class="text-black"
+          style="text-align: left; padding-left: 10px; display: table-cell; vertical-align: middle"
+        >
+          Select the correct answers from the questions below and gain points to obtain amazing discounts !!<br />
+          <div style="padding-left: 30px">- Gain +1 point to each question answered correctly</div>
         </div>
       </div>
 
       <div class="quiz-contiainer">
         <div id="quiz"></div>
       </div>
-      <a href="#popupDialog" data-rel="popup" id="submit" class="btn btn-metro-orange text-white submit-button" role="button" aria-pressed="true" size="lg" data-position-to="window" data-transition="pop">
+      <a
+        href="#popupDialog"
+        data-rel="popup"
+        id="submit"
+        class="btn btn-metro-orange text-white submit-button"
+        role="button"
+        aria-pressed="true"
+        size="lg"
+        data-position-to="window"
+        data-transition="pop"
+      >
         Submit
       </a>
-     
 
-      <div data-role="popup" id="popupDialog" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
+      <div
+        data-role="popup"
+        id="popupDialog"
+        data-overlay-theme="b"
+        data-theme="b"
+        data-dismissible="false"
+        style="max-width: 400px"
+      >
         <div data-role="header" data-theme="a">
           <h1 id="result" class="result-text"></h1>
         </div>
         <div role="main" class="ui-content pop-up-box">
           <h3 class="ui-title">Your points are added to your account</h3>
           <p>Go to accounts page to check your points or go back to home</p>
-          <a href="/index.html" rel="external" class="btn btn-metro-orange text-white pop-up-btn" >Home</a>
-          <a href="/account.html" rel="external" class="btn btn-metro-orange text-white pop-up-btn" >Account Page</a>
+          <a href="/index.html" rel="external" class="btn btn-metro-orange text-white pop-up-btn">Home</a>
+          <a href="/account.html" rel="external" class="btn btn-metro-orange text-white pop-up-btn">Account Page</a>
         </div>
       </div>
-      
+
       <!-- <a href="/qr.html" data-role="button" >Mobile button</a>
       <div id="result"></div> -->
 
       <footer class="pb-3 bg-metro-blue">
-        <div style="height: 60px; background-color: #4b6587"></div>
+        <div
+          class="d-flex justify-content-center align-items-center gap-4 pt-2 pb-1"
+          style="min-height: 60px; background-color: #4b6587"
+        >
+          <div>
+            <a href="https://www.facebook.com/cnn" target="_blank">
+              <img src="/static/images/facebook.png" alt="Facebook" width="45" height="45" />
+            </a>
+          </div>
+          <div>
+            <a href="https://www.instagram.com/mkbhd/" target="_blank">
+              <img src="/static/images/instagram.png" alt="Instagram" width="45" height="45" />
+            </a>
+          </div>
+          <div>
+            <a href="https://twitter.com/elonmusk" target="_blank">
+              <img src="/static/images/twitter.png" alt="Twitter" width="45" height="45" />
+            </a>
+          </div>
+          <div>
+            <a href="https://www.youtube.com/channel/UCCHZrKdmBnZEalEO-6uUY7w" target="_blank">
+              <img src="/static/images/youtube.png" alt="YouTube" width="45" height="45" />
+            </a>
+          </div>
+        </div>
         <ul class="nav justify-content-center pb-1 mb-1">
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-white-50">Home</a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-white-50">Categories</a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-white-50">About</a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-white-50">Contact</a></li>
+          <li class="nav-item"><a href="/" class="nav-link px-2 text-white-50">Home</a></li>
+          <li class="nav-item"><a href="/qr.html" class="nav-link px-2 text-white-50">Scan QR</a></li>
+          <li class="nav-item"><a href="/booking.html" class="nav-link px-2 text-white-50">Booking</a></li>
+          <li class="nav-item"><a href="/account.html" class="nav-link px-2 text-white-50">Account</a></li>
         </ul>
-        <p class="text-center text-white-50">&copy; 2021 Company, Inc</p>
+        <p class="text-center text-white-50">&copy; 2021 Metro Quest</p>
       </footer>
     </div>
 
