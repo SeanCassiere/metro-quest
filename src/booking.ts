@@ -115,13 +115,8 @@ $(document).ready(function () {
   console.log("works", randomnum);
 });
 
-$("#checkoutSubmit").click(function () {
-  var tripFare = $("#bookingTripFareInput").val() as string;
-  localStorage.setItem("tripvalue", tripFare);
-  console.log(localStorage.getItem("tripvalue"));
-});
-
 //User-points calculation
+var finalTripFare: any;
 jQuery(() => {
   const loggedInUser = UserService.getLoggedInUser();
   if (!loggedInUser) {
@@ -130,6 +125,7 @@ jQuery(() => {
   }
   $("#promoCodeApply").click(function (e) {
     e.preventDefault();
+    $(this).data("clicked", true);
     var promoCodeValue: number = parseInt($("#bookingPromotionCodeInput").val() as string);
     // console.log(promoCodeValue);
     var tripFareValue: number = parseInt(localStorage.getItem("tempTripFare") as string);
@@ -138,10 +134,10 @@ jQuery(() => {
     }
     if (promoCodeValue > tripFareValue) {
       promoCodeValue = tripFareValue;
-      var finalTripFare: any = tripFareValue - promoCodeValue;
+      finalTripFare = tripFareValue - promoCodeValue;
       console.log(finalTripFare);
     } else {
-      var finalTripFare: any = tripFareValue - promoCodeValue;
+      finalTripFare = tripFareValue - promoCodeValue;
     }
 
     // console.log(tripFareValue);
@@ -150,6 +146,16 @@ jQuery(() => {
     localStorage.setItem("finalTripFare", finalTripFare);
     // console.log(localStorage.getItem("finalTripFare"));
   });
+});
+
+$("#checkoutSubmit").click(function () {
+  if ($("#promoCodeApply").data("clicked")) {
+    localStorage.setItem("finalTripFare", finalTripFare);
+  } else {
+    var tripFare = $("#bookingTripFareInput").val() as string;
+    localStorage.setItem("finalTripFare", tripFare);
+    console.log(localStorage.getItem("finalTripFare"));
+  }
 });
 
 // stripe redirect code
@@ -162,7 +168,9 @@ function onSubmitCode(e: JQuery.TriggeredEvent) {
   }
   $(`form[name="payment-form"]`).attr("action", getServerUrls().postStripeCheckoutSession);
   $(`form[name="payment-form"] input[name="email"]`).attr("value", loggedInUser.email); // change these fields
-  $(`form[name="payment-form"] input[name="price"]`).attr("value", "20"); // change these fields
+  // console.log(localStorage.getItem("finalTripFare"));
+  // return;
+  $(`form[name="payment-form"] input[name="price"]`).attr("value", localStorage.getItem("finalTripFare")); // change these fields
   $(`form[name="payment-form"] input[name="host"]`).attr(
     "value",
     `${window.location.protocol}//${window.location.host}`
