@@ -70,11 +70,11 @@ $("#checkoutSubmit").click(function () {
 });
 
 //Credit Card Number
-// $("#finalCheckout").click(function () {
-//   var cardNo = $("#bookingCardNoInput").val() as string;
-//   localStorage.setItem("cardnumber", cardNo);
-//   console.log(localStorage.getItem("cardnumber"));
-// });
+$("#finalCheckout").click(function () {
+  var cardNo = $("#bookingCardNoInput").val() as string;
+  localStorage.setItem("cardnumber", cardNo);
+  console.log(localStorage.getItem("cardnumber"));
+});
 
 // Locations-From
 jQuery(async function () {
