@@ -73,6 +73,27 @@
     </header>
     <!---->
     <div id="logout-modal"></div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Discount Applied</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">...</div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Ok</button>
+            <!-- <form name="payment-form" action="http://localhost:4500/api/StripeCheckoutSession" method="get">
+              <input type="hidden" name="price" />
+              <input type="hidden" name="host" />
+              <input type="hidden" name="email" />
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+            </form> -->
+          </div>
+        </div>
+      </div>
+    </div>
     <div
       class="d-flex flex-column h-100 justify-content-space-between mt-8"
       style="background-color: #f7f6f2; min-height: 94vh"
@@ -187,7 +208,16 @@
                 </div>
                 <div class="col-2">
                     <div class="mb-2 w-100">
-                        <button class="promo-code" type="submit" id="promoCodeApply">APPLY</button>
+                      <button
+                        type="button"
+                        id="promoCodeApply"
+                        class="promo-code"
+                        data-bs-toggle="modal"
+                        data-bs-target="#exampleModal"
+                      >
+                        APPLY
+                      </button>
+                        <!-- <button class="promo-code" type="submit" id="promoCodeApply">APPLY</button> -->
                     </div>
                 </div>
             </div>

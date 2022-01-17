@@ -82,170 +82,169 @@
         <div class="flex-grow-1 booking-floating-card">
           <form
             name="bookingForm"
-            class="
-              mt-3
-              d-flex
-              flex-column
-              justify-content-center
-              gap-2
-              account-floating-flexible-width
-            "
+            class="mt-3 d-flex flex-column justify-content-center gap-2 account-floating-flexible-width"
           >
+            <div class="alert alert-danger" id="payment-mode" role="alert">Payment Failed!</div>
             <div class="d-flex flex-column justify-content-center align-items-center gap-2">
-                <div class="flex-grow-1 heading-bar"><span class="heading-bar-content">Booking Summary</span></div>
+              <div class="flex-grow-1 heading-bar"><span class="heading-bar-content">Booking Summary</span></div>
             </div>
             <div class="alert alert-warning w-100" role="alert" id="bookingFormErrorBlock" style="display: none">
               This email is already in use.
             </div>
             <div class="row">
-                <div class="col">
-                    <div class="mb-2 w-100">
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="bookingFromSummaryInput"
-                          name="from"
-                          placeholder="From"
-                          autofocus
-                          readonly
-                        />
-                    </div>
+              <div class="col">
+                <div class="mb-2 w-100">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="bookingFromSummaryInput"
+                    name="from"
+                    placeholder="From"
+                    autofocus
+                    readonly
+                  />
                 </div>
-                <div class="col">
-                    <div class="mb-2 w-100">
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="bookingToSummaryInput"
-                          name="to"
-                          placeholder="To"
-                          autofocus
-                          readonly
-                        />
-                      </div>
+              </div>
+              <div class="col">
+                <div class="mb-2 w-100">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="bookingToSummaryInput"
+                    name="to"
+                    placeholder="To"
+                    autofocus
+                    readonly
+                  />
                 </div>
+              </div>
             </div>
             <div class="row">
-                <div class="col">
-                    <div class="mb-2 w-100">
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="bookingDepartureDateSummaryInput"
-                          name="departureDate"
-                          placeholder="Departure Date"
-                          autofocus
-                          readonly
-                        />
-                    </div>
+              <div class="col">
+                <div class="mb-2 w-100">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="bookingDepartureDateSummaryInput"
+                    name="departureDate"
+                    placeholder="Departure Date"
+                    autofocus
+                    readonly
+                  />
                 </div>
-                <div class="col">
-                    <div class="mb-2 w-100">
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="bookingDepartureTimeSummaryInput"
-                          name="departureTime"
-                          placeholder="Departure Time"
-                          autofocus
-                          readonly
-                        />
-                      </div>
+              </div>
+              <div class="col">
+                <div class="mb-2 w-100">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="bookingDepartureTimeSummaryInput"
+                    name="departureTime"
+                    placeholder="Departure Time"
+                    autofocus
+                    readonly
+                  />
                 </div>
+              </div>
             </div>
             <div class="mb-2 w-100">
-                <input
-                          type="text"
-                          class="form-control"
-                          id="bookingTicketsSummaryInput"
-                          name="noOfTickets"
-                          placeholder="Number of Tickets"
-                          autofocus
-                          readonly
-                        />
+              <input
+                type="text"
+                class="form-control"
+                id="bookingTicketsSummaryInput"
+                name="noOfTickets"
+                placeholder="Number of Tickets"
+                autofocus
+                readonly
+              />
             </div>
             <div class="row">
-                <div class="col">
-                    <div class="mb-2 w-100">
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="bookingTripFareSummaryInput"
-                          name="tripFare"
-                          placeholder="Trip Fare"
-                          autofocus
-                          readonly
-                        />
-                    </div>
+              <div class="col">
+                <div class="mb-2 w-100">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="bookingTripFareSummaryInput"
+                    name="tripFare"
+                    placeholder="Trip Fare"
+                    autofocus
+                    readonly
+                  />
                 </div>
-                <div class="col">
-                    <div class="mb-2 w-100">
-                        
-                    </div>
-                </div>
+              </div>
+              <div class="col">
+                <div class="mb-2 w-100"></div>
+              </div>
             </div>
             <div class="d-flex flex-column justify-content-center align-items-center gap-2">
-                <div class="flex-grow-1 heading-bar"><span class="heading-bar-content">Billing Details</span></div>
+              <div class="flex-grow-1 heading-bar"><span class="heading-bar-content">Billing Details</span></div>
             </div>
             <div class="row">
-                <div class="col">
-                    <div class="mb-2 w-100">
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="bookingFirstNameInput"
-                          name="firstName"
-                          placeholder="First Name"
-                          autofocus
-                          readonly
-                        />
-                    </div>
+              <div class="col">
+                <div class="mb-2 w-100">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="bookingFirstNameInput"
+                    name="firstName"
+                    placeholder="First Name"
+                    autofocus
+                    readonly
+                  />
                 </div>
-                <div class="col">
-                    <div class="mb-2 w-100">
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="bookingLastNameInput"
-                          name="lastName"
-                          placeholder="Last Name"
-                          autofocus
-                          readonly
-                        />
-                      </div>
+              </div>
+              <div class="col">
+                <div class="mb-2 w-100">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="bookingLastNameInput"
+                    name="lastName"
+                    placeholder="Last Name"
+                    autofocus
+                    readonly
+                  />
                 </div>
+              </div>
             </div>
             <div class="row">
-                <div class="col">
-                    <div class="mb-2 w-100">
-                        <input
-                            type="text"
-                            class="form-control"
-                            id="bookingContactNoSummaryInput"
-                            name="contactNo"
-                            placeholder="Contact Number"
-                            autofocus
-                            readonly
-                        />
-                    </div>
+              <div class="col">
+                <div class="mb-2 w-100">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="bookingContactNoSummaryInput"
+                    name="contactNo"
+                    placeholder="Contact Number"
+                    autofocus
+                    readonly
+                  />
                 </div>
-                <div class="col">
-                    <div class="mb-2 w-100">
-                        <input 
-                            type="text" 
-                            class="form-control" 
-                            name="email" 
-                            id="bookingEmailInput" 
-                            placeholder="Email" 
-                            readonly 
-                        />
-                      </div>
+              </div>
+              <div class="col">
+                <div class="mb-2 w-100">
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="email"
+                    id="bookingEmailInput"
+                    placeholder="Email"
+                    readonly
+                  />
                 </div>
+              </div>
             </div>
             <div class="mb-2 w-100">
-              <button class="btn btn-metro-orange text-white" type="submit" size="lg" style="width: 100%">
-                CONTINUE TO HOMEPAGE
-              </button>
+              <a
+                href="index.html"
+                id="homePageButton"
+                class="btn btn-metro-orange text-white"
+                role="button"
+                aria-pressed="true"
+                size="lg"
+                style="width: 100%"
+                >CONTINUE TO HOMEPAGE</a
+              >
             </div>
           </form>
         </div>
@@ -264,17 +263,34 @@
 
     <script>
       document.getElementById("bookingTicketsSummaryInput").setAttribute("value", localStorage.getItem("textvalue"));
-      document.getElementById("bookingDepartureDateSummaryInput").setAttribute("value", localStorage.getItem("datevalue"));
-      document.getElementById("bookingDepartureTimeSummaryInput").setAttribute("value", localStorage.getItem("timevalue"));
-      document.getElementById("bookingContactNoSummaryInput").setAttribute("value", localStorage.getItem("contactnovalue"));
+      document
+        .getElementById("bookingDepartureDateSummaryInput")
+        .setAttribute("value", localStorage.getItem("datevalue"));
+      document
+        .getElementById("bookingDepartureTimeSummaryInput")
+        .setAttribute("value", localStorage.getItem("timevalue"));
+      document
+        .getElementById("bookingContactNoSummaryInput")
+        .setAttribute("value", localStorage.getItem("contactnovalue"));
       document.getElementById("bookingFromSummaryInput").setAttribute("value", localStorage.getItem("fromvalue"));
       document.getElementById("bookingToSummaryInput").setAttribute("value", localStorage.getItem("tovalue"));
-      document.getElementById("bookingTripFareSummaryInput").setAttribute("value", localStorage.getItem("finalTripFare"));
+      document
+        .getElementById("bookingTripFareSummaryInput")
+        .setAttribute("value", localStorage.getItem("finalTripFare"));
     </script>
 
     <script src="/static/jquery-3.6.0.min.js"></script>
     <script src="/static/bootstrap.bundle.min.js"></script>
     <script src="/scripts/index.js" type="module"></script>
     <script src="/scripts/booking.js" type="module"></script>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const payment_mode = params.get("mode");
+      if (payment_mode && payment_mode.toLowerCase() === "success") {
+        $("#payment-mode").removeClass("alert-danger");
+        $("#payment-mode").addClass("alert-success");
+        $("#payment-mode").text("Payment Successful!");
+      }
+    </script>
   </body>
 </html>
