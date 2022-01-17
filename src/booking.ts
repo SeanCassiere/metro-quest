@@ -67,11 +67,11 @@ $("#checkoutSubmit").click(function () {
 });
 
 //Credit Card Number
-// $("#finalCheckout").click(function () {
-//   var cardNo = $("#bookingCardNoInput").val() as string;
-//   localStorage.setItem("cardnumber", cardNo);
-//   console.log(localStorage.getItem("cardnumber"));
-// });
+$("#finalCheckout").click(function () {
+  var cardNo = $("#bookingCardNoInput").val() as string;
+  localStorage.setItem("cardnumber", cardNo);
+  console.log(localStorage.getItem("cardnumber"));
+});
 
 // Locations-From
 jQuery(async function () {
@@ -130,13 +130,10 @@ jQuery(() => {
     var promoCodeValue: any = $("#bookingPromotionCodeInput").val();
     console.log(promoCodeValue);
     var tripFareValue: any = localStorage.getItem("tempTripFare");
-    var finalTripFare: any = loggedInUser.userPoints > tripFareValue ? 0 : tripFareValue - promoCodeValue;
+    var finalTripFare: any = tripFareValue - promoCodeValue;
     console.log(tripFareValue);
     console.log(finalTripFare);
-    UserService.removePointsFromUser(
-      loggedInUser.id,
-      loggedInUser.userPoints > tripFareValue ? tripFareValue : tripFareValue - promoCodeValue
-    );
+    UserService.removePointsFromUser(loggedInUser.id, promoCodeValue);
     localStorage.setItem("finalTripFare", finalTripFare);
     console.log(localStorage.getItem("finalTripFare"));
   });
