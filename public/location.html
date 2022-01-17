@@ -86,44 +86,40 @@
     style="background-color: #f7f6f2; min-height: 94vh"
   >
     <div class="flex-grow-1 container">
-      <!-- <div class="flex-grow-1 account-floating-card"> -->
-        <!-- <div id="location-content"> -->
-          <!---->
     
           <div id="LocationTemp"></div>
-          <!-- <div
-            class="d-flex flex-column h-100 justify-content-space-between mt-8"
-            style="background-color: #f7f6f2; min-height: 94vh"
-          > -->
+
           <div class="imageContainer">
             <img id="locationImage" src="">
             <h1 id= "locationHeader"></h1>
           </div>
+          <!-- Star rating and rating display -->
           <p id="Rating" class="m-0">
             <div id="rateYo"></div>
             <small class="d-block" style="text-align: left; padding-right: 1em;" id="rating-avg">Avg 0 / 5.</small>
           </p>
+          <!-- Add to favourties button -->
           <button class="btn btn-metro-blue text-white" type="button" id="add-to-fav" size="md" style="margin-bottom: 2%;">Add to Favorites</button>
           <div style="width: 100%">
+          <!-- Map implementation -->
           <div data-role="popup" id="popupMap" data-overlay-theme="a" data-theme="a" data-corners="false" data-tolerance="15,15">
               <iframe id="location-map" width="100%" height="550px;" loading="lazy"></iframe>
           </div>
           <div class="bookbtn">
             <button class="btn btn-metro-orange text-white" type="submit" size="lg" style="width: 100%; height: 50px; display:inline;">Book A Trip !</button>
           </div>
-            <!-- <div class="bookbtn">
-              <button class="btn btn-metro-orange text-white" type="submit" size="lg" style="width: 55.3%; height: 50px; display:inline; float: none;">Book A Trip !</button> -->
-            <!-- </div> -->
+          <!--About location display -->
             <div class="aboutbox">
               <h4 id="AboutLoc"></h3>
             </div>
+            <!--About location video display -->
             <iframe id="locVideo" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <div class="desbox">
               <p id="Description"></p>
             </div>
+            <!--Comment section -->
             <h4 id="comments">Comments</h4>
             <div class="commentbox mb-2 pb-2">
-              <!-- <div id="comment-form" style="margin-bottom: 4em; display: none; height: 1px;"></div> -->
               <form class='mx-1 pt-3' id="comment-form" name="comment-form">
                 <div class="w-100">
                   <input type="text" readonly class="form-control-plaintext" id="staticCommentName" value="Not signed in">
@@ -148,11 +144,7 @@
               
               <div id="location-comments-list" class="pt-1 mt-2"></div>
             </div>
-          <!-- Location Template -->
           </div>
-    
-          <!---->
-         <!-- </div> -->
       </div>
       </div>
 
