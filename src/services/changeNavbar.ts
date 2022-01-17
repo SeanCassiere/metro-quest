@@ -105,6 +105,7 @@ function stringSecondaryNavItems(user: User | null) {
   const isHomePath = currentPath === "/" || currentPath.includes("index");
   const isAccountProfile = currentPath.includes("tab=profile");
   const isAccountFavorites = currentPath.includes("tab=favorites");
+  const isQr = currentPath.includes("qr") ?? currentPath.includes("questioniare");
 
   let defaultNavItems = `
 
@@ -115,7 +116,7 @@ function stringSecondaryNavItems(user: User | null) {
     </a>
   </li>
   <li class="nav-item">
-    <a class="nav-link secondary-nav-item" aria-current="page" href="/">
+    <a class="nav-link secondary-nav-item ${isQr && "active"}" aria-current="page" href="/qr.html">
       <i class="fa fa-qrcode secondary-nav-item-text-icon" aria-hidden="true"></i>
       <span class="secondary-nav-item-text-content">Scan QR Code</span>
     </a>

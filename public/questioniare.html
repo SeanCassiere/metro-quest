@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link href="/css/bootstrap.css" rel="stylesheet" />
+    <link href="/css/common.css" rel="stylesheet" />
+    <link href="/css/yomal-style.css" rel="stylesheet" />
+    <link href="/css/override-jquery.css" rel="stylesheet"/>
+    
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <title>Questionaire | Metro Quest</title>
+  </head>
+  <body class="h-100" style="background-color: #f7f6f2">
+    <header>
+      <nav class="navbar navbar-dark fixed-top bg-metro-blue">
+        <div class="container">
+          <button
+            class="btn btn-small p-1 me-2"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar"
+          >
+            <span class="navbar-toggler-icon p-0"></span>
+          </button>
+          <a class="navbar-brand" href="/">
+            <img class="mt-2" src="/static/images/nav-logo-small.png" width="100px" alt="MetroQuest Navbar Logo" />
+            <!-- MetroQuest -->
+          </a>
+          <ul class="navbar-nav ms-auto d-flex flex-row" id="primary-nav-items">
+            <li class="nav-item">
+              <a class="nav-link pe-2" aria-current="page" href="#">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Sign Up</a>
+            </li>
+          </ul>
+          <div
+            class="offcanvas offcanvas-start"
+            tabindex="-1"
+            id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel"
+          >
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title w-100" id="offcanvasNavbarLabel">
+                <div class="d-flex justify-content-center w-100">
+                  <img
+                    class="mt-2 flex-shrink"
+                    src="/static/images/nav-logo-offcanvas-full.png"
+                    width="150px"
+                    alt="MetroQuest Navbar Logo"
+                  />
+                </div>
+              </h5>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" id="secondary-nav-items">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Link</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div
+      class="d-flex flex-column h-100 justify-content-space-between mt-8 flex-grow-1 qr-floating-card"
+      style="background-color: #f7f6f2; min-height: 94vh"
+    >
+      <br />
+      <div style="height: 100px; background-color: #4b6587; border-radius: 5px; margin: 1%; display: table;">
+        <div style="display: table-cell; vertical-align: middle; text-align: center; font-size: 30px; color: #ffffff;">
+            Welcome to MetroQ Questionaire
+        </div>
+      </div>
+      <div style="height: 70px; background-color: #f0e5cf; border-radius: 5px; margin: 1%; display: table;">
+        <div class="text-black" style="text-align: left; padding-left: 10px; display: table-cell; vertical-align: middle; ">
+            Select the correct answers from the questions below and gain points to obtain amazing discounts !!<br/>
+            <div style="padding-left: 30px;">
+              -  Gain +1 point to each question answered correctly
+            </div>   
+        </div>
+      </div>
+
+      <div class="quiz-contiainer">
+        <div id="quiz"></div>
+      </div>
+      <a href="#popupDialog" data-rel="popup" id="submit" class="btn btn-metro-orange text-white submit-button" role="button" aria-pressed="true" size="lg" data-position-to="window" data-transition="pop">
+        Submit
+      </a>
+     
+
+      <div data-role="popup" id="popupDialog" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
+        <div data-role="header" data-theme="a">
+          <h1 id="result" class="result-text"></h1>
+        </div>
+        <div role="main" class="ui-content pop-up-box">
+          <h3 class="ui-title">Your points are added to your account</h3>
+          <p>Go to accounts page to check your points or go back to home</p>
+          <a href="/index.html" rel="external" class="btn btn-metro-orange text-white pop-up-btn" >Home</a>
+          <a href="/account.html" rel="external" class="btn btn-metro-orange text-white pop-up-btn" >Account Page</a>
+        </div>
+      </div>
+      
+      <!-- <a href="/qr.html" data-role="button" >Mobile button</a>
+      <div id="result"></div> -->
+
+      <footer class="pb-3 bg-metro-blue">
+        <div style="height: 60px; background-color: #4b6587"></div>
+        <ul class="nav justify-content-center pb-1 mb-1">
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-white-50">Home</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-white-50">Categories</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-white-50">About</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-white-50">Contact</a></li>
+        </ul>
+        <p class="text-center text-white-50">&copy; 2021 Company, Inc</p>
+      </footer>
+    </div>
+
+    <!-- <script src="/static/jquery-3.6.0.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="/static/bootstrap.bundle.min.js"></script>
+    <script src="/scripts/questioniare.js" type="module"></script>
+    <script src="/scripts/index.js" type="module"></script>
+  </body>
+</html>
