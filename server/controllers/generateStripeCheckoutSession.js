@@ -1,6 +1,6 @@
 const dotenv = require("dotenv");
-const stripe = require("stripe")("sk_test_4eC39HqLyjWDarjtT1zdp7dc");
-
+dotenv.config();
+const stripe = require("stripe")(process.env.STRIPE_SECRET ?? "sk_test_4eC39HqLyjWDarjtT1zdp7dc");
 /**
  * price is in cents
  * host: protocol + url + port

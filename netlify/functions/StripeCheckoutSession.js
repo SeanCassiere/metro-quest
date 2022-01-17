@@ -1,7 +1,13 @@
+const express = require("express");
+const serverless = require("serverless-http");
+const app = express();
+
 const generateStripeCheckoutSession = require("../../server/controllers/generateStripeCheckoutSession");
 
-exports.handler = async (evt, ctx) => {
-  const { host, price, email } = evt.queryStringParameters;
+app.get("/api/StripeCheckoutSession", async (req, res) => {
+  const { host, price, email } = req.query;
   const id = await generateStripeCheckoutSession({ host, price, email });
-  return { statusCode: 303, url: id.url, redirect: id.url };
-};
+  res.redirect(303, id.url);
+});
+
+module.exports.handler = serverless(app);
