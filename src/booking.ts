@@ -127,26 +127,35 @@ jQuery(() => {
   }
   $("#promoCodeApply").click(function (e) {
     e.preventDefault();
-    var promoCodeValue: any = $("#bookingPromotionCodeInput").val();
-    console.log(promoCodeValue);
-    var tripFareValue: any = localStorage.getItem("tempTripFare");
-    var finalTripFare: any = loggedInUser.userPoints > tripFareValue ? 0 : tripFareValue - promoCodeValue;
-    console.log(tripFareValue);
-    console.log(finalTripFare);
-    UserService.removePointsFromUser(
-      loggedInUser.id,
-      loggedInUser.userPoints > tripFareValue ? tripFareValue : tripFareValue - promoCodeValue
-    );
+    var promoCodeValue: number = parseInt($("#bookingPromotionCodeInput").val() as string);
+    // console.log(promoCodeValue);
+    var tripFareValue: number = parseFloat(localStorage.getItem("tempTripFare") as string);
+    if (promoCodeValue > tripFareValue) {
+      promoCodeValue = tripFareValue;
+      var finalTripFare: any = tripFareValue - promoCodeValue;
+      console.log(finalTripFare);
+    } else {
+      var finalTripFare: any = tripFareValue - promoCodeValue;
+    }
+    Math.round(promoCodeValue * 100) / 100;
+    // console.log(tripFareValue);
+    // console.log(finalTripFare);
+    UserService.removePointsFromUser(loggedInUser.id, promoCodeValue);
     localStorage.setItem("finalTripFare", finalTripFare);
-    console.log(localStorage.getItem("finalTripFare"));
+    // console.log(localStorage.getItem("finalTripFare"));
   });
 });
 
 // stripe redirect code
 function onSubmitCode(e: JQuery.TriggeredEvent) {
   e.preventDefault();
+  const loggedInUser = UserService.getLoggedInUser();
+  if (!loggedInUser) {
+    window.location.replace(`/login.html?redirect=${window.location.pathname}${window.location.search}`);
+    return;
+  }
   $(`form[name="payment-form"]`).attr("action", getServerUrls().postStripeCheckoutSession);
-  $(`form[name="payment-form"] input[name="email"]`).attr("value", "test@test.com"); // change these fields
+  $(`form[name="payment-form"] input[name="email"]`).attr("value", loggedInUser.email); // change these fields
   $(`form[name="payment-form"] input[name="price"]`).attr("value", "20"); // change these fields
   $(`form[name="payment-form"] input[name="host"]`).attr(
     "value",
