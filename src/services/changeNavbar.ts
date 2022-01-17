@@ -106,6 +106,7 @@ function stringSecondaryNavItems(user: User | null) {
   const isAccountProfile = currentPath.includes("tab=profile");
   const isAccountFavorites = currentPath.includes("tab=favorites");
   const isQr = currentPath.includes("qr") ?? currentPath.includes("questioniare");
+  const isBooking = currentPath === "/booking" || currentPath.includes("booking");
 
   let defaultNavItems = `
 
@@ -122,7 +123,7 @@ function stringSecondaryNavItems(user: User | null) {
     </a>
   </li>
   <li class="nav-item">
-    <a class="nav-link secondary-nav-item" aria-current="page" href="/">
+    <a class="nav-link secondary-nav-item ${isBooking && "active"}" aria-current="page" href="/booking.html">
       <i class="fa fa-calendar secondary-nav-item-text-icon" aria-hidden="true"></i>
       <span class="secondary-nav-item-text-content">Book a trip</span>
     </a>
