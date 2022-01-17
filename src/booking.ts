@@ -14,6 +14,7 @@ jQuery(() => {
     $("#bookingFirstNameInput").val(loggedInUser.firstName);
     $("#bookingLastNameInput").val(loggedInUser.lastName);
     $("#bookingEmailInput").val(loggedInUser.email);
+    $("#bookingPromotionCodeInput").val(loggedInUser.userPoints);
   }
 });
 
@@ -83,7 +84,7 @@ jQuery(async function () {
       text += `<option value="${element.name}">${element.name}</option>`;
     });
     console.log(text);
-    $("#bookingFromInput").html(text);
+    $("#bookingFromInput").append(text);
   });
 });
 
@@ -98,7 +99,7 @@ jQuery(async function () {
       text += `<option value="${element.name}">${element.name}</option>`;
     });
     console.log(text);
-    $("#bookingToInput").html(text);
+    $("#bookingToInput").append(text);
   });
 });
 
@@ -107,11 +108,33 @@ $(document).ready(function () {
   var precision = 100; // 2 decimals
   var randomnum: any = Math.floor(Math.random() * (30 * precision - 1 * precision) + 1 * precision) / (1 * precision);
   var tripFare: any = document.getElementById("bookingTripFareInput")!.setAttribute("value", randomnum);
-  console.log("works", tripFare);
+  localStorage.setItem("tempTripFare", randomnum);
+  console.log("works", randomnum);
 });
 
 $("#checkoutSubmit").click(function () {
   var tripFare = $("#bookingTripFareInput").val() as string;
   localStorage.setItem("tripvalue", tripFare);
   console.log(localStorage.getItem("tripvalue"));
+});
+
+//User-points calculation
+jQuery(() => {
+  const loggedInUser = UserService.getLoggedInUser();
+  if (!loggedInUser) {
+    window.location.replace(`/login.html?redirect=${window.location.pathname}${window.location.search}`);
+    return;
+  }
+  $("#promoCodeApply").click(function (e) {
+    e.preventDefault();
+    var promoCodeValue: any = $("#bookingPromotionCodeInput").val();
+    console.log(promoCodeValue);
+    var tripFareValue: any = localStorage.getItem("tempTripFare");
+    var finalTripFare: any = tripFareValue - promoCodeValue;
+    console.log(tripFareValue);
+    console.log(finalTripFare);
+    UserService.removePointsFromUser(loggedInUser.id, promoCodeValue);
+    localStorage.setItem("finalTripFare", finalTripFare);
+    console.log(localStorage.getItem("finalTripFare"));
+  });
 });
