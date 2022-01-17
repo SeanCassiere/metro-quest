@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link href="/css/bootstrap.css" rel="stylesheet" />
+    <link href="/css/booking-style.css" rel="stylesheet" />
+    <link href="/css/common.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <!-- <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" /> -->
+    <title>Checkout | Metro Quest</title>
+  </head>
+  <body class="h-100" style="background-color: #f7f6f2">
+    <header>
+      <nav class="navbar navbar-dark fixed-top bg-metro-blue">
+        <div class="container">
+          <button
+            class="btn btn-small p-1 me-2"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar"
+          >
+            <span class="navbar-toggler-icon p-0"></span>
+          </button>
+          <a class="navbar-brand" href="/">
+            <img class="mt-2" src="/static/images/nav-logo-small.png" width="100px" alt="MetroQuest Navbar Logo" />
+            <!-- MetroQuest -->
+          </a>
+          <ul class="navbar-nav ms-auto d-flex flex-row" id="primary-nav-items">
+            <li class="nav-item">
+              <a class="nav-link pe-2" aria-current="page" href="#">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Sign Up</a>
+            </li>
+          </ul>
+          <div
+            class="offcanvas offcanvas-start"
+            tabindex="-1"
+            id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel"
+          >
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title w-100" id="offcanvasNavbarLabel">
+                <div class="d-flex justify-content-center w-100">
+                  <img
+                    class="mt-2 flex-shrink"
+                    src="/static/images/nav-logo-offcanvas-full.png"
+                    width="150px"
+                    alt="MetroQuest Navbar Logo"
+                  />
+                </div>
+              </h5>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" id="secondary-nav-items">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Link</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!---->
+    <div id="logout-modal"></div>
+    <div
+      class="d-flex flex-column h-100 justify-content-space-between mt-8"
+      style="background-color: #f7f6f2; min-height: 94vh"
+    >
+      <div class="flex-grow-1 container d-flex flex-row justify-content-center align-items-center">
+        <div class="flex-grow-1 booking-floating-card">
+          <form
+            name="bookingForm"
+            class="
+              mt-3
+              d-flex
+              flex-column
+              justify-content-center
+              gap-2
+              account-floating-flexible-width
+            "
+          >
+            <div class="d-flex flex-column justify-content-center align-items-center gap-2">
+                <div class="flex-grow-1 heading-bar"><span class="heading-bar-content">Booking Summary</span></div>
+            </div>
+            <div class="alert alert-warning w-100" role="alert" id="bookingFormErrorBlock" style="display: none">
+              This email is already in use.
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="mb-2 w-100">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="bookingFromSummaryInput"
+                          name="from"
+                          placeholder="From"
+                          autofocus
+                          readonly
+                        />
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-2 w-100">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="bookingToSummaryInput"
+                          name="to"
+                          placeholder="To"
+                          autofocus
+                          readonly
+                        />
+                      </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="mb-2 w-100">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="bookingDepartureDateSummaryInput"
+                          name="departureDate"
+                          placeholder="Departure Date"
+                          autofocus
+                          readonly
+                        />
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-2 w-100">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="bookingDepartureTimeSummaryInput"
+                          name="departureTime"
+                          placeholder="Departure Time"
+                          autofocus
+                          readonly
+                        />
+                      </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="mb-2 w-100">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="bookingTicketsSummaryInput"
+                          name="noOfTickets"
+                          placeholder="Number of Tickets"
+                          autofocus
+                          readonly
+                        />
+                      </div>
+                </div>
+                <div class="col">
+                    <div class="mb-2 w-100">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="bookingTripFareSummaryInput"
+                          name="tripFare"
+                          placeholder="Trip Fare"
+                          autofocus
+                          readonly
+                        />
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex flex-column justify-content-center align-items-center gap-2">
+                <div class="flex-grow-1 heading-bar"><span class="heading-bar-content">Billing Details</span></div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="mb-2 w-100">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="bookingFirstNameInput"
+                          name="firstName"
+                          placeholder="First Name"
+                          autofocus
+                          readonly
+                        />
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-2 w-100">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="bookingLastNameInput"
+                          name="lastName"
+                          placeholder="Last Name"
+                          autofocus
+                          readonly
+                        />
+                      </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="mb-2 w-100">
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="bookingContactNoSummaryInput"
+                            name="contactNo"
+                            placeholder="Contact Number"
+                            autofocus
+                            readonly
+                        />
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-2 w-100">
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            name="email" 
+                            id="bookingEmailInput" 
+                            placeholder="Email" 
+                            readonly 
+                        />
+                      </div>
+                </div>
+            </div>
+            <div class="d-flex flex-column justify-content-center align-items-center gap-2">
+                <div class="flex-grow-1 heading-bar"><span class="heading-bar-content">Payment Details</span></div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="mb-2 w-100">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                            <label class="form-check-label payment-label" for="flexRadioDefault1">
+                              Credit/Debit Card
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-2 w-100 credit-card-icons">
+                        <img class="payment-master-card-icon" src="/static/icons/uim_master-card.svg" alt="Master Card Icon" />
+                        <img class="payment-card-icon" src="/static/icons/fontisto_american-express.svg" alt="American Express Icon" />
+                        <img class="payment-card-icon" src="/static/icons/logos_visaelectron.svg" alt="Visa Icon" />
+                    </div>
+                </div>
+            </div>
+            <div class="mb-2 w-100">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="bookingCardNoInput"
+                  name="cardNo"
+                  placeholder="Card Number"
+                  maxlength="16"
+                  autofocus
+                />
+            </div>
+            <div class="mb-2 w-100">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="bookingCardNameInput"
+                  name="cardName"
+                  placeholder="Name on Card"
+                  autofocus
+                />
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="mb-2 w-100">
+                        <select name='expireMM' id='expireMM' class=" w-100 expiry-month">
+                            <option value=''>Month</option>
+                            <option value='01'>January</option>
+                            <option value='02'>February</option>
+                            <option value='03'>March</option>
+                            <option value='04'>April</option>
+                            <option value='05'>May</option>
+                            <option value='06'>June</option>
+                            <option value='07'>July</option>
+                            <option value='08'>August</option>
+                            <option value='09'>September</option>
+                            <option value='10'>October</option>
+                            <option value='11'>November</option>
+                            <option value='12'>December</option>
+                        </select> 
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-2 w-100">
+                        <select name='expireYY' id='expireYY' class="w-100 expiry-year">
+                            <option value=''>Year</option>
+                            <option value='20'>2020</option>
+                            <option value='21'>2021</option>
+                            <option value='22'>2022</option>
+                            <option value='23'>2023</option>
+                            <option value='24'>2024</option>
+                        </select> 
+                        <input class="inputCard" type="hidden" name="expiry" id="expiry" maxlength="4"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="mb-2 w-100">
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="bookingCardCvvInput"
+                            name="cardCvv"
+                            placeholder="CVV"
+                            maxlength="3"
+
+                            autofocus
+                        />
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-2 w-100">
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="mb-2 w-100">
+                <!-- <a href="bookingSummary.html" id="finalCheckout" class="btn btn-metro-orange text-white" role="button" aria-pressed="true" size="lg" style="width: 100%">CHECKOUT</a> -->
+                <button type="button" class="btn btn-metro-orange text-white submit-button" data-bs-toggle="modal" data-bs-target="#exampleModalCenter" style="width: 100%">
+                  CHECKOUT
+                </button>
+                <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                  Launch demo modal
+                </button> -->
+            </div>
+
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Are you sure to checkout?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <!-- <div class="modal-body">
+                    
+                  </div> -->
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                    <a type="button" class="btn btn-primary" href="bookingSummary.html">Yes</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-2 w-100">
+              <button class="btn btn-outline-metro-orange" type="reset" size="lg" style="width: 100%">CLEAR</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <footer class="pb-3 bg-metro-blue">
+        <div style="height: 60px; background-color: #4b6587"></div>
+        <ul class="nav justify-content-center pb-1 mb-1">
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-white-50">Home</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-white-50">Categories</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-white-50">About</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-white-50">Contact</a></li>
+        </ul>
+        <p class="text-center text-white-50">&copy; 2021 Company, Inc</p>
+      </footer>
+    </div>
+
+    <script>
+      document.getElementById("bookingTicketsSummaryInput").setAttribute("value", localStorage.getItem("textvalue"));
+      document.getElementById("bookingDepartureDateSummaryInput").setAttribute("value", localStorage.getItem("datevalue"));
+      document.getElementById("bookingDepartureTimeSummaryInput").setAttribute("value", localStorage.getItem("timevalue"));
+      document.getElementById("bookingContactNoSummaryInput").setAttribute("value", localStorage.getItem("contactnovalue"));
+      document.getElementById("bookingFromSummaryInput").setAttribute("value", localStorage.getItem("fromvalue"));
+      document.getElementById("bookingToSummaryInput").setAttribute("value", localStorage.getItem("tovalue"));
+      document.getElementById("bookingTripFareSummaryInput").setAttribute("value", localStorage.getItem("finalTripFare"));
+    </script>
+
+    <script src="/static/jquery-3.6.0.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script> -->
+    <!-- <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
+    <script src="/static/bootstrap.bundle.min.js"></script>
+    <script src="/scripts/index.js" type="module"></script>
+    <script src="/scripts/booking.js" type="module"></script>
+    <!-- <script src="/scripts/registerPage.js" type="module"></script> -->
+  </body>
+</html>
