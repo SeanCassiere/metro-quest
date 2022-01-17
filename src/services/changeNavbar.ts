@@ -122,7 +122,7 @@ function stringSecondaryNavItems(user: User | null) {
     </a>
   </li>
   <li class="nav-item">
-    <a class="nav-link secondary-nav-item" aria-current="page" href="/">
+    <a class="nav-link secondary-nav-item" aria-current="page" href="/booking.html">
       <i class="fa fa-calendar secondary-nav-item-text-icon" aria-hidden="true"></i>
       <span class="secondary-nav-item-text-content">Book a trip</span>
     </a>
