@@ -6,6 +6,7 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <link href="/css/bootstrap.css" rel="stylesheet" />
     <link href="/css/sean-style.css" rel="stylesheet" />
+    <link href="/css/common.css" rel="stylesheet" />
     <link
       rel="stylesheet"
       href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -72,6 +73,7 @@
       </nav>
     </header>
     <!---->
+    <div id="logout-modal"></div>
     <div
       class="d-flex flex-column h-100 justify-content-space-between mt-8"
       style="background-color: #f7f6f2; min-height: 94vh"
@@ -169,31 +171,40 @@
               account-floating-flexible-width
             "
           >
-            <subtitle class="mb-3 card-form-subtitle">Enter your details to login</subtitle>
-            <div class="alert alert-warning w-100" role="alert" id="loginFormErrorBlock" style="display: none">
-              Either email or password is incorrect
+            <div
+              class="alert alert-metro-orange text-center w-100"
+              id="login-page-redirect-alert"
+              style="display: none"
+              role="alert"
+            >
+              Please sign in to continue
             </div>
+            <subtitle class="mb-3 card-form-subtitle" id="login-page-subtitle">Enter your details to login</subtitle>
             <div class="mb-2 w-100">
               <input
-                type="email"
+                type="text"
                 class="form-control"
                 id="registerEmailInput"
                 name="email"
                 placeholder="Email"
-                required
                 autofocus
               />
+              <div id="emailFeedback" class="invalid-feedback"></div>
             </div>
-
-            <div class="mb-2 w-100">
+            <div class="mb-2 w-100 input-group">
               <input
                 type="password"
                 class="form-control"
-                id="registerPasswordInput"
                 name="password"
+                id="registerPasswordInput"
                 placeholder="Password"
-                required
               />
+              <span class="input-group-text p-0 pl-2 pr-2">
+                <button type="button" data-parent="password" class="btn btn-sm" id="show-password">
+                  <i class="fa fa-eye-slash" aria-hidden="true"></i>
+                </button>
+              </span>
+              <div id="passwordFeedback" class="invalid-feedback"></div>
             </div>
             <div class="mb-2 w-100">
               <button class="btn btn-metro-orange text-white" type="submit" size="lg" style="width: 100%">Login</button>
@@ -210,19 +221,45 @@
           </form>
           <div class="mt-4 mb-3 d-flex flex-column justify-content-center align-items-center">
             <p>Don't have an account?</p>
-            <a href="/register.html" class="text-metro-orange text-decoration-none">Sign up now!</a>
+            <a href="/register.html" id="login-signup-now-link" class="text-metro-orange text-decoration-none"
+              >Sign up now!</a
+            >
           </div>
         </div>
       </div>
       <footer class="pb-3 bg-metro-blue">
-        <div style="height: 60px; background-color: #4b6587"></div>
+        <div
+          class="d-flex justify-content-center align-items-center gap-4 pt-2 pb-1"
+          style="min-height: 60px; background-color: #4b6587"
+        >
+          <div>
+            <a href="https://www.facebook.com/cnn" target="_blank">
+              <img src="/static/images/facebook.png" alt="Facebook" width="45" height="45" />
+            </a>
+          </div>
+          <div>
+            <a href="https://www.instagram.com/mkbhd/" target="_blank">
+              <img src="/static/images/instagram.png" alt="Instagram" width="45" height="45" />
+            </a>
+          </div>
+          <div>
+            <a href="https://twitter.com/elonmusk" target="_blank">
+              <img src="/static/images/twitter.png" alt="Twitter" width="45" height="45" />
+            </a>
+          </div>
+          <div>
+            <a href="https://www.youtube.com/channel/UCCHZrKdmBnZEalEO-6uUY7w" target="_blank">
+              <img src="/static/images/youtube.png" alt="YouTube" width="45" height="45" />
+            </a>
+          </div>
+        </div>
         <ul class="nav justify-content-center pb-1 mb-1">
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-white-50">Home</a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-white-50">Categories</a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-white-50">About</a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-white-50">Contact</a></li>
+          <li class="nav-item"><a href="/" class="nav-link px-2 text-white-50">Home</a></li>
+          <li class="nav-item"><a href="/qr.html" class="nav-link px-2 text-white-50">Scan QR</a></li>
+          <li class="nav-item"><a href="/booking.html" class="nav-link px-2 text-white-50">Booking</a></li>
+          <li class="nav-item"><a href="/account.html" class="nav-link px-2 text-white-50">Account</a></li>
         </ul>
-        <p class="text-center text-white-50">&copy; 2021 Company, Inc</p>
+        <p class="text-center text-white-50">&copy; 2021 Metro Quest</p>
       </footer>
     </div>
 

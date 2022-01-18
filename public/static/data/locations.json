@@ -1,0 +1,479 @@
+{
+  "37876241-13f7-48ea-b086-cf8761ce0591": {
+    "id": "37876241-13f7-48ea-b086-cf8761ce0591",
+    "name": "Stonehenge",
+    "description": [
+      "Stonehenge is a prehistoric monument on Salisbury Plain in Wiltshire, England, two miles west of Amesbury. It consists of an outer ring of vertical sarsen standing stones, each around 13 feet high, seven feet wide, and weighing around 25 tons, topped by connecting horizontal lintel stones. Inside is a ring of smaller bluestones. Inside these are free-standing trilithons, two bulkier vertical Sarsens joined by one lintel. The whole monument, now ruinous, is orientated towards the sunrise on the summer solstice. The stones are set within earthworks in the middle of the most dense complex of Neolithic and Bronze Age monuments in England, including several hundred tumuli (burial mounds)."
+    ],
+    "mapUri": "https://www.google.com/maps/embed/v1/place?q=place_id:ChIJEfYKhTvmc0gR3dLTvOJwkZc&key=AIzaSyAeMkQvru6oqfWbrAWeeExTHln7Bkm2V7Q",
+    "mapCords": {
+      "lat": 51.179541124747374,
+      "long": -1.8262150000000001
+    },
+    "videoUri": "https://www.youtube.com/embed/BTwuKCqFwJY",
+    "largeCoverImgUrl": "/static/images/locations/stonehenge.jpg",
+    "ratings": {
+      "totalRatings": 1,
+      "currentRating": 3.5,
+      "totalRatingValue": 3.5,
+      "ratedUsers": ["c3064eb0-25a4-46ef-81f4-e0657b898844"],
+      "ratingHistory": [{ "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844", "rating": 3.5 }]
+    },
+    "comments": {
+      "6f7be0a6-2094-40b0-8881-2691ffae332a": {
+        "id": "6f7be0a6-2094-40b0-8881-2691ffae332a",
+        "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844",
+        "userName": "Test Test",
+        "textContent": "Lorem ipsum",
+        "date": "2022-01-12T08:48:32.015Z",
+        "replies": [
+          {
+            "id": "cb00f069-c882-4ea9-a0a9-73f26a6f770c",
+            "userId": "55879dc3-d9c4-4e14-9f8a-ffc53d4ba351",
+            "userName": "Sean Cassiere",
+            "textContent": "My response to your comment",
+            "date": "2022-01-13T09:32:32.015Z"
+          }
+        ]
+      },
+      "fda0cccf-5db7-4091-959b-a044f0689f50": {
+        "id": "fda0cccf-5db7-4091-959b-a044f0689f50",
+        "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844",
+        "userName": "Test Test",
+        "textContent": "Lorem ipsum",
+        "date": "2022-01-12T08:48:32.015Z",
+        "replies": []
+      }
+    }
+  },
+
+  "fda0cccf-5db7-4091-959b-a044f0689f50": {
+    "id": "fda0cccf-5db7-4091-959b-a044f0689f50",
+    "name": "Cornwall",
+    "description": [
+      "Cornwall is a historic county and ceremonial county in South West England. It is recognised as one of the Celtic nations, and is the homeland of the Cornish people. Cornwall is bordered to the north and west by the Atlantic Ocean, to the south by the English Channel, and to the east by the county of Devon, with the River Tamar forming the border between them. Cornwall forms the westernmost part of the South West Peninsula of the island of Great Britain. The southwesternmost point is Land's End and the southernmost Lizard Point. Cornwall has a population of 568,210 and an area of 3,563 km2.The county has been administered since 2009 by the unitary authority, Cornwall Council. The ceremonial county of Cornwall also includes the Isles of Scilly, which are administered separately. The administrative centre of Cornwall is Truro, its only city."
+    ],
+    "mapCords": {
+      "lat": 50.503632,
+      "long": -4.652498
+    },
+    "videoUri": "https://www.youtube.com/embed/t7fjL4oNnIc",
+    "largeCoverImgUrl": "/static/images/locations/cornwall.jpg",
+    "ratings": {
+      "totalRatings": 1,
+      "currentRating": 1,
+      "totalRatingValue": 1,
+      "ratedUsers": ["c3064eb0-25a4-46ef-81f4-e0657b898844"],
+      "ratingHistory": [{ "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844", "rating": 1 }]
+    },
+    "comments": {
+      "6f7be0a6-2094-40b0-8881-2691ffae332a": {
+        "id": "6f7be0a6-2094-40b0-8881-2691ffae332a",
+        "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844",
+        "userName": "Test Test",
+        "textContent": "Lorem ipsum",
+        "date": "2022-01-12T08:48:32.015Z",
+        "replies": [
+          {
+            "id": "cb00f069-c882-4ea9-a0a9-73f26a6f770c",
+            "userId": "55879dc3-d9c4-4e14-9f8a-ffc53d4ba351",
+            "userName": "Sean Cassiere",
+            "textContent": "My response to your comment",
+            "date": "2022-01-13T09:32:32.015Z"
+          }
+        ]
+      }
+    }
+  },
+
+  "753feb38-76b3-11ec-ab57-2b5903bfae39": {
+    "id": "753feb38-76b3-11ec-ab57-2b5903bfae39",
+    "name": "Bristol",
+    "description": [
+      "Bristol is a city, ceremonial county and unitary authority in England.Situated on the River Avon, it is bordered by the ceremonial counties of Gloucestershire, to the north; and Somerset, to the south. Bristol is the most populous city in South West England.The wider Bristol Built-up Area is the eleventh most populous urban area in the United Kingdom."
+    ],
+    "mapCords": {
+      "lat": 51.454514,
+      "long": -2.587910
+    },
+    "videoUri": "https://www.youtube.com/embed/khM7tjui86Q",
+    "largeCoverImgUrl": "/static/images/locations/bristol.jpg",
+    "ratings": {
+      "totalRatings": 1,
+      "currentRating": 1,
+      "totalRatingValue": 1,
+      "ratedUsers": ["c3064eb0-25a4-46ef-81f4-e0657b898844"],
+      "ratingHistory": [{ "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844", "rating": 1 }]
+    },
+    "comments": {
+      "6f7be0a6-2094-40b0-8881-2691ffae332a": {
+        "id": "6f7be0a6-2094-40b0-8881-2691ffae332a",
+        "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844",
+        "userName": "Test Test",
+        "textContent": "Lorem ipsum",
+        "date": "2022-01-12T08:48:32.015Z",
+        "replies": [
+          {
+            "id": "cb00f069-c882-4ea9-a0a9-73f26a6f770c",
+            "userId": "55879dc3-d9c4-4e14-9f8a-ffc53d4ba351",
+            "userName": "Sean Cassiere",
+            "textContent": "My response to your comment",
+            "date": "2022-01-13T09:32:32.015Z"
+          }
+        ]
+      }
+    }
+  },
+
+  "6f2e2d94-76b4-11ec-9fe9-0706d585ba56": {
+    "id": "6f2e2d94-76b4-11ec-9fe9-0706d585ba56",
+    "name": "London",
+    "description": [
+      "London is the capital and largest city of England and the United Kingdom. It stands on the River Thames in south-east England at the head of a 50-mile (80 km) estuary down to the North Sea, and has been a major settlement for two millennia."
+    ],
+    "mapCords": {
+      "lat": 51.509865,
+      "long": -0.118092
+    },
+    "videoUri": "https://www.youtube.com/embed/usGgZwPGs8Y",
+    "largeCoverImgUrl": "/static/images/locations/london.jpg",
+    "ratings": {
+      "totalRatings": 1,
+      "currentRating": 1,
+      "totalRatingValue": 1,
+      "ratedUsers": ["c3064eb0-25a4-46ef-81f4-e0657b898844"],
+      "ratingHistory": [{ "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844", "rating": 1 }]
+    },
+    "comments": {
+      "6f7be0a6-2094-40b0-8881-2691ffae332a": {
+        "id": "6f7be0a6-2094-40b0-8881-2691ffae332a",
+        "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844",
+        "userName": "Test Test",
+        "textContent": "Lorem ipsum",
+        "date": "2022-01-12T08:48:32.015Z",
+        "replies": [
+          {
+            "id": "cb00f069-c882-4ea9-a0a9-73f26a6f770c",
+            "userId": "55879dc3-d9c4-4e14-9f8a-ffc53d4ba351",
+            "userName": "Sean Cassiere",
+            "textContent": "My response to your comment",
+            "date": "2022-01-13T09:32:32.015Z"
+          }
+        ]
+      }
+    }
+  },
+
+  "70fae1e8-76b5-11ec-a0c5-3b018a52e53f": {
+    "id": "70fae1e8-76b5-11ec-a0c5-3b018a52e53f",
+    "name": "Cardiff",
+    "description": [
+      "Cardiff, Caerdydd in Welsh, is the main city and the capital of Wales, located about 150 miles west of London. It is also the largest city of Cardiff county in the western UK. The city center is mostly flat and is bordered to the west by The Vale, to the east by Newport, to the south by Bristol Channel, and to the north by The South Wales Valleys. Cardiff Docks (Dociau Caerdydd in Welsh) is known as one of the largest dock systems in the world."
+    ],
+    "mapCords": {
+      "lat": 51.481583,
+      "long": -3.179090
+    },
+    "videoUri": "https://www.youtube.com/embed/eUJzunBxXpE",
+    "largeCoverImgUrl": "/static/images/locations/cardiff.jpg",
+    "ratings": {
+      "totalRatings": 1,
+      "currentRating": 1,
+      "totalRatingValue": 1,
+      "ratedUsers": ["c3064eb0-25a4-46ef-81f4-e0657b898844"],
+      "ratingHistory": [{ "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844", "rating": 1 }]
+    },
+    "comments": {
+      "6f7be0a6-2094-40b0-8881-2691ffae332a": {
+        "id": "6f7be0a6-2094-40b0-8881-2691ffae332a",
+        "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844",
+        "userName": "Test Test",
+        "textContent": "Lorem ipsum",
+        "date": "2022-01-12T08:48:32.015Z",
+        "replies": [
+          {
+            "id": "cb00f069-c882-4ea9-a0a9-73f26a6f770c",
+            "userId": "55879dc3-d9c4-4e14-9f8a-ffc53d4ba351",
+            "userName": "Sean Cassiere",
+            "textContent": "My response to your comment",
+            "date": "2022-01-13T09:32:32.015Z"
+          }
+        ]
+      }
+    }
+  },
+
+  "1528253c-76b6-11ec-9d55-6f0203a4cf84": {
+    "id": "1528253c-76b6-11ec-9d55-6f0203a4cf84",
+    "name": "Oxford",
+    "description": [
+      "Oxford, founded in the 8th century, is a large and the main city of Oxfordshire, famous with its oldest prestigious university in the UK and a great deal of other historic attractions, large publishing agencies, a large car-producing facility, scientific research establishments, etc. The city has interesting local beer brands."
+    ],
+    "mapCords": {
+      "lat": 51.752022,
+      "long": -1.257677
+    },
+    "videoUri": "https://www.youtube.com/embed/kx2ZCakBRXM",
+    "largeCoverImgUrl": "/static/images/locations/oxford.jpg",
+    "ratings": {
+      "totalRatings": 1,
+      "currentRating": 1,
+      "totalRatingValue": 1,
+      "ratedUsers": ["c3064eb0-25a4-46ef-81f4-e0657b898844"],
+      "ratingHistory": [{ "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844", "rating": 1 }]
+    },
+    "comments": {
+      "6f7be0a6-2094-40b0-8881-2691ffae332a": {
+        "id": "6f7be0a6-2094-40b0-8881-2691ffae332a",
+        "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844",
+        "userName": "Test Test",
+        "textContent": "Lorem ipsum",
+        "date": "2022-01-12T08:48:32.015Z",
+        "replies": [
+          {
+            "id": "cb00f069-c882-4ea9-a0a9-73f26a6f770c",
+            "userId": "55879dc3-d9c4-4e14-9f8a-ffc53d4ba351",
+            "userName": "Sean Cassiere",
+            "textContent": "My response to your comment",
+            "date": "2022-01-13T09:32:32.015Z"
+          }
+        ]
+      }
+    }
+  },
+
+  "745f593a-76b6-11ec-b3e3-abb97d206ea0": {
+    "id": "745f593a-76b6-11ec-b3e3-abb97d206ea0",
+    "name": "Edinburgh",
+    "description": [
+      "Edinburgh, or the City of Edinburgh, is the largest and the second most populous city of Scotland, its capital and arguably the most beautiful city of the region. It is located in the southeastern part of Scotland, in the lowlands near the mountainous northern part of the region. The setting of the city is wonderful, right on the shores of the spectacular bay formed by the River Forth entering the North Sea."
+    ],
+    "mapCords": {
+      "lat": 55.953251, 
+      "long": -3.188267
+    },
+    "videoUri": "https://www.youtube.com/embed/LX2nq-tthxs",
+    "largeCoverImgUrl": "/static/images/locations/edinburgh.jpg",
+    "ratings": {
+      "totalRatings": 1,
+      "currentRating": 1,
+      "totalRatingValue": 1,
+      "ratedUsers": ["c3064eb0-25a4-46ef-81f4-e0657b898844"],
+      "ratingHistory": [{ "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844", "rating": 1 }]
+    },
+    "comments": {
+      "6f7be0a6-2094-40b0-8881-2691ffae332a": {
+        "id": "6f7be0a6-2094-40b0-8881-2691ffae332a",
+        "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844",
+        "userName": "Test Test",
+        "textContent": "Lorem ipsum",
+        "date": "2022-01-12T08:48:32.015Z",
+        "replies": [
+          {
+            "id": "cb00f069-c882-4ea9-a0a9-73f26a6f770c",
+            "userId": "55879dc3-d9c4-4e14-9f8a-ffc53d4ba351",
+            "userName": "Sean Cassiere",
+            "textContent": "My response to your comment",
+            "date": "2022-01-13T09:32:32.015Z"
+          }
+        ]
+      }
+    }
+  },
+
+  "eee6c15c-76b6-11ec-9672-c33f5825e652": {
+    "id": "eee6c15c-76b6-11ec-9672-c33f5825e652",
+    "name": "Chester",
+    "description": [
+      "Chester is an old beautiful city in the county of Chesire, the western UK, slightly to the south of Liverpool. Located on the River Dee, Chesire is famous among tourists for its historical walls. The history of the city goes back to the epochs of Ancient Rome and the Romans are considered to be the founders of the city."
+    ],
+    "mapCords": {
+      "lat": 53.189999, 
+      "long": -2.890000
+    },
+    "videoUri": "https://www.youtube.com/embed/5DniDm9epIY",
+    "largeCoverImgUrl": "/static/images/locations/chester.jpg",
+    "ratings": {
+      "totalRatings": 1,
+      "currentRating": 1,
+      "totalRatingValue": 1,
+      "ratedUsers": ["c3064eb0-25a4-46ef-81f4-e0657b898844"],
+      "ratingHistory": [{ "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844", "rating": 1 }]
+    },
+    "comments": {
+      "6f7be0a6-2094-40b0-8881-2691ffae332a": {
+        "id": "6f7be0a6-2094-40b0-8881-2691ffae332a",
+        "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844",
+        "userName": "Test Test",
+        "textContent": "Lorem ipsum",
+        "date": "2022-01-12T08:48:32.015Z",
+        "replies": [
+          {
+            "id": "cb00f069-c882-4ea9-a0a9-73f26a6f770c",
+            "userId": "55879dc3-d9c4-4e14-9f8a-ffc53d4ba351",
+            "userName": "Sean Cassiere",
+            "textContent": "My response to your comment",
+            "date": "2022-01-13T09:32:32.015Z"
+          }
+        ]
+      }
+    }
+  },
+
+  "5f51c1e4-76b7-11ec-aa84-4f8d4cab2abc": {
+    "id": "5f51c1e4-76b7-11ec-aa84-4f8d4cab2abc",
+    "name": "Canterbury",
+    "description": [
+      "Canterbury is a small city in the county of Kent, the UK, located on the Stour River. The settlement emerged near a large old cathedral known as Canterbury City Cathedral, and it has been growing as quite a big community and a tourist attraction."
+    ],
+    "mapCords": {
+      "lat": 51.279999, 
+      "long": 1.080000 
+    },
+    "videoUri": "https://www.youtube.com/embed/2p7PQkK7S50",
+    "largeCoverImgUrl": "/static/images/locations/canterbury.jpg",
+    "ratings": {
+      "totalRatings": 1,
+      "currentRating": 1,
+      "totalRatingValue": 1,
+      "ratedUsers": ["c3064eb0-25a4-46ef-81f4-e0657b898844"],
+      "ratingHistory": [{ "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844", "rating": 1 }]
+    },
+    "comments": {
+      "6f7be0a6-2094-40b0-8881-2691ffae332a": {
+        "id": "6f7be0a6-2094-40b0-8881-2691ffae332a",
+        "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844",
+        "userName": "Test Test",
+        "textContent": "Lorem ipsum",
+        "date": "2022-01-12T08:48:32.015Z",
+        "replies": [
+          {
+            "id": "cb00f069-c882-4ea9-a0a9-73f26a6f770c",
+            "userId": "55879dc3-d9c4-4e14-9f8a-ffc53d4ba351",
+            "userName": "Sean Cassiere",
+            "textContent": "My response to your comment",
+            "date": "2022-01-13T09:32:32.015Z"
+          }
+        ]
+      }
+    }
+  },
+
+  "ac4f4f2a-76b7-11ec-8995-df81e63cfa01": {
+    "id": "ac4f4f2a-76b7-11ec-8995-df81e63cfa01",
+    "name": "Cambridge",
+    "description": [
+      "Cambridge is a famous city and a center of education situated in the country of Cambridgeshire, the UK. It is a home to one of the oldest universities in Europe, the University of Cambridge, which was established in the early 13th century. Just like for all college cities, most of the city's economy relies on the services and other needs of the university."
+    ],
+    "mapCords": {
+      "lat": 52.205276, 
+      "long": 0.119167 
+    },
+    "videoUri": "https://www.youtube.com/embed/-y_NmpxZPjM",
+    "largeCoverImgUrl": "/static/images/locations/cambridge.jpg",
+    "ratings": {
+      "totalRatings": 1,
+      "currentRating": 1,
+      "totalRatingValue": 1,
+      "ratedUsers": ["c3064eb0-25a4-46ef-81f4-e0657b898844"],
+      "ratingHistory": [{ "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844", "rating": 1 }]
+    },
+    "comments": {
+      "6f7be0a6-2094-40b0-8881-2691ffae332a": {
+        "id": "6f7be0a6-2094-40b0-8881-2691ffae332a",
+        "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844",
+        "userName": "Test Test",
+        "textContent": "Lorem ipsum",
+        "date": "2022-01-12T08:48:32.015Z",
+        "replies": [
+          {
+            "id": "cb00f069-c882-4ea9-a0a9-73f26a6f770c",
+            "userId": "55879dc3-d9c4-4e14-9f8a-ffc53d4ba351",
+            "userName": "Sean Cassiere",
+            "textContent": "My response to your comment",
+            "date": "2022-01-13T09:32:32.015Z"
+          }
+        ]
+      }
+    }
+  },
+
+  "26a34722-76b8-11ec-9d4a-a7b8fa650171": {
+    "id": "26a34722-76b8-11ec-9d4a-a7b8fa650171",
+    "name": "Liverpool",
+    "description": [
+      "Liverpool is one of the largest cities in the United Kingdom, situated in the region known as Merseyside which is in North West England. The city is old and was established in the early 13th century. Though it is known primarily as the motherland of The Beatles, it is an industrial and cultural spot, with a long interesting history and plenty of wonderful places to see."
+    ],
+    "mapCords": {
+      "lat": 53.400002, 
+      "long": -2.983333  
+    },
+    "videoUri": "https://www.youtube.com/embed/8Q7uSZfZx1A",
+    "largeCoverImgUrl": "/static/images/locations/liverpool.jpg",
+    "ratings": {
+      "totalRatings": 1,
+      "currentRating": 1,
+      "totalRatingValue": 1,
+      "ratedUsers": ["c3064eb0-25a4-46ef-81f4-e0657b898844"],
+      "ratingHistory": [{ "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844", "rating": 1 }]
+    },
+    "comments": {
+      "6f7be0a6-2094-40b0-8881-2691ffae332a": {
+        "id": "6f7be0a6-2094-40b0-8881-2691ffae332a",
+        "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844",
+        "userName": "Test Test",
+        "textContent": "Lorem ipsum",
+        "date": "2022-01-12T08:48:32.015Z",
+        "replies": [
+          {
+            "id": "cb00f069-c882-4ea9-a0a9-73f26a6f770c",
+            "userId": "55879dc3-d9c4-4e14-9f8a-ffc53d4ba351",
+            "userName": "Sean Cassiere",
+            "textContent": "My response to your comment",
+            "date": "2022-01-13T09:32:32.015Z"
+          }
+        ]
+      }
+    }
+  },
+
+  "950543dc-76b8-11ec-b116-43c677b79504": {
+    "id": "950543dc-76b8-11ec-b116-43c677b79504",
+    "name": "Lancaster",
+    "description": [
+      "Lancaster is a small city and the seat of the county known as Lancashire, the UK. The city was founded in the early Middle Ages and became immediately a key cultural and educational center of the region. Due to the climatic conditions an geography, the town of Lancaster used to develop as a center of farming and agriculture."
+    ],
+    "mapCords": {
+      "lat": 54.047001, 
+      "long": -2.801000  
+    },
+    "videoUri": "https://www.youtube.com/embed/kCY1av3P_Sg",
+    "largeCoverImgUrl": "/static/images/locations/lancaster.jpg",
+    "ratings": {
+      "totalRatings": 1,
+      "currentRating": 1,
+      "totalRatingValue": 1,
+      "ratedUsers": ["c3064eb0-25a4-46ef-81f4-e0657b898844"],
+      "ratingHistory": [{ "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844", "rating": 1 }]
+    },
+    "comments": {
+      "6f7be0a6-2094-40b0-8881-2691ffae332a": {
+        "id": "6f7be0a6-2094-40b0-8881-2691ffae332a",
+        "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844",
+        "userName": "Test Test",
+        "textContent": "Lorem ipsum",
+        "date": "2022-01-12T08:48:32.015Z",
+        "replies": [
+          {
+            "id": "cb00f069-c882-4ea9-a0a9-73f26a6f770c",
+            "userId": "55879dc3-d9c4-4e14-9f8a-ffc53d4ba351",
+            "userName": "Sean Cassiere",
+            "textContent": "My response to your comment",
+            "date": "2022-01-13T09:32:32.015Z"
+          }
+        ]
+      }
+    }
+  } 
+}
+

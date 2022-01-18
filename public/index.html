@@ -5,13 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <link href="/css/bootstrap.css" rel="stylesheet" />
+    <link href="/css/common.css" rel="stylesheet" />
+    <link href="/css/archies-style.css" rel="stylesheet" />
     <link
       rel="stylesheet"
       href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
       integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
       crossorigin="anonymous"
     />
-    <title>Development</title>
+    <title>Home | Metro Quest</title>
   </head>
   <body class="h-100" style="background-color: #f7f6f2">
     <header>
@@ -71,35 +73,104 @@
       </nav>
     </header>
     <!---->
+    <div id="logout-modal"></div>
     <div
       class="d-flex flex-column h-100 justify-content-space-between mt-8"
       style="background-color: #f7f6f2; min-height: 94vh"
     >
       <div class="flex-grow-1 container">
-        <p>Main page content</p>
+        <!-- <p>Main page content</p> -->
         <div class="d-grid">
           <div class="row">
             <div class="col">
-              <p>The content below is rendered onto the DOM using JS.</p>
+              
             </div>
           </div>
-          <div id="demo-content-row" class="row"></div>
+          <div class="row">
+            <!-- Sorting options -->
+            <div class="col-md-12">
+              <form class="row mt-3 mb-3" name="home-location-sorting-form">
+                <div class="col-md-6 mb-1">
+                  <input type="text" class="form-control class-form-input" name="search" placeholder="Search" />
+                </div>
+                <div class="col-md-3 mb-1">
+                  <select class="form-select class-form-input" name="alphabet" aria-label="Default select example">
+                    <option value="0" selected>Sort by alphabet</option>
+                    <option value="1">A-Z</option>
+                    <option value="2">Z-A</option>
+                  </select>
+                </div>
+
+                <div class="col-md-3 mb-1">
+                  <select class="form-select class-form-input" name="rating" aria-label="Default select example">
+                    <option value="0" selected>Sort by rating</option>
+                    <option value="1">1-5</option>
+                    <option value="2">5-1</option>
+                  </select>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="row" id="home-locations-content">
+            <!-- The content below is rendered onto the DOM using JS. -->
+          </div>
+
+        <!-- About the app and review section  -->
+        <div id="about">
+          <h4 style="font-weight: bold; font-size: 20px">ABOUT THE APP</h4>
+          <p>
+            Metro Quest make your train journey and adventure! Welcome to Metro quest, our goal is to make your
+            train adventures convenient fun and memorable. Check out the available locations and get familiar with the locations 
+            with our informative videos, detailed descriptions and map. Take our quiz by scanning the unique QR code on your ticket and get some awesome rewards!
+          </p>
+        </div>
+        
+        <div id="reveiws">
+          <h4 style="font-weight: bold; font-size: 20px">REVIEWS</h4>
+          <div id="review-1"><p>"Fantastic app!"</p></div>
+          <div id="review-2"><p>"Engaging and easy to use"</p></div>
+          <div id="review-3"><p>"Best way to get new travel experiences"</p></div>
+          <div id="review-4"><p>"Fun for any traveller"</p></div>
+          <div id="review-5"><p>"Love the quizzes"</p></div>
+          <div id="review-6"><p>"Travelling made fun and affordable"</p></div>
         </div>
       </div>
-      <footer class="pb-3 bg-metro-blue">
-        <div style="height: 60px; background-color: #4b6587"></div>
-        <ul class="nav justify-content-center pb-1 mb-1">
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-white-50">Home</a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-white-50">Categories</a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-white-50">About</a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-white-50">Contact</a></li>
-        </ul>
-        <p class="text-center text-white-50">&copy; 2021 Company, Inc</p>
-      </footer>
     </div>
+    <footer class="pb-3 bg-metro-blue">
+      <div class="d-flex justify-content-center align-items-center gap-4 pt-2 pb-1" style="min-height: 60px; background-color: #4b6587">
+        <div>
+          <a href="https://www.facebook.com/cnn" target="_blank">
+            <img src="/static/images/facebook.png" alt="Facebook" width="45" height="45" />
+          </a>
+        </div>
+        <div>
+          <a href="https://www.instagram.com/mkbhd/" target="_blank">
+            <img src="/static/images/instagram.png" alt="Instagram" width="45" height="45" />
+          </a>
+        </div>
+        <div>
+          <a href="https://twitter.com/elonmusk" target="_blank">
+            <img src="/static/images/twitter.png" alt="Twitter" width="45" height="45" />
+          </a>
+        </div>
+        <div>
+          <a href="https://www.youtube.com/channel/UCCHZrKdmBnZEalEO-6uUY7w" target="_blank">
+            <img src="/static/images/youtube.png" alt="YouTube" width="45" height="45" />
+          </a>
+        </div>
+      </div>
+      <ul class="nav justify-content-center pb-1 mb-1">
+        <li class="nav-item"><a href="/" class="nav-link px-2 text-white-50">Home</a></li>
+        <li class="nav-item"><a href="/qr.html" class="nav-link px-2 text-white-50">Scan QR</a></li>
+        <li class="nav-item"><a href="/booking.html" class="nav-link px-2 text-white-50">Booking</a></li>
+        <li class="nav-item"><a href="/account.html" class="nav-link px-2 text-white-50">Account</a></li>
+      </ul>
+      <p class="text-center text-white-50">&copy; 2021 Metro Quest</p>
+    </footer>
 
     <script src="/static/jquery-3.6.0.min.js"></script>
     <script src="/static/bootstrap.bundle.min.js"></script>
     <script src="/scripts/index.js" type="module"></script>
+    <script src="/scripts/homePage.js" type="module"></script>
   </body>
 </html>

@@ -1,0 +1,106 @@
+.account-floating-card {
+    background-color: #ffffff;
+    margin: 0.75rem 0.25rem;
+    padding: 1rem;
+    box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+  }
+  
+  .account-floating-flexible-width{
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  
+  .account-favorite-locations-grid {
+    display: grid;
+    grid-gap: 1rem;
+  }
+  
+  .account-floating-card .card-form-subtitle {
+    font-size: 0.92rem;
+  }
+  
+  @media screen and (min-width: 768px) {
+    .account-floating-card {
+      margin: 1.5rem 3.5rem;
+      max-width: 45em;
+    }
+    .account-floating-flexible-width {
+      max-width: calc(100vw - 20rem);
+      margin: 0 auto;
+    }
+    .account-favorite-locations-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(30%, 33.3%));
+      grid-gap: 1rem;
+    }
+  }
+
+.promo-code {
+  width: auto;
+  float: right;
+  height: 35px;
+  border-radius: 5px;
+  background-color: #4B6587;
+  color: #ffffff;
+  border-color: #4B6587 !important;
+}
+
+.form-check-input:checked {
+  background-color: #FB743E;
+  border-color: #FB743E;
+}
+
+.payment-label {
+  font-weight: bold;
+}
+
+.payment-card-icon {
+  width: 24px;
+  height: 18px;
+  float: right;
+  margin-right: 4px;
+}
+
+.payment-master-card-icon {
+  width: 24px;
+  height: 24px;
+  float: right;
+}
+
+.secondary-nav-item {
+  font-size: 1.3rem !important;
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  margin-top: 2.5px;
+  margin-bottom: 2.5px;
+}
+
+.secondary-nav-item-text-content {
+  flex-grow: 1;
+}
+
+.secondary-nav-item-text-icon {
+  min-width: 40px;
+}
+
+.heading-bar {
+  color:#FFFFFF;
+  background-color: #4B6587;
+  border-radius: 5px;
+  width: 100%;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 24px;
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 5px;
+}
+
+.heading-bar-content {
+  margin-left: 10px;
+}
+

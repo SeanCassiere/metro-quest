@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link href="/css/bootstrap.css" rel="stylesheet" />
+    <link href="/css/common.css" rel="stylesheet" />
+    <link href="/css/yomal-style.css" rel="stylesheet" />
+    <!-- <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" /> -->
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <title>QR Code | Metro Quest</title>
+  </head>
+  <body class="h-100" style="background-color: #f7f6f2">
+    <header>
+      <nav class="navbar navbar-dark fixed-top bg-metro-blue">
+        <div class="container">
+          <button
+            class="btn btn-small p-1 me-2"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar"
+          >
+            <span class="navbar-toggler-icon p-0"></span>
+          </button>
+          <a class="navbar-brand" href="/">
+            <img class="mt-2" src="/static/images/nav-logo-small.png" width="100px" alt="MetroQuest Navbar Logo" />
+            <!-- MetroQuest -->
+          </a>
+          <ul class="navbar-nav ms-auto d-flex flex-row" id="primary-nav-items">
+            <li class="nav-item">
+              <a class="nav-link pe-2" aria-current="page" href="#">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Sign Up</a>
+            </li>
+          </ul>
+          <div
+            class="offcanvas offcanvas-start"
+            tabindex="-1"
+            id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel"
+          >
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title w-100" id="offcanvasNavbarLabel">
+                <div class="d-flex justify-content-center w-100">
+                  <img
+                    class="mt-2 flex-shrink"
+                    src="/static/images/nav-logo-offcanvas-full.png"
+                    width="150px"
+                    alt="MetroQuest Navbar Logo"
+                  />
+                </div>
+              </h5>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" id="secondary-nav-items">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Link</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div
+      class="d-flex flex-column h-100 justify-content-space-between mt-8 flex-grow-1 qr-floating-card"
+      style="background-color: #f7f6f2; min-height: 94vh"
+    >
+      <br />
+      <div>
+        <div class="col">
+          <div
+            style="
+              height: 50px;
+              background-color: #4b6587;
+              border-radius: 5px;
+              margin: 1%;
+              display: table;
+              width: -webkit-fill-available;
+            "
+          >
+            <div
+              style="text-align: left; padding-left: 10px; display: table-cell; vertical-align: middle; color: #ffffff"
+            >
+              Video Tutorial - How to use QR code
+            </div>
+          </div>
+
+          <div
+            data-role="popup"
+            id="popupVideo"
+            data-overlay-theme="a"
+            data-theme="d"
+            data-tolerance="15,15"
+            class="video-box"
+            style="width: -webkit-fill-available"
+          >
+            <iframe src="https://www.youtube.com/embed/43rBuGxk60I" class="responsive-iframe" seamless></iframe>
+          </div>
+        </div>
+
+        <div class="col">
+          <div
+            style="
+              height: 50px;
+              background-color: #4b6587;
+              border-radius: 5px;
+              margin: 1%;
+              display: table;
+              width: -webkit-fill-available;
+            "
+          >
+            <div
+              style="text-align: left; padding-left: 10px; color: #ffffff; display: table-cell; vertical-align: middle"
+            >
+              QR code
+            </div>
+          </div>
+
+          <div style="height: auto; background-color: #f0e5cf; border-radius: 5px; margin: 1%; padding: 15%">
+            <div style="background-color: #fb743e; border-radius: 7px">
+              <div class="qr-image">
+                <a href="#preview" id="qr-btn">
+                  <img alt="qr-code-img" class="center" src="/static/images/qr-code-icon.png" />
+                </a>
+              </div>
+              <p class="text-white qr-image-text">Click me to Scan</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <video id="preview" class="hidden" style="width: 500px; height: 500px; margin: 0px auto"></video>
+
+      <footer class="pb-3 bg-metro-blue">
+        <div
+          class="d-flex justify-content-center align-items-center gap-4 pt-2 pb-1"
+          style="min-height: 60px; background-color: #4b6587"
+        >
+          <div>
+            <a href="https://www.facebook.com/cnn" target="_blank">
+              <img src="/static/images/facebook.png" alt="Facebook" width="45" height="45" />
+            </a>
+          </div>
+          <div>
+            <a href="https://www.instagram.com/mkbhd/" target="_blank">
+              <img src="/static/images/instagram.png" alt="Instagram" width="45" height="45" />
+            </a>
+          </div>
+          <div>
+            <a href="https://twitter.com/elonmusk" target="_blank">
+              <img src="/static/images/twitter.png" alt="Twitter" width="45" height="45" />
+            </a>
+          </div>
+          <div>
+            <a href="https://www.youtube.com/channel/UCCHZrKdmBnZEalEO-6uUY7w" target="_blank">
+              <img src="/static/images/youtube.png" alt="YouTube" width="45" height="45" />
+            </a>
+          </div>
+        </div>
+        <ul class="nav justify-content-center pb-1 mb-1">
+          <li class="nav-item"><a href="/" class="nav-link px-2 text-white-50">Home</a></li>
+          <li class="nav-item"><a href="/qr.html" class="nav-link px-2 text-white-50">Scan QR</a></li>
+          <li class="nav-item"><a href="/booking.html" class="nav-link px-2 text-white-50">Booking</a></li>
+          <li class="nav-item"><a href="/account.html" class="nav-link px-2 text-white-50">Account</a></li>
+        </ul>
+        <p class="text-center text-white-50">&copy; 2021 Metro Quest</p>
+      </footer>
+    </div>
+
+    <script src="/static/jquery-3.6.0.min.js"></script>
+    <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+    <script type="text/javascript">
+      let scanner = new Instascan.Scanner({ video: document.getElementById("preview") });
+      scanner.addListener("scan", function (content) {
+        window.location.replace(content);
+      });
+      Instascan.Camera.getCameras()
+        .then(function (cameras) {
+          if (cameras.length > 0) {
+            scanner.start(cameras[0]);
+          } else {
+            console.error("No cameras found.");
+          }
+        })
+        .catch(function (e) {
+          console.error(e);
+        });
+      jQuery(function () {
+        $("#qr-btn").on("click", function () {
+          $("#preview").toggleClass("hidden");
+        });
+      });
+    </script>
+
+    <!-- <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="/static/bootstrap.bundle.min.js"></script>
+    <script src="/scripts/qrPage.js" type="module"></script>
+    <script src="/scripts/index.js" type="module"></script>
+  </body>
+</html>

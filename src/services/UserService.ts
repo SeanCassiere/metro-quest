@@ -130,7 +130,8 @@ class UserService {
     // getting UUID to use as the user's id
     const newUserId = await fetch(UUID_URI)
       .then((res) => res.json())
-      .then((data) => data[0] as string)
+      // .then((data) => data[0] as string)
+      .then((data) => data.token as string)
       .catch(() => `${Math.floor(Math.random() * 100)}`);
 
     const user = new User(
@@ -141,7 +142,7 @@ class UserService {
       btoa(props.password),
       [], // favoriteLocations
       [], // orders
-      15, // userPoints
+      0, // userPoints
       [] // userPointsHistory
     );
 
@@ -149,6 +150,7 @@ class UserService {
     users = { ...users, [user.id]: user };
     localStorage.setItem(USER_SERVICE_STORE, JSON.stringify(users));
 
+    this.addPointsToUser(user.id, 15);
     return user.id;
   }
 
@@ -217,6 +219,8 @@ class UserService {
 
     if (!user) return;
 
+    if (user.favoriteLocations.includes(locationId)) return;
+
     user = { ...user, favoriteLocations: [...user.favoriteLocations, locationId] };
     let allUsers = this.getAllUsers();
     allUsers = { ...allUsers, [user.id]: user };
@@ -233,6 +237,16 @@ class UserService {
 
     const saveUser: User = { ...user, favoriteLocations: newFavorites };
 
+    let allUsers = this.getAllUsers();
+    allUsers = { ...allUsers, [user.id]: saveUser };
+
+    this.saveUsers(allUsers);
+  }
+
+  removeAllFavoriteLocations(userId: string) {
+    let user: User = this.getUserById(userId)!;
+
+    user = { ...user, favoriteLocations: [] };
     let allUsers = this.getAllUsers();
     allUsers = { ...allUsers, [user.id]: user };
 
