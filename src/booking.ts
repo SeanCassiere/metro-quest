@@ -154,10 +154,11 @@ jQuery(() => {
 
 $("#checkoutSubmit").click(function () {
   if ($("#promoCodeApply").data("clicked")) {
-    localStorage.setItem("finalTripFare", finalTripFare);
+    var tripFare = parseFloat(finalTripFare);
+    localStorage.setItem("finalTripFare", finalTripFare.toFixed(2));
   } else {
-    var tripFare = $("input#bookingTripFareInput").val() as string;
-    localStorage.setItem("finalTripFare", tripFare);
+    var tripFare = parseFloat($("input#bookingTripFareInput").val() as string);
+    localStorage.setItem("finalTripFare", `${tripFare.toFixed(2)}`);
     // console.log(localStorage.getItem("finalTripFare"));
   }
 });
@@ -174,7 +175,8 @@ function onSubmitCode(e: JQuery.TriggeredEvent) {
   $(`form[name="payment-form"] input[name="email"]`).attr("value", loggedInUser.email); // change these fields
   // console.log(localStorage.getItem("finalTripFare"));
   // return;
-  $(`form[name="payment-form"] input[name="price"]`).attr("value", localStorage.getItem("finalTripFare")); // change these fields
+  const storage_finalTripFare = parseFloat(localStorage.getItem("finalTripFare") ?? "0.5");
+  $(`form[name="payment-form"] input[name="price"]`).attr("value", storage_finalTripFare.toFixed(2)); // change these fields
   $(`form[name="payment-form"] input[name="host"]`).attr(
     "value",
     `${window.location.protocol}//${window.location.host}`
