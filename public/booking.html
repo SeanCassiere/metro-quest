@@ -118,6 +118,7 @@
                     id="bookingFromInput"
                     name="from"
                     aria-label="Default select example"
+                    required
                     autofocus
                   >
                     <option value="" selected disabled>From</option>
@@ -132,7 +133,7 @@
                     id="bookingToInput"
                     name="to"
                     aria-label="Default select example"
-                    autofocus
+                    required
                   >
                     <option value="" selected disabled>To</option>
                     <!-- <option></option> -->
@@ -144,46 +145,42 @@
               <div class="col">
                 <div class="mb-2 w-100">
                   <input
-                    type="text"
+                    type="date"
                     class="form-control"
                     id="bookingDepartureDateInput"
                     name="departureDate"
                     placeholder="Departure Date"
-                    onfocus="(this.type='date')"
-                    onblur="(this.type='text')"
-                    autofocus
                   />
                 </div>
               </div>
               <div class="col">
                 <div class="mb-2 w-100">
                   <input
-                    type="text"
+                    type="time"
                     class="form-control"
                     id="bookingDepartureTimeInput"
                     name="departureTime"
                     placeholder="Departure Time"
-                    onfocus="(this.type='time')"
-                    onblur="(this.type='text')"
-                    autofocus
                   />
                 </div>
               </div>
             </div>
             <div class="mb-2 w-100">
               <input
-                type="text"
+                type="number"
                 class="form-control"
                 id="bookingTicketsInput"
                 name="noOfTickets"
                 placeholder="Number of Tickets"
+                value="1"
+                min="1"
                 autofocus
               />
             </div>
             <div class="row">
               <div class="col">
                 <div class="input-group mb-2 w-100">
-                  <span class="input-group-text" id="bookingTripFareInput">£</span>
+                  <span class="input-group-text" id="bookingTripFareInput">Subtotal £</span>
                   <input
                     type="text"
                     class="form-control"
@@ -202,7 +199,7 @@
             <div class="row">
               <div class="col-10">
                 <div class="input-group mb-2 w-100">
-                  <span class="input-group-text" id="bookingPromotionCodeInput">£</span>
+                  <span class="input-group-text" id="bookingPromotionCodeInput">Promo £</span>
                   <input
                     type="text"
                     class="form-control"
@@ -225,6 +222,22 @@
                     APPLY
                   </button>
                   <!-- <button class="promo-code" type="submit" id="promoCodeApply">APPLY</button> -->
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="input-group mb-2 w-100">
+                  <span class="input-group-text" id="bookingFinalTotalInput">Total £</span>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="bookingFinalTotalInput"
+                    name="finalTotal"
+                    placeholder="Display total"
+                    maxlength="8"
+                    readonly
+                  />
                 </div>
               </div>
             </div>
@@ -273,7 +286,7 @@
               <div class="col">
                 <div class="mb-2 w-100">
                   <input
-                    type="text"
+                    type="date"
                     class="form-control"
                     id="bookingDateOfBirthInput"
                     name="dateOfBirth"
@@ -314,8 +327,9 @@
                 aria-pressed="true"
                 size="lg"
                 style="width: 100%"
-                >PROCEED TO CHECKOUT</a
               >
+                PROCEED TO CHECKOUT
+              </a>
               <!-- <button class="btn btn-metro-orange text-white" type="submit" size="lg" style="width: 100%" href="checkout.html">
                 PROCEED TO CHECKOUT
               </button> -->
