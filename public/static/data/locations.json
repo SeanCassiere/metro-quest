@@ -61,10 +61,10 @@
     "largeCoverImgUrl": "/static/images/locations/cornwall.jpg",
     "ratings": {
       "totalRatings": 1,
-      "currentRating": 1,
-      "totalRatingValue": 1,
+      "currentRating": 2,
+      "totalRatingValue": 2,
       "ratedUsers": ["c3064eb0-25a4-46ef-81f4-e0657b898844"],
-      "ratingHistory": [{ "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844", "rating": 1 }]
+      "ratingHistory": [{ "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844", "rating": 2 }]
     },
     "comments": {
       "6f7be0a6-2094-40b0-8881-2691ffae332a": {
@@ -100,10 +100,10 @@
     "largeCoverImgUrl": "/static/images/locations/bristol.jpg",
     "ratings": {
       "totalRatings": 1,
-      "currentRating": 1,
-      "totalRatingValue": 1,
+      "currentRating": 3,
+      "totalRatingValue": 3,
       "ratedUsers": ["c3064eb0-25a4-46ef-81f4-e0657b898844"],
-      "ratingHistory": [{ "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844", "rating": 1 }]
+      "ratingHistory": [{ "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844", "rating": 3 }]
     },
     "comments": {
       "6f7be0a6-2094-40b0-8881-2691ffae332a": {
@@ -139,10 +139,10 @@
     "largeCoverImgUrl": "/static/images/locations/london.jpg",
     "ratings": {
       "totalRatings": 1,
-      "currentRating": 1,
-      "totalRatingValue": 1,
+      "currentRating": 2,
+      "totalRatingValue": 2,
       "ratedUsers": ["c3064eb0-25a4-46ef-81f4-e0657b898844"],
-      "ratingHistory": [{ "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844", "rating": 1 }]
+      "ratingHistory": [{ "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844", "rating": 2 }]
     },
     "comments": {
       "6f7be0a6-2094-40b0-8881-2691ffae332a": {
@@ -178,10 +178,10 @@
     "largeCoverImgUrl": "/static/images/locations/cardiff.jpg",
     "ratings": {
       "totalRatings": 1,
-      "currentRating": 1,
-      "totalRatingValue": 1,
+      "currentRating": 3,
+      "totalRatingValue": 3,
       "ratedUsers": ["c3064eb0-25a4-46ef-81f4-e0657b898844"],
-      "ratingHistory": [{ "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844", "rating": 1 }]
+      "ratingHistory": [{ "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844", "rating": 3 }]
     },
     "comments": {
       "6f7be0a6-2094-40b0-8881-2691ffae332a": {
@@ -217,10 +217,10 @@
     "largeCoverImgUrl": "/static/images/locations/oxford.jpg",
     "ratings": {
       "totalRatings": 1,
-      "currentRating": 1,
-      "totalRatingValue": 1,
+      "currentRating": 4,
+      "totalRatingValue": 4,
       "ratedUsers": ["c3064eb0-25a4-46ef-81f4-e0657b898844"],
-      "ratingHistory": [{ "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844", "rating": 1 }]
+      "ratingHistory": [{ "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844", "rating": 4 }]
     },
     "comments": {
       "6f7be0a6-2094-40b0-8881-2691ffae332a": {
@@ -256,10 +256,10 @@
     "largeCoverImgUrl": "/static/images/locations/edinburgh.jpg",
     "ratings": {
       "totalRatings": 1,
-      "currentRating": 1,
-      "totalRatingValue": 1,
+      "currentRating": 3,
+      "totalRatingValue": 3,
       "ratedUsers": ["c3064eb0-25a4-46ef-81f4-e0657b898844"],
-      "ratingHistory": [{ "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844", "rating": 1 }]
+      "ratingHistory": [{ "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844", "rating": 3 }]
     },
     "comments": {
       "6f7be0a6-2094-40b0-8881-2691ffae332a": {
@@ -295,10 +295,10 @@
     "largeCoverImgUrl": "/static/images/locations/chester.jpg",
     "ratings": {
       "totalRatings": 1,
-      "currentRating": 1,
-      "totalRatingValue": 1,
+      "currentRating": 3.5,
+      "totalRatingValue": 3.5,
       "ratedUsers": ["c3064eb0-25a4-46ef-81f4-e0657b898844"],
-      "ratingHistory": [{ "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844", "rating": 1 }]
+      "ratingHistory": [{ "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844", "rating": 3.5 }]
     },
     "comments": {
       "6f7be0a6-2094-40b0-8881-2691ffae332a": {
@@ -373,10 +373,10 @@
     "largeCoverImgUrl": "/static/images/locations/cambridge.jpg",
     "ratings": {
       "totalRatings": 1,
-      "currentRating": 1,
-      "totalRatingValue": 1,
+      "currentRating": 3.5,
+      "totalRatingValue": 3.5,
       "ratedUsers": ["c3064eb0-25a4-46ef-81f4-e0657b898844"],
-      "ratingHistory": [{ "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844", "rating": 1 }]
+      "ratingHistory": [{ "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844", "rating": 3.5 }]
     },
     "comments": {
       "6f7be0a6-2094-40b0-8881-2691ffae332a": {
@@ -412,10 +412,10 @@
     "largeCoverImgUrl": "/static/images/locations/liverpool.jpg",
     "ratings": {
       "totalRatings": 1,
-      "currentRating": 1,
-      "totalRatingValue": 1,
+      "currentRating": 3.5,
+      "totalRatingValue": 3.5,
       "ratedUsers": ["c3064eb0-25a4-46ef-81f4-e0657b898844"],
-      "ratingHistory": [{ "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844", "rating": 1 }]
+      "ratingHistory": [{ "userId": "c3064eb0-25a4-46ef-81f4-e0657b898844", "rating": 3.5 }]
     },
     "comments": {
       "6f7be0a6-2094-40b0-8881-2691ffae332a": {
