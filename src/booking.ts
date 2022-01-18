@@ -3,13 +3,19 @@ import { getServerUrls } from "./utils/environment.js";
 import UserService from "./services/UserService.js";
 import { dynamicNavbar } from "./services/changeNavbar.js";
 
+declare global {
+  interface Date {
+    toDateInputValue(): string;
+    toTimeInputValue(): string;
+  }
+}
+
 jQuery(() => {
   const loggedInUser = UserService.getLoggedInUser();
   if (!loggedInUser) {
     window.location.replace(`/login.html?redirect=${window.location.pathname}${window.location.search}`);
     return;
   }
-  // console.log(loggedInUser);
   if (loggedInUser) {
     $("#bookingFirstNameInput").val(loggedInUser.firstName);
     $("#bookingLastNameInput").val(loggedInUser.lastName);
@@ -17,8 +23,20 @@ jQuery(() => {
     if (loggedInUser.userPoints <= 0) {
       $("input#bookingPromotionCodeInput").prop("readonly", true);
     }
-    $("input#bookingPromotionCodeInput").val(loggedInUser.userPoints);
+    $("input#bookingPromotionCodeInput").val(loggedInUser.userPoints.toFixed(2));
   }
+  Date.prototype.toDateInputValue = function () {
+    const local = new Date(this);
+    local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+    return local.toJSON().slice(0, 10);
+  };
+  Date.prototype.toTimeInputValue = function () {
+    const local = new Date(this);
+    local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+    return local.toJSON().slice(11, 16);
+  };
+  $("input#bookingDepartureDateInput").val(new Date().toDateInputValue());
+  $("input#bookingDepartureTimeInput").val(new Date().toTimeInputValue());
 });
 
 //From
@@ -80,39 +98,23 @@ $("#finalCheckout").click(function () {
 jQuery(async function () {
   await LocationService.getOnlineLocations();
   let allLocations = LocationService.getAllLocationsAsArray();
-  // console.log(allLocations);
-  $("#bookingFromInput").ready(function () {
-    let text = "";
-    allLocations.forEach((element) => {
-      text += `<option value="${element.name}">${element.name}</option>`;
-    });
-    // console.log(text);
-    $("#bookingFromInput").append(text);
+  let text = "";
+  allLocations.forEach((element) => {
+    text += `<option value="${element.name}">${element.name}</option>`;
   });
-});
-
-// Locations-To
-jQuery(async function () {
-  await LocationService.getOnlineLocations();
-  let allLocations = LocationService.getAllLocationsAsArray();
-  // console.log(allLocations);
-  $("#bookingToInput").ready(function () {
-    let text = "";
-    allLocations.forEach((element) => {
-      text += `<option value="${element.name}">${element.name}</option>`;
-    });
-    // console.log(text);
-    $("#bookingToInput").append(text);
-  });
+  $("#bookingFromInput").append(text);
+  $("#bookingToInput").append(text);
+  localStorage.setItem("fromvalue", allLocations[0].name);
+  localStorage.setItem("tovalue", allLocations[1].name);
 });
 
 //Trip-Fare
 $(document).ready(function () {
-  var precision = 100; //2 decimals
-  var randomnum: any = Math.floor(Math.random() * (30 * precision - 1 * precision) + 1 * precision) / (1 * precision);
-  var tripFare: any = $("input#bookingTripFareInput").attr("value", randomnum);
-  localStorage.setItem("tempTripFare", randomnum);
-  // console.log("works", randomnum);
+  const precision = 100; //2 decimals
+  const randomNum: any = Math.floor(Math.random() * (30 * precision - 1 * precision) + 1 * precision) / (1 * precision);
+  $("input#bookingTripFareInput").attr("value", randomNum);
+  $("input#bookingFinalTotalInput").attr("value", randomNum);
+  localStorage.setItem("tempTripFare", randomNum);
 });
 
 //User-points calculation
@@ -134,16 +136,18 @@ jQuery(() => {
     }
     if (promoCodeValue > tripFareValue) {
       promoCodeValue = tripFareValue;
-      finalTripFare = tripFareValue - promoCodeValue;
+      finalTripFare = 0.5;
       // console.log(finalTripFare);
+      $("input#bookingFinalTotalInput").attr("value", finalTripFare.toFixed(2));
     } else {
       finalTripFare = tripFareValue - promoCodeValue;
+      $("input#bookingFinalTotalInput").attr("value", finalTripFare.toFixed(2));
     }
 
-    // console.log(tripFareValue);
-    // console.log(finalTripFare);
     UserService.removePointsFromUser(loggedInUser.id, promoCodeValue);
-    localStorage.setItem("finalTripFare", finalTripFare);
+    const refreshUser = UserService.getLoggedInUser()!;
+    $("input#bookingPromotionCodeInput").val(refreshUser.userPoints.toFixed(2));
+    localStorage.setItem("finalTripFare", finalTripFare.toFixed(2));
     // console.log(localStorage.getItem("finalTripFare"));
   });
 });
