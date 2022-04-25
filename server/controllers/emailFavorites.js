@@ -83,11 +83,13 @@ async function sendFavoritesEmail(body) {
       },
     });
 
-    await transporter.sendMail({
+    transporter.sendMail({
       from: SENDGRID_FROM_EMAIL,
       to: recipientEmail,
       subject: `${name}'s favorite locations - Metro Quest`,
       html: locationsHtml,
+    }).then((res) => {
+      console.log(`Email successfully sent to ${recipientEmail}`)
     });
 
     return true;
