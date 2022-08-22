@@ -57,11 +57,11 @@
   },
   "dependencies": {
     "@netlify/functions": "^1.2.0",
-    "dotenv": "^10.0.0",
+    "dotenv": "^16.0.1",
     "express": "^4.17.2",
     "instascan": "^1.0.0",
     "jquery": "^3.6.0",
-    "nodemailer": "^6.7.2",
+    "nodemailer": "^6.7.8",
     "serverless-http": "^3.0.1",
     "stripe": "^10.2.0",
     "uuid": "^8.3.2"
