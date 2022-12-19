@@ -33,7 +33,7 @@
     "@types/jquery": "^3.5.14",
     "@types/node": "^18.11.17",
     "@typescript-eslint/eslint-plugin": "^5.46.0",
-    "@typescript-eslint/parser": "^5.45.1",
+    "@typescript-eslint/parser": "^5.46.1",
     "@web/dev-server": "^0.1.35",
     "commitizen": "^4.2.5",
     "concurrently": "^7.6.0",
